@@ -6,8 +6,9 @@
 		
 		if(!empty($xml))
 		{	
-			M('xml_data') -> add(array('xml' => $xml));
-		}
+			$re = M('xml_data') -> add(array('xml' => $xml));
+           
+		}  
 	}
 	
 	//保存微信服务器产生大错误信息

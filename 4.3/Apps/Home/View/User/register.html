@@ -1,0 +1,191 @@
+<title>注册页面</title>
+
+<!--contain-->
+		<div class="register">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-10">
+						<div class="col-sm-4 hidden-xs left">
+							<a href="index.html"><img src="__PUBLIC__/Home/images/ico/8-logo.png" alt="8-logo.png" /></a>
+						</div>
+						<div class="col-sm-8 col-xs-12 right">
+							<h1><a href="javascript:history.back()"><img src="__PUBLIC__/Home/images/ico/8-cloes.png" alt="8-cloes.png"/></a></h1>
+							<h2><span>注册</span></h2>
+							<p>
+								<label>用户：</label>
+								<input type="text" id="txt_user" />
+							</p>
+							<p>
+								<label>密码：</label>
+								<input type="password" id="pwd" />
+							</p>
+							<p>
+								<label>确认密码：</label>
+								<input type="password" id="pwd2" />
+							</p>
+							<p>
+								<label>邮箱：</label>
+								<input type="email" id="txt_email"  />
+							</p>
+							<p>
+								<label>手机：</label>
+								<input type="tel" id="txt_tell" />
+							</p>
+							<p>
+								<label>验证码：</label>
+								<input type="text" id="txt_code" />
+								<img id="verify" src="__CONTROLLER__/verify" alt="8-yanzheng.jpg" >
+								<img id="change" src="__PUBLIC__/Home/images/ico/8-reflesh.png" alt="8-reflesh.png" />
+							</p>
+							<p>
+								<label class="label"><input type="checkbox" name="agree" id="agree" value="on" /><span>同意此注册协议</span></label>
+							</p>
+							<p>
+								<label></label>
+								<input type="button" id="btn_zc"  value="确认"/>
+								<input type="reset" id="regi-reset" value="重置"/>
+							</p>
+						</div>
+						
+					</div>
+				</div>
+				
+			</div>
+		</div>
+		
+		<!--contain-end-->
+	
+		</form>
+		
+<script>
+  $(function(){
+	$("#change").click(function () {
+		$("#verify").attr("src",'__CONTROLLER__/verify');
+	});
+	//用户名
+	$("#txt_user").blur(function(){
+		if ($("#txt_user").val() == "") { 
+			layer.msg('用户名不能为空');
+		}
+	})
+
+	//手机号码
+	$("#txt_tell").blur(function(){
+		if ($("#txt_tell").val() == "") { 
+			layer.msg('手机号码不能为空');
+		}
+		else if (!$("#txt_tell").val().match(/^1([23578])\d{9}$/)) { 
+			layer.msg('手机号码格式不正确');
+		} 
+	})
+	//邮箱
+	$("#txt_email").blur(function(){
+		if ($("#txt_email").val() == "") { 
+			layer.msg('邮箱不能为空');
+		}else if (!$("#txt_email").val().match(/\w[-\w.+]*@([A-Za-z0-9][-A-Za-z0-9]+\.)+[A-Za-z]{2,14}/)) {
+			layer.msg('邮箱格式不正确');
+		
+		}
+	})
+	
+	//密码
+	$("#pwd").blur(function(){
+		if ($("#pwd").val() == "") { 
+			layer.msg('密码不能为空');
+		}
+	})
+	//密码确认
+	$("#pwd2").blur(function(){
+		if ($("#pwd2").val() == "") 
+			layer.msg('再次输入密码不能为空');
+		else if($("#pwd2").val()!=$("#pwd").val())
+			layer.msg('两次输入的密码不一致');
+		
+	})
+	
+	
+	//点击提交
+	$("#btn_zc").click(function(){
+		if ($("#txt_user").val() == "") {
+			layer.msg('用户名不能为空');
+			return false;
+		}
+		else if ($("#txt_email").val() == "") {
+			layer.msg('邮箱不能为空');
+			return false;
+		}
+		else if (!$("#txt_email").val().match(/\w[-\w.+]*@([A-Za-z0-9][-A-Za-z0-9]+\.)+[A-Za-z]{2,14}/)) {
+			layer.msg('邮箱格式不正确');
+			return false;
+		}
+		else if ($("#txt_tell").val() == "") {
+			layer.msg('手机号码不能为空');
+			return false;
+		}
+		else if (!$("#txt_tell").val().match(/(13\d|14[57]|15[^4,\D]|17[13678]|18\d)\d{8}|170[0589]\d{7}/)) {
+			layer.msg('手机号码格式不正确');
+			return false;
+		}
+		else if($("#txt_code").val() == "") {
+			layer.msg('验证码不能为空');
+			return false;
+		}
+		else if ($("#pwd").val() == "") { 
+			layer.msg('密码不能为空');
+			return false;
+		}
+		else if ($("#pwd2").val() == "") {
+			layer.msg('再次输入密码不能为空');
+			return false;
+		}
+		else if($("#pwd2").val()!=$("#pwd").val()){
+			layer.msg('两次输入的密码不一致');
+			return false;
+		}
+		else if(!$("input[type='checkbox']").is(':checked'))
+		{
+			layer.msg('请同意此注册协议!');
+			return false;
+		}
+		
+		var username = $("#txt_user").val();
+		var pwd      = $("#pwd").val();
+		var pwd2     = $("#pwd2").val();
+		var phone    = $("#txt_tell").val();
+		var email    = $("#txt_email").val();
+		var code     = $("#txt_code").val();	
+		
+		$.post("{:U('Home/User/register')}",
+		{username:username,pwd:pwd,pwd2:pwd2,mobile:phone,email:email,code:code},
+		function(data){
+					if(data.code == 1)
+					{
+						layer.alert(data.info,{end:function(){
+							location.href="{:U('Home/User/login')}";
+						}});
+						
+						
+					}
+					else
+					{
+						layer.alert(data.info);
+						$("#verify").attr("src",'__CONTROLLER__/verify');
+					}
+					
+					
+					
+				});
+		
+	});
+	
+	
+	
+  });
+</script>
+	
+<script>
+
+	
+	
+	
+</script>

@@ -1,0 +1,30 @@
+<title>新闻详情</title>
+<!--contain-->
+<div class="news-center">
+<div class="container">
+	<!--title-->
+	<div class="title">
+		<h3><span>新闻中心</span></h3>
+		<h4>NEW  CENTER</h4>
+		<p>
+			当前位置 : <a href="{:U('Home/Index/index')}">首页</a>><a href="{:U('Home/News/news')}">新闻中心</a>>新闻详情
+			<span></span>
+		</p>
+	</div>
+	<div class="contenr">
+		<h3>{$detail.title}</h3>
+		{$detail.content}
+		<ul class="page">
+			<notempty name="prev">
+			  <li><a href="/Home/News/news_detail/id/{$prev.news_id}">上一篇：{$prev.title}</a></li>
+			</notempty>
+			<notempty name="prev">
+			  <li><a href="/Home/News/news_detail/id/{$next.news_id}">下一篇：{$next.title}</a></li>
+			</notempty>
+		</ul>
+	</div>
+	<!--title-end-->
+
+</div>
+</div>
+<!--contain-end-->

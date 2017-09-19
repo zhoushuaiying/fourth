@@ -1,0 +1,67 @@
+<title>最近动态</title>
+<form action="" method="">
+
+<!--contain-->
+<div class="user">
+<div class="container">
+	<include file = "Common/menu"/>
+		<ul class="all-message" style="margin-top: 100px;">
+			<!--<li>-->
+				<!--<dl class="li-top">-->
+					<!--<dt>全部消息>></dt>-->
+					<!--<dd><p>近期动态</p>-->
+						<!--<img src="__PUBLIC__/Home/images/ico/13-message.png" alt="13-message.png" />-->
+					<!--</dd>-->
+					<!--<dd>未读消息（0）</dd>-->
+				<!--</dl>-->
+			<!--</li>-->
+			<li>
+				<dl class="myorder">
+					<dt><a href="{:U('Home/Center/order')}">全部订单</a>>></dt>
+					<dd><a>待付款（{$state[0]['how']}）</a>  </dd>
+					<dd><a>已付款（{$state[1]['how']}）</a>  </dd>
+					<dd><a>发货成功（{$state[2]['how']}）</a>  </dd>
+					<dd><a>交易成功（{$state[3]['how']}）</a>  </dd>
+				</dl>
+			</li>
+			<li>
+				<dl class="dl">
+					<dd>订单号</dd>
+					<dd>下单时间</dd>
+					<dd>收货人</dd>
+					<dd>总金额</dd>
+
+					<dd>订单状态</dd>
+
+				</dl>
+			</li>
+			<foreach name="orders" item="vo">
+			<li>
+				<dl class="dl dl-mesage">
+					<dd><span>{$vo.order_number}</span></dd>
+					<dd>{$vo.addtime|date="Y-m-d",###}</dd>
+					<dd><span>{$vo.username}</span></dd>
+					<dd><span>{$vo.price_all}</span></dd>
+
+					<dd>
+						<switch name="vo.state">
+							<case value="0">待付款</case>
+							<case value="1">已付款</case>
+							<case value="2">发货成功</case>
+							<case value="3">交易成功</case>
+							<case value="4">申请退货</case>
+							<case value="5">已退货未退款</case>
+							<case value="6">退款成功</case>
+							<default />default
+						</switch>
+
+					</dd>
+
+				</dl>
+			</li>
+			</foreach>
+		</ul>
+	</div>
+</div>
+</div>
+<!--contain-end-->

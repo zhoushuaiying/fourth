@@ -1,0 +1,139 @@
+{__NOLAYOUT__}
+<include file="Common/meta"/>
+</head>
+<body>
+<article class="cl pd-20">
+	 <form  class="form form-horizontal" id="form-admin-add" >
+	
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>权限名称：</label>
+			<div class="formControls col-xs-8 col-sm-4">
+				<input type="text" class="input-text" value="{$detail.auth_name}" placeholder="权限名称" id="auth_name" >
+				<input type="hidden"  value="{$detail.auth_id}" id="auth_id" >
+			</div>
+		</div>
+		
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>父级名称：</label>
+			<div class="formControls col-xs-8 col-sm-4">
+				<select id="auth_pid" disabled="disabled">
+				<option value ='0' >--请选择--</option>
+				    <volist name="result" id="val">
+					<option value = "{$val.auth_id}"<eq name = "detail.auth_id" value = "$val.auth_id">selected="selected"</eq>  >{$val.auth_name}</option>
+					</volist> 	
+				</select>
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>应用名称：</label>
+			<div class="formControls col-xs-8 col-sm-4">
+				<input type="text" class="input-text" value="{$detail.auth_module}" placeholder="应用名称" id="auth_module" >
+			</div>
+		</div>
+		
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>控制器名称：</label>
+			<div class="formControls col-xs-8 col-sm-4">
+				<input type="text" class="input-text" value="{$detail.auth_controller}" placeholder="控制器名称" id="auth_controller" >
+			</div>
+		</div>
+
+		
+
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>方法名称：</label>
+			<div class="formControls col-xs-8 col-sm-4">
+				<input type="text" class="input-text" value="{$detail.auth_action}" placeholder="方法名称" id="auth_action" >
+			</div>
+		</div>		
+		
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>是否显示：</label>
+			<div class="formControls col-xs-8 col-sm-4">
+				<select id = "auth_type">
+					<option value="1" <eq name = "detail.auth_type" value = "1">selected="selected"</eq>>显示</option>
+					<option value="0" <eq name = "detail.auth_type" value = "0">selected="selected"</eq>>隐藏</option>
+				</select>
+			</div>
+		</div>	
+
+		
+
+		<div class="row cl">
+			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
+				<input class="btn btn-primary radius" type="button" value="&nbsp;&nbsp;提交&nbsp;&nbsp;" id="su">
+			</div>
+		</div>
+	</form>
+</article>
+
+<include file="Common/footer"/>
+
+<!--请在下方写此页面业务相关的脚本-->
+<script type="text/javascript" src="__PUBLIC__/Admin/lib/jquery.validation/1.14.0/jquery.validate.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Admin/lib/jquery.validation/1.14.0/validate-methods.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Admin/lib/jquery.validation/1.14.0/messages_zh.js"></script>
+
+<script type="text/javascript" src="__PUBLIC__/Admin/lib/jquery.validation/1.14.0/jquery.validate.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Admin/lib/jquery.validation/1.14.0/validate-methods.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Admin/lib/jquery.validation/1.14.0/messages_zh.js"></script>
+<script>
+	$(".btn-primary").click(function(){
+	  
+		var auth_id = $("#auth_id").val();
+		var auth_name = $("#auth_name").val();
+        var auth_module = $("#auth_module").val();
+		var auth_controller = $("#auth_controller").val();
+        var auth_action   = $("#auth_action").val();
+        var auth_type = $("#auth_type").val();
+
+		if(auth_name == '' || auth_name == null || auth_name ==	undefined)
+		{
+            layer.alert('权限名称不能为空',{end : function () {
+//				var index = parent.layer.getFrameIndex(window.name);
+//				parent.$('.btn-refresh').click();
+//				parent.layer.close(index);
+            }});
+		    return false;
+		}else if(auth_module == '' || auth_module == null || auth_module ==	undefined)
+		{
+            layer.alert('应用名称不能为空',{end : function () {
+            }});
+		    return false;
+		}
+
+		$.post("{:U('Admin/Auth/edit')}",
+			{auth_name:auth_name,auth_module:auth_module,auth_id:auth_id,
+			auth_controller:auth_controller,auth_action:auth_action,auth_type:auth_type},
+			function (data) {
+			if(data.code==0)
+			{
+			    layer.alert(data.info);
+			}
+			else
+			{
+                layer.alert(data.info,{end : function(){
+                    var index = parent.layer.getFrameIndex(window.name);
+                    parent.$('.btn-refresh').click();
+                    parent.layer.close(index);
+                } });
+			}
+			return false;
+        });
+	});
+
+</script>
+	
+	
+</script>
+ <!-- 百度编辑器应用代码 -->
+ <script type="text/javascript" charset="utf-8" src="__PUBLIC__/Admin/ueditor/ueditor.config.js"></script>
+ <script type="text/javascript" charset="utf-8" src="__PUBLIC__/Admin/ueditor/ueditor.all.min.js"> </script>
+ <script type="text/javascript" charset="utf-8" src="__PUBLIC__/Admin/ueditor/lang/zh-cn/zh-cn.js"></script>
+ <script type="text/javascript">
+     var ue = UE.getEditor('editor');
+ </script> 
+<!--/请在上方写此页面业务相关的脚本-->
+</body>
+
+</html>

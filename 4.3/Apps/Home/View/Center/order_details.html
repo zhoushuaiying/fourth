@@ -1,0 +1,119 @@
+<title>订单详情</title>
+<!--contain-end-->
+<div class="order_details order user">
+<div class="container">
+	<include file = "Common/menu"/>
+	<ul class="detail-pic">
+		<li>
+			<!--<span><img src="__PUBLIC__/Home/images/ico/16-1.png" alt="16-1.png" /></span>-->
+			<p <eq name="orders[0].state" value="0">class="on"</eq>>提交订单</p>
+		</li>
+		<li>
+			<img src="__PUBLIC__/Home/images/ico/16-2.png" alt="16-2.png" />
+		</li>
+		<li>
+			<!--<span><img src="__PUBLIC__/Home/images/ico/16-3.png" alt="16-3.png" /></span>-->
+			<p <eq name="orders[0].state" value="1">class="on"</eq>>付款成功</p>
+		</li>
+		<li>
+			<img src="__PUBLIC__/Home/images/ico/16-2.png" alt="16-2.png" />
+		</li>
+		<li>
+			<!--<span><img src="__PUBLIC__/Home/images/ico/16-5.png" alt="16-5.png" /></span>-->
+			<p <eq name="orders[0].state" value="2">class="on"</eq>>发货成功</p>
+		</li>
+		<li>
+			<img src="__PUBLIC__/Home/images/ico/16-2.png" alt="16-2.png" />
+		</li>
+		<li>
+			<!--<span><img src="__PUBLIC__/Home/images/ico/16-7.png" alt="16-7.png" /></span>-->
+			<p <eq name="orders[0].state" value="3">class="on"</eq>>交易成功</p>
+		</li>
+	</ul>
+	<!--信息-->
+	<ul class="message cart">
+		<li>
+			<dl class="deliver">
+				<dt>
+					配送信息
+				</dt>
+				<dd>
+					<p>订单编号：{$orders[0].order_number}</p>
+					<p>收货信息：{$orders[0].username}           {$orders[0].mobile}</p>
+					<p>地址信息：{$orders[0].address}</p>
+					<!--<p>配送方式：免运费</p>-->
+				</dd>
+			</dl>
+		</li>
+		<li>
+			<div class="row allCheck">
+				<div class="col-md-2 col-sm-3 col-xs-12">
+					
+				</div>
+				<div class="col-md-4 col-sm-3 hidden-xs">
+					商品
+				</div>
+				<div class="col-md-4 col-sm-2 hidden-xs">
+					单价
+				</div>
+				<div class="col-md-2 hidden-sm hidden-xs">
+					小计
+				</div>
+				<div class="hidden-xs">
+					<!--售后-->
+				</div>
+				<div class="col-md-2 col-sm-2 hidden-xs">
+					<!--评价-->
+				</div>
+			</div>
+		</li>
+		<li>
+			<div class="cart-list row">
+				<ul>
+					<foreach name="orders" item="val">
+						<li class="col-sm-12 ">
+
+							<div class="col-md-2 col-sm-3 left1">
+								<small>商品信息</small>
+								<a href="/Home/Product/pro_details/goods_id/{$val.goods_id}">	<img src="{$val.goods_thumb}" alt="10-pro.jpg" width="101" height="110" /></a>
+							</div>
+
+							<div class="col-md-4 col-sm-3">
+								<a href="/Home/Product/pro_details/goods_id/{$val.goods_id}"><p>{$val.goods_name}</p></a>
+							</div>
+							<div class="col-md-4 col-sm-2 ">
+								<p>￥：{$val.goods_price}</p>
+								<p>特价</p>
+							</div>
+							<div class="col-md-2 hidden-sm">
+								<p>{$val.all_price}</p>
+
+							</div>
+							<div class="hidden-xs">
+
+							</div>
+							<div class="col-md-2 col-sm-2">
+								<!--<p><a href="javascript:;">未评价</a></p>-->
+							</div>
+						</li>
+					</foreach>
+
+
+				</ul>
+			</div>
+	<!--cart-list-end-->
+		</li>
+		<li>
+			<div class="left">
+				结算信息
+			</div>
+			<div class="right">
+				<p><b>商品总额：</b><span> {$money}</span>元</p>
+				<p><b>运费：</b><span> 0.00</span>元</p>
+				<p><b>实付款：</b><span> {$money}</span>元</p>
+			</div>
+		</li>
+	</ul>
+</div>
+</div>
+<!--contain-->

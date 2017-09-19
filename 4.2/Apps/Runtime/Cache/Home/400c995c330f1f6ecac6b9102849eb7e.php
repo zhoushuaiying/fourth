@@ -2617,6 +2617,7 @@
 				}
 				else
 				{
+                    console.log(data);
 					for(var i = 0;i<data.length;i++)
 					{
 					   sildes += '<li class="clone" aria-hidden="true" style="width: 375px; float: left; display: block;">';

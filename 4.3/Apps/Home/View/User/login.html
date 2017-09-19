@@ -1,0 +1,104 @@
+<title>登录页面</title>
+
+<!--contain-->
+<div class="login register">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-10">
+				<div class="col-sm-4 hidden-xs left">
+					<a href="index.html"><img src="__PUBLIC__/Home/images/ico/8-logo.png" alt="8-logo.png" /></a>
+				</div>
+				<div class="col-sm-8 col-xs-12 right">
+					<h1><a href="javascript:history.back()"><img src="__PUBLIC__/Home/images/ico/8-cloes.png" alt="8-cloes.png"/></a></h1>
+					<h2><span>登录</span></h2>
+					<div class="input-group">
+						<span class="img"><img src="__PUBLIC__/Home/images/ico/9-username.png" alt="9-username.png"/></span>
+						<input class="form-control" type="text" name="username" id="login_user" value="{$Think.cookie.user_name}"/>
+					</div>
+					<div class="input-group">
+						<span class="img"><img src="__PUBLIC__/Home/images/ico/9-passw.png" alt="9-passw.png"/></span>
+						<input class="form-control" type="password" name="login_pass" id="login_pass" value="{$Think.cookie.user_pwd}"/>
+						<span><a href="javascript:;">&nbsp;忘记密码</a>？</span>
+					</div>
+					<div class="input-group">
+					<div class="left">
+						<p><a href="{:U('Home/User/register')}">注册会员</a></p>
+						<label>
+							<input type="checkbox" name="new_user" id="new_user"  />
+							<span>记住密码</span>
+						</label>
+					</div>
+					<div class="right">
+						<input type="button"  id="btn_zc" value="确认" />
+					</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--contain-end-->
+<script>
+	$("#login_user").blur(function(){
+		if ($("#login_user").val() == "") { 
+			layer.msg('用户名不能为空');
+		}
+	});
+	
+	$("#login_pass").blur(function(){
+		if ($("#login_pass").val() == "") { 
+			layer.msg('密码不能为空');
+		}
+	});
+	
+	$("#btn_zc").click(function(){
+
+	    var check = 0;
+	    if($('#new_user').is(":checked"))
+		{
+		    check = 1;
+		}
+
+
+		if ($("#login_user").val() == "") {
+			layer.msg('用户名不能为空');
+			return false;
+		}
+		
+		if ($("#login_pass").val() == "") { 
+			layer.msg('密码不能为空');
+			return false;
+		}
+	
+		var username = $("#login_user").val();
+		var pwd      = $("#login_pass").val();
+	
+		$.post("{:U('Home/User/login')}",
+		{username:username,pwd:pwd,check:check},
+		function(data){
+					if(data.code == 1)
+					{
+						/*layer.alert(data.info,{end:function(){
+							var index = parent.layer.getFrameIndex(window.name);
+							parent.$('.btn-refresh').click();
+							parent.layer.close(index);
+						}});*/
+						//登录跳转
+						location.href="{:U('Home/Index/index')}";
+					}
+					else
+					{
+						layer.alert(data.info);
+						
+					}
+					
+					
+					
+				});
+
+		
+	});	
+	
+</script>
+		
+		

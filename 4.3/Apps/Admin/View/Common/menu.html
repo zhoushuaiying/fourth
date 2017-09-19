@@ -1,0 +1,20 @@
+<!--_menu 作为公共模版分离出去-->
+<aside class="Hui-aside">
+
+    <div class="menu_dropdown bk_2">
+	  <volist name="menu_list" id="val">
+        <dl id="">
+            <dt><i class="icon Hui-iconfont">&#xe6bf;</i>{$val.auth_name}<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+            <dd>
+                <ul>
+				<volist name="val['son']" id="v">
+                    <li><a href="/{$v.auth_module}/{$v.auth_controller}/{$v.auth_action}" ><i class="icon Hui-iconfont">&#xe6f5;</i>{$v.auth_name}</a></li>
+				</volist>	
+                </ul>
+            </dd>
+        </dl>
+	  </volist>	
+    </div>
+</aside>
+<div class="dislpayArrow hidden-xs"><a class="pngfix" href="javascript:void(0);" onClick="displaynavbar(this)"></a></div>
+<!--/_menu 作为公共模版分离出去-->

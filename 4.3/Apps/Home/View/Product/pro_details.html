@@ -1,0 +1,212 @@
+<title>产品详情</title>
+<!--contain-->
+<div class="pro_details">
+	<div class="container">
+		<!--title-->
+			<div class="title">
+				<h3><span>产品中心</span></h3>
+				<h4>PRODUCT  CENTER</h4>
+				<p>
+					当前位置 : <a href="index.html">首页</a>><a href="pro_list.html">产品中心></a>产品详情
+					<span>阅读量：66666</span>
+				</p>
+			</div>
+			<!--title-end-->
+			<div class="center">
+				<ul class="pro-navbar row">
+					<foreach name="list" item="li">
+						<li class="<eq name='li.category_id' value='$detail.first_pid'>default</eq> col-sm-3 col-xs-6">
+							<a href="/Home/Product/pro_list/p/1/cate/{$li.category_id}">{$li.category_name}</a>
+						</li>
+					</foreach>
+				</ul>
+				<div class="detail">
+					<div class="pic">
+						<p><img src="{$detail['goods_pic'][0]}" alt="6-pro_details0"  /></p>
+						<ul class="row row2">
+						   <foreach name="detail.goods_pic" item="val">	
+							<li class="col-sm-3 col-xs-3">
+								<img src="{$val}" alt="6-pro_details-0.jpg" />
+							</li>
+							</foreach>
+						</ul>
+						<dl>
+							<!--<dd> <a href="javascript:;"><img src="__PUBLIC__/Home/images/ico/6-share.png" alt="6-share.png"/>&nbsp;&nbsp;分享</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->
+
+						</dl>
+					</div>
+					<div class="text">
+						<h3>{$detail.goods_name}</h3>
+						<h4>{$detail.goods_introduct}</h4>
+						<p class="much">原价：    <span>¥ {$detail.goods_market}</span></p>
+						<p>抢购价：  ¥ <b>{$detail.goods_price}</b></p>
+						<!--<dl class="dl">-->
+							<!--<dt>颜色分类 :</dt>-->
+							<!--<dd>-->
+								<!--<ul class="color row">-->
+									<!--<li class="col-sm-3 col-xs-4">-->
+										<!--<img src="__PUBLIC__/Home/images/ico/6-color-1.png" alt="6-color-1.png" />-->
+									<!--</li>-->
+									<!--<li class="col-sm-3 col-xs-4">-->
+										<!--<img src="__PUBLIC__/Home/images/ico/6-color-2.png" alt="6-color-2.png" />-->
+									<!--</li>-->
+									<!--<li class="col-sm-3 col-xs-4">-->
+										<!--<img src="__PUBLIC__/Home/images/ico/6-color-3.png" alt="6-color-3.png" />-->
+									<!--</li>-->
+									<!--<li class="col-sm-3 col-xs-4">-->
+										<!--<img src="__PUBLIC__/Home/images/ico/6-color-4.png" alt="6-color-4.png" />-->
+									<!--</li>-->
+						<!---->
+									<!--<li class="col-sm-3 col-xs-4">-->
+										<!--<img src="__PUBLIC__/Home/images/ico/6-color-5.png" alt="6-color-5.png" />-->
+									<!--</li>-->
+									<!--<li class="col-sm-3 col-xs-4">-->
+										<!--<img src="__PUBLIC__/Home/images/ico/6-color-6.png" alt="6-color-6.png" />-->
+									<!--</li>-->
+									<!--<li class="col-sm-3 col-xs-4">-->
+										<!--<img src="__PUBLIC__/Home/images/ico/6-color-7.png" alt="6-color-7.png" />-->
+										<!---->
+									<!--</li>-->
+									<!--<li class="col-sm-3 col-xs-4">-->
+										<!--<img src="__PUBLIC__/Home/images/ico/6-color-8.png" alt="6-color-8.png" />-->
+									<!--</li>-->
+								<!--</ul>-->
+							<!--</dd>-->
+							<!---->
+						<!--</dl>-->
+						<dl class="type">
+							<dt>颜色：</dt>
+							<dd>
+								<ul class="row">
+									<foreach name="detail.goods_colors" key="k" item="vo">
+									<eq name="k" value="0" >
+										<li class="col-sm-3 col-xs-3">
+											<a class="default" href="javascript:;">{$vo}</a>
+
+										</li>
+									<else/>
+										<li class="col-sm-3 col-xs-3">
+											<a href="javascript:;">{$vo}</a>
+										</li>
+									</eq>
+
+									</foreach>
+
+								</ul>
+							</dd>
+						</dl>
+						<dl class="number">
+							<dt>数量：</dt>
+							<dd>
+								<input type="text" id="num" value="1"/>
+								<span>
+									<span class="add"><img src="__PUBLIC__/Home/images/ico/6-add.png" alt="6-add.png"/></span>
+									<span class="reduce"><img src="__PUBLIC__/Home/images/ico/6-reduce.png" alt="6-reduce.png"/></span>
+									
+								</span>
+							</dd>
+							<dd>件</dd>
+							<dd>库存{$detail.goods_num}件</dd>
+						</dl>
+						 
+						<p><a class="button" id="buy_now" >立即购买</a>
+						<!-- <a class="button" id="cart_add" href="shop_cart.html">加入购物车</a> -->
+						<a class="button" id="cart_add" style="cursor:pointer;">加入购物车</a>
+						</p>
+						<dl class="simply">
+							{$detail.goods_content|htmlspecialchars_decode}
+						</dl>
+					</div>
+				</div>
+			</div>
+	</div>
+</div>
+<!--contain-end-->
+
+		
+<script>
+$(function(){
+	$(".pro_details .detail .pic li").click(function(){
+		var index = $(this).index();
+		<foreach name="detail.goods_pic" key="key" item="val">	
+			if(index == {$key}){
+				$(this).parents(".pic").find('p').find("img").attr("src","{$val}");
+			}
+		</foreach>
+	})
+
+});
+
+
+
+</script>
+
+
+<script>
+	
+	$("#cart_add").click(function(){
+
+		var goods_color = $('.type .default').text();
+
+		var goods_id  = {$detail.goods_id};
+		var goods_num = $('#num').val();
+
+		$.post("{:U('Home/Product/cart_add')}",{goods_id:goods_id,goods_num:goods_num,goods_color:goods_color},function(data){
+			if(data.code == 1)
+			{
+				layer.alert(data.info,
+						{end : function(){
+//						           location.href = "{:U('Home/Cart/shop_cart')}";
+				}});
+			}
+			else if(data.code == 2)
+			{
+				layer.alert(data.info,
+						{end : function(){
+						          location.href = "{:U('Home/User/login')}";
+				}});
+			}
+			else
+			{
+				layer.alert(data.info);
+			}
+
+		});
+
+	});
+
+</script>
+
+<script>
+
+    $("#buy_now").click(function(){
+
+        var goods_color = $('.type .default').text();
+        var goods_id  = {$detail.goods_id};
+        var goods_num = $('#num').val();
+
+        $.post("{:U('Home/Product/buy_now')}",{goods_id:goods_id,goods_num:goods_num,goods_color:goods_color},function(data){
+
+            if(data.code == 1)
+            {
+
+
+                location.href = "/Home/Order/confirm_order/is/2";
+//                layer.alert(data.info,
+//                    {end : function(){
+//						           location.href = "/Home/Order/confirm_order/is/2";
+//                    }});
+            }
+            else
+            {
+                layer.alert(data.info,{end:function(){
+                	location.href="{:u('Home/User/login')}";
+                }});
+
+            }
+
+        });
+
+    });
+
+</script>

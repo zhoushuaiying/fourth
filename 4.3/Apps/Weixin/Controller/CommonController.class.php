@@ -3,12 +3,16 @@ namespace Weixin\Controller;
 use Think\Controller;
 class CommonController extends Controller {
 
-	public $server_id;
-	public $user_id;
-	public $msg_type;
-	public $arr_xml;
-	public $event_type;
-
+	public static $server_id;
+	public static $user_id;
+	public static $msg_type;
+	public static $arr_xml;
+	public static $event_type;
+	public static $message;
+	public static $event; 
+	public static $menu;
+	public static $api;
+	public static $user;
 	//获取access_token
     public function getToken()
     {

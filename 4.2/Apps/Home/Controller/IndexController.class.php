@@ -111,7 +111,7 @@ class IndexController extends Controller {
 			'img'   => "http://static.winxuancdn.com/topic/subject/201708/dxyd/640-304.jpg?201709141406"],
 
 			
-			['link'  => "http://m.winxuan.com/cms/10030",
+			/*['link'  => "http://m.winxuan.com/cms/10030",
 			'title' => "嘻嘻嘻3",
 			'img'   => "http://static.winxuancdn.com/topic/subject/201708/gjs/640-304.jpg?201709141406"],			
 			
@@ -123,7 +123,7 @@ class IndexController extends Controller {
 			
 			['link'  => "http://m.winxuan.com/cms/10030",
 			'title' => "嘻嘻嘻3",
-			'img'   => "http://static.winxuancdn.com/topic/subject/201708/gjs/640-304.jpg?201709141406"],	
+			'img'   => "http://static.winxuancdn.com/topic/subject/201708/gjs/640-304.jpg?201709141406"],*/	
 		];
 		
 		

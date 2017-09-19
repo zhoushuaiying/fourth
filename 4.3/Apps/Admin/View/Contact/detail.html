@@ -1,0 +1,89 @@
+{__NOLAYOUT__}
+<include file="Common/meta"/>
+<title>添加品牌简介</title>
+</head>
+<body>
+<article class="cl pd-20">
+	 <form  class="form form-horizontal" id="form-admin-add" >
+	
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>用户名</label>
+			<div class="formControls col-xs-8 col-sm-4">
+				<input type="text" class="input-text" readonly placeholder="用户名" value="{$data.username}" >
+			</div>
+		</div>
+
+		 <div class="row cl">
+			 <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>邮箱</label>
+			 <div class="formControls col-xs-8 col-sm-4">
+				 <input type="text" class="input-text" readonly placeholder="邮箱" value="{$data.email}" >
+			 </div>
+		 </div>
+
+		 <div class="row cl">
+			 <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>手机号码</label>
+			 <div class="formControls col-xs-8 col-sm-4">
+				 <input type="text" class="input-text" readonly placeholder="手机号码" value="{$data.mobile}" >
+			 </div>
+		 </div>
+
+		 <div class="row cl">
+			 <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>留言</label>
+			 <div class="formControls col-xs-8 col-sm-4">
+				 <textarea readonly style="width: 500px;height: 400px;resize: none;">{$data.leaving}</textarea>
+			 </div>
+		 </div>
+
+
+	</form>
+</article>
+
+<include file="Common/footer"/>
+
+<!--请在下方写此页面业务相关的脚本-->
+<script type="text/javascript" src="__PUBLIC__/Admin/lib/jquery.validation/1.14.0/jquery.validate.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Admin/lib/jquery.validation/1.14.0/validate-methods.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Admin/lib/jquery.validation/1.14.0/messages_zh.js"></script>
+
+<script type="text/javascript">
+
+	$('#sub').click(function(){
+
+		var title   = $('#title').val();
+		var state   = $('#state').val();
+		var content = ue.getContent();
+
+		$.post("{:U('Admin/Brand/append')}",
+				{title:title,content:content,state:state},
+				function(data)
+				{
+					if(data.code == 1)
+					{
+						layer.alert(data.info,{end:function(){
+							var index = parent.layer.getFrameIndex(window.name);
+		                    parent.$('.btn-refresh').click();
+		                    parent.layer.close(index);
+							}});
+					}
+					else
+					{
+						layer.alert(data.info);
+					}	
+
+				});
+	});
+
+
+</script>
+	
+ <!-- 百度编辑器应用代码 -->
+ <script type="text/javascript" charset="utf-8" src="__PUBLIC__/Admin/ueditor/ueditor.config.js"></script>
+ <script type="text/javascript" charset="utf-8" src="__PUBLIC__/Admin/ueditor/ueditor.all.min.js"> </script>
+ <script type="text/javascript" charset="utf-8" src="__PUBLIC__/Admin/ueditor/lang/zh-cn/zh-cn.js"></script>
+ <script type="text/javascript">
+     var ue = UE.getEditor('editor');
+ </script> 
+<!--/请在上方写此页面业务相关的脚本-->
+</body>
+
+</html>

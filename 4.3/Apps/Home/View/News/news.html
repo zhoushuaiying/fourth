@@ -1,0 +1,41 @@
+<title>新闻中心</title>
+<!--contain-->
+<div class="news">
+<div class="container">
+	<!--title-->
+	<div class="title">
+		<h3><span>新闻中心</span></h3>
+		<h4>NEW  CENTER</h4>
+		<p>
+			当前位置 : <a href="index.html">首页</a>>新闻中心
+			<span></span>
+		</p>
+	</div>
+	<!--title-end-->
+	<div class="content">
+
+		<ul>
+		  <foreach name="data.list" item="val" >
+			<li>
+				<div class="pic">
+					<a href="/Home/News/news_detail/id/{$val.news_id}">
+						<img src="{$val.pic|ltrim='.'}" width="309px" height="183px" alt="3-news-1.jpg" /></a>
+				</div>
+				<div class="text">
+					<h4><a href="/Home/News/news_detail/id/{$val.news_id}">{$val.title}</a></h4>
+					<p class="text-detail"><a href="/Home/News/news_detail/id/{$val.news_id}">{$val.content}</a></p>
+					<p>
+						<a class="more" href="/Home/News/news_detail/id/{$val.news_id}">查看更多</a>
+						<span>{$val.addtime|date='Y-n-d',###}</span>
+					</p>
+				</div>
+			</li>
+		  </foreach>
+		</ul>
+		<ul class="page">
+			{$data.page}
+		</ul>
+	</div>
+</div>
+</div>
+<!--contain-end-->

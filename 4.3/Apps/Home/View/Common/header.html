@@ -1,0 +1,64 @@
+<form action="{:U('Home/Product/pro_list')}" method="post">
+<!--header-->
+		<div class="child header">
+			<div class="container">
+				<div class="top">
+					<div class="select car">
+					
+						<empty name="Think.session.user_id">
+							<a href="{:U('Home/User/login')}">登录</a>/
+							<a href="{:U('Home/User/register')}">注册</a>
+
+						<else/>
+							<a class="cart" href="{:U('Cart/shop_cart')}">购物车<span>{$how}</span>件</a>
+							<a href="{:U('Home/User/logout')}">退出</a>
+
+						</empty>
+
+						<in name="Think.CONTROLLER_NAME" value = "Address,Cart,Center,Order,Pay,Product">
+							&nbsp;
+							<notempty name="Think.session.user_id">
+							<div class="ul">
+							uwudhhsd<img src="__PUBLIC__/Home/images/common/top-select.png" alt="top-select.png"/>
+							<ul>
+								<li><a href="{:U('Home/Cart/shop_cart')}">我的购物车</a></li>
+								<li><a href="{:U('Home/Center/order')}">我的订单</a></li>
+								<li><a href="{:U('Home/Center/user')}">会员中心</a></li>
+								<li><a href="{:U('Home/User/logout')}">退出</a></li>
+							</ul>
+						</div>
+						    </notempty>		
+						</in>
+					</div>
+
+
+				</div>
+				
+				<!--导航栏-->
+				<!--logo-->
+				<div class="logo">
+					<a href="{:U('Home/index/index')}"><img src="__PUBLIC__/Home/images/common/top_logo.png" alt="logo.png" /></a>
+				</div>
+				<!--logo-end-->
+				
+				<a href="javascript:;" class="nav_toggle"><span></span><span></span><span></span></a>
+				<div class="nav">
+					<ul class="navbar">
+						<li <eq name="Think.CONTROLLER_NAME" value="Index">class="default"</eq>><a href="{:U('Home/Index/index')}">首页</a></li>
+						<li <eq name="Think.CONTROLLER_NAME" value="Brand">class="default"</eq>><a href="{:U('Home/Brand/brand_intro')}">品牌介绍</a></li>
+						<li <eq name="Think.CONTROLLER_NAME" value="News">class="default"</eq>><a href="{:U('Home/News/news')}">新闻中心</a></li>
+						<li <eq name="Think.CONTROLLER_NAME" value="Product">class="default"</eq>><a href="{:U('Home/Product/pro_list')}">产品中心</a></li>
+						<li <eq name="Think.CONTROLLER_NAME" value="Contact">class="default"</eq>><a  href="{:U('Home/Contact/contact_us')}">联系我们</a></li>
+					</ul>
+					<!--<span style="cursor: pointer;" id="search_pic">-->
+						<!---->
+					<!--</span>-->
+					<input type="submit" value="" class="post"/>
+					<input type="text" name="search" id="search" />
+
+				</div>
+					<!--导航栏end-->
+			</div>
+		</div>
+		<!--header-end-->
+</form>

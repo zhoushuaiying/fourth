@@ -1,0 +1,120 @@
+
+<title>确认订单</title>
+<!--contain-->
+<div class="confirm cart">
+	<div class="container">
+		<ul class="car-nav row">
+			<li class="col-xs-4">购物车</li>
+			<li class="col-xs-4">确认订单</li>
+			<li class="col-xs-4">完成订单</li>
+		</ul>
+		<h3><img src="__PUBLIC__/Home/images/ico/11-confirm-title.jpg" alt="10-cart-title.jpg" />确认订单信息</h3>
+		<!--全选-->
+		<div class="checkAll">
+			<div><label><input type="checkbox" id="all-Check"/>全选</label></div>
+			<div>商品</div>
+			 <div>商品信息</div> 
+			<div>单价</div>
+			<div>数量</div>
+			<div>优惠方式（元）</div>
+			<div>小计（元）</div>
+		</div>
+		<!--全选-end-->
+		<!--pro-list-->
+		<div class="confirm-list">
+			<ul>
+			  <foreach name="data" item="val" >
+				<li class="li">
+					<div class="div1">
+						<label><input type="checkbox" name="check" id="check" value="" /></label>
+						<a href="{:U('Product/pro_details/')}/goods_id/{$val.goods_id}"><img  src="{$val.goods_thumb}" alt="10-pro.jpg" width="101px" height="110px"/></a>
+					</div>
+					<div class="div2">
+						<ul>
+							<li><a href="/Home/Product/pro_details/goods_id/{$val.goods_id}">{$val.goods_name}</a></li>
+						    <li>
+								颜色：<p class="goods_color">{$val.goods_color}</p>
+
+							    </li> 
+							<li>
+								<p>￥：<span class="much">{$val.goods_price}</span></p>
+								<p> 特价</p>	
+							</li>
+						</ul>
+					</div>
+					<div class="div3">
+						<ul>
+							<li><small class="num">{$val.goods_num}</small><span>件</span></li>
+							<li>已省<small class="discount">78</small>元：商城会员</li>
+							<li>￥<smal class="litle">{$val.goods_count}</smal>  元</li>
+						</ul>
+					</div>
+				</li>
+			  </foreach>	
+			</ul>
+			<div class="All">
+				<p>共有<span class="num">0</span>件商品，</p><p>商品总价：￥ <span class="total">0.00</span></p><p>运费:<span class="cal">￥ 0.00 </span></p> <p>全部合计（不含运费）：￥<span class="allCash">0.00</span></p>
+			</div>
+		</div>
+		<!--pro-list-end-->
+		<!--支付方式-->
+		<div class="way">
+			<ul class="ul-title">
+				<li><img src="__PUBLIC__/Home/images/ico/11-confirm-title.jpg" alt="10-cart-title.jpg" />支付方式</li>
+				<li><label class = "default"><input type="radio" name="way" class="pay" value="0" checked/>余额支付</label></li>
+				<!-- <li><label><input type="radio" name="way" class="pay" value="1" />支付平台：支付宝</label></li>
+				<li><label><input type="radio" name="way"  class="pay" value="3"/>网上银行： 各大银行均有支持</label></li> -->
+			</ul>
+		</div>
+		<!--magess-->
+		<div class="magess">
+			<ul class="ul-title">
+				<li><img src="__PUBLIC__/Home/images/ico/11-confirm-title.jpg" alt="10-cart-title.jpg" />收货信息</li>
+				<li>
+					<input type="hidden" id="address_id" value="{$address['address_id']}" >
+					<p>{$address['username']}&nbsp;&nbsp;&nbsp;<span>{$address['mobile']}</span> </p>
+					<p>{$address['address']} </p>
+					<p><a href="{:U('Home/Address/address')}">修改</a></p>
+				</li>
+			</ul>
+		</div>
+		<!--发票-->
+		<ul class="ul-title comf">
+
+			<li>
+
+				<a class="sure" >确认订单</a>
+			</li>
+		</ul>
+	</div>
+</div>
+<!--contain-end-->
+
+
+<script>
+
+	$(".sure").click(function(){
+
+		var address_id = $('#address_id').val();
+		var pay        = $('input:radio:checked').val();
+		var info       = {$info};
+		if(address_id == null || address_id == '' || address_id == undefined)
+		{
+			layer.alert('还没有设置地址请先设置地址！');
+			return false;	
+		}
+		$.post("/Home/Order/confirm_order/is/{$is}",{address_id:address_id,pay:pay,info:info},function (data) {
+				if(data.code == 1)
+				{
+					location.href = "/Home/Pay/pay/id/"+data.info;
+
+				}
+				else
+				{
+					layer.alert(data.info);
+				}
+		});
+	});
+
+
+</script>

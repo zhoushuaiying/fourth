@@ -1,0 +1,144 @@
+<title>购物车</title>
+<!--contain-->
+<div class="cart">
+	<div class="container">
+		<ul class="car-nav row">
+			<li class="col-xs-4">购物车</li>
+			<li class="col-xs-4">确认订单</li>
+			<li class="col-xs-4">完成订单</li>
+		</ul>
+		<br />
+		<h3><img src="__PUBLIC__/Home/images/ico/10-cart-title.jpg" alt="10-cart-title.jpg" />购物车</h3>
+		<div class="row allCheck">
+			<div class="col-md-2 col-sm-3 col-xs-12">
+				<label><input type="checkbox" id="checkAll" /> 全选</label>
+			</div>
+			<div class="col-md-2 col-sm-3 h	idden-xs">
+				商品
+			</div>
+			<div class="col-md-2 col-sm-2 hidden-xs">
+				商品信息
+			</div>
+			<div class="col-md-2 hidden-sm hidden-xs">
+				单价
+			</div>
+			<div class="col-md-2 col-sm-2 hidden-xs">
+				数量
+			</div>
+			<div class="col-md-2 col-sm-2 hidden-xs">
+				操作
+			</div>
+		</div>
+		<!--cart-list-->
+		<div class="cart-list row">
+			<ul>
+			  <foreach name="list" item="val">
+				<li class="col-sm-12 ">
+
+					<div class="col-md-2 col-sm-3 left1">
+						<label><input type="checkbox" name="check" class="check" id="check" value="{$val.cart_id}" /></label>
+						<a href="{:U('Home/Product/pro_details',array('goods_id' => $val['goods_id']))}"><img src= "{$val.goods_thumb}" alt="10-pro.jpg" width="101px" height="110px"/></a>
+						<input type="hidden" value = "{$val.goods_id}" class="goods_id">
+					</div>
+					
+					<div class="col-md-2 col-sm-3">
+						<p><a href="{:U('Home/Product/pro_details',array('goods_id' => $val['goods_id']))}">{$val.goods_name}</a></p>
+					</div>
+					<div class="col-md-2 col-sm-2 ">
+						颜色：<p class="goods_color">{$val.goods_color}</p>
+						<!--<p>套餐一</p>-->
+					</div>
+					<div class="col-md-2 hidden-sm">
+						<p >￥：<span class="price">{$val.goods_price}</span></p>
+						<p>特价</p>
+					</div>
+					<div class="col-md-2 col-sm-2">
+						<span class="reduce">-</span>
+						<input type="text" id="number" value="{$val.sum}">
+						<span class="add">+</span>
+					</div>
+					<div class="col-md-2 col-sm-2">
+						<!-- <p><a href="javascript:;">移入收藏夹</a></p> -->
+						<p class="dele"><a href="javascript:;">删除</a></p>
+					</div>
+				</li>
+			  </foreach>
+			</ul>
+		</div>
+		<!--cart-list-end-->
+		<div class="all">
+			<p>共<span class="allnum" style="color: #fff;">0</span>件商品，邮费0元商品应付金额：<span >￥<span class="total">0.00</span></span></p>
+			<a class="button" id="next" style="cursor:pointer;">立即结算</a>
+		</div>
+		
+	</div>
+</div>
+<!--contain-end-->
+
+<script>
+	$(".cart .cart-list .dele").click(function(){
+		
+		var cart_id=$(this).parents(".cart .cart-list li").find(".check").val();
+	
+		$.post("{:U('del')}",
+		       {cart_id:cart_id}, 
+			   function(data){
+						if(data.code == 1)
+						{
+							layer.alert(data.info,{end:function(){
+								
+							location.reload();
+							}});
+						}
+						else
+						{
+							layer.alert(data.info);
+						}
+						
+			
+		});
+		
+		/*$(this).parents(".cart .cart-list li").remove();
+		check()
+		getTotal()*/
+	});
+	
+	$("#next").click(function(){
+		
+		var data=[];
+		
+		$(".check:checked").each(function(){
+			var select={};
+			select.cart_id   = $(this).val();
+			select.goods_id  = $(this).parents(".cart .cart-list li").find(".goods_id").val();
+			select.goods_num = $(this).parents(".cart .cart-list li").find("#number").val();
+			select.goods_color = $(this).parents(".cart .cart-list li").find(".goods_color").text();
+			data.push(select);
+
+			
+		});
+//        console.log(data);
+		if(data == '' || data == null || data == undefined)
+		{
+			layer.alert('请至少选择一个商品');
+			return false;	
+		}
+		
+		$.post("{:U('Home/Cart/shop_cart')}",
+		        {data:data},
+				function(data){
+					if(data.code == 1)
+					{
+						location.href = "{:U('Order/confirm_order')}";
+					}
+					else
+					{
+						layer.alert(data.info);
+					}
+		});
+	});
+	
+	
+	
+
+</script>

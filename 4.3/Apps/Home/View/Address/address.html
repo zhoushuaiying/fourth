@@ -1,0 +1,243 @@
+
+<title>地址管理</title>>
+<!--contain-->
+<div class="address">
+<div class="container">
+	<h3 class="title"><img src="__PUBLIC__/Home/images/ico/10-confirm-title.jpg" alt="10-confirm-title.jpg" />收货地址</h3>
+	<!--新增地址-->
+	<div class="add">
+		<div class="top">
+			新增地址
+		</div>
+		<div class="bottom">
+			<div class="left">
+				<p>
+					<label>收货人姓名：</label>
+					<input type="text" id="add-user" />
+				</p>
+				<p>
+					<label>所在地区：</label>
+					<input type="text" id="add-address" />
+				</p>
+				<p>
+					<label>详细地址：</label>
+					<textarea id="address"></textarea>
+				</p>
+			</div>
+			<div class="right">
+				<p>
+					<label>手机号码：</label>
+					<input type="text" id="add-phone" />
+				</p>
+				<p>
+					<label>电话号码：</label>
+					<input type="text" id="add-tel" />
+				</p>
+				<p>
+					<label>邮政编码：</label>
+					<input type="text" id="add-you" />
+				</p>
+				<p>
+					<label></label>
+					<label>
+						<input type="checkbox" name="add-check" id="add-check" />设为默认
+					</label>
+					<button type="button" id="save">保存</button>
+				</p>
+			</div>
+		</div>
+	</div>
+	<!--新增地址-end-->
+	<!--历史记录-->
+	<div class="history">
+		<div class="top">
+			历史记录
+		</div>
+		<ul class="add-ul">
+			<li>
+				<ul class="details row">
+					<li class="col-sm-2">收货人</li>
+					<li class="col-sm-2">所在地</li>
+					<li class="col-sm-2">详情地址</li>
+					<li class="col-sm-2">邮政</li>
+					<li class="col-sm-2">手机</li>
+					<li class="col-sm-2">操作</li>
+				</ul>
+			</li>
+
+			<foreach name="history" item="val">
+				<li>
+					<ul class="mesag  details row <?php if($def == $val['address_id']){echo on;} ?>">
+						<li class="col-sm-2 col-xs-4"><span>收货人:</span>{$val.username}</li>
+						<li class="col-sm-2 col-xs-4"><span>所在地:</span>{$val.area}</li>
+						<li class="col-sm-2 col-xs-4"><span>详情地址:</span>{$val.address}</li>
+						<li class="col-sm-2 hidden-xs"><span>邮政:</span>{$val.zipcode}</li>
+						<li class="col-sm-2 col-xs-4"><span>手机:</span>{$val.mobile}</li>
+						<li class="col-sm-2 col-xs-4">
+							<p class="addr_default"><a href="javascript:;">设置默认</a></p>
+							<input type="hidden" value="{$val.address_id}">
+							<p class="conal"><a href="javascript:;">删除</a></p>
+						</li>
+					</ul>
+				</li>
+			</foreach>
+
+		</ul>
+	</div>
+	<!--历史记录-end-->
+	<!--address-->
+	<div class="addr history">
+		<div class="top">
+			常用地址
+		</div>
+		<ul class="add-ul">
+		  <foreach name="common" item="val">
+			<li>
+				<ul class="mesag  details row <?php if($def == $val['address_id']){echo on;} ?>">
+					<li class="col-sm-2 col-xs-4"><span>收货人:</span>{$val.username}</li>
+					<li class="col-sm-2 col-xs-4"><span>所在地:</span>{$val.area}</li>
+					<li class="col-sm-2 col-xs-4"><span>详情地址:</span>{$val.address}</li>
+					<li class="col-sm-2 hidden-xs"><span>邮政:</span>{$val.zipcode}</li>
+					<li class="col-sm-2 col-xs-4"><span>手机:</span>{$val.mobile}</li>
+					<li class="col-sm-2 col-xs-4">
+						<p class="addr_default"><a href="javascript:;">设置默认</a></p>
+						<input type="hidden" value="{$val.address_id}">
+						<p class="conal"><a href="javascript:;">删除</a></p>
+					</li>
+				</ul>
+			</li>
+		  </foreach>
+		</ul>
+	</div>
+	<!--address-end-->
+</div>
+</div>
+
+<!--contain-end-->
+<script>
+	//添加地址
+	$("#save").click(function () {
+
+		var username = $("#add-user").val();
+		var area     = $("#add-address").val();
+		var address  = $("#address").val();
+		var mobile   = $("#add-phone").val();
+		var phone    = $("#add-tel").val();
+		var zipcode  = $("#add-you").val();
+
+		if($('#add-check').is(':checked'))
+        {
+            state = 0;
+        }
+        else
+		{
+		    state = 1;
+		}
+
+		if(username == null || username == ''|| username == undefined )
+		{
+			layer.msg('收件人姓名不能为空！');
+			return false;
+		}else if(address == null || address == ''|| address == undefined )
+		{
+			layer.msg('详细地址不能为空！');
+			return false;
+		}else if(mobile != '' && !mobile.match(/^1([23578])\d{9}$/))
+		{
+			layer.msg('手机号码格式不正确！');
+			return false;
+		}
+
+		$.post("{:U('Home/Address/address')}",{username:username,area:area,
+			address:address,mobile:mobile,phone:phone,zipcode:zipcode,state:state},
+		      function(data){
+
+                  if(data.code == 1)
+                  {
+                     layer.msg(data.info,{icon:1},function(){
+                     	location.reload();
+                     });
+                  }
+
+                  else
+                  {
+                      layer.alert(data.info);
+                  }
+
+
+
+			  });
+
+
+
+    });
+
+
+</script>
+
+<script>
+	//设置默认地址
+	$(".addr_default").click(function(){
+
+        $(this).parents("ul").addClass("on").parent().siblings().find("ul").removeClass("on");
+
+		var address_id = $(this).parents("li").find("input").val();
+
+        $.post("/Home/Address/addr_default",{address_id:address_id},function (data) {
+
+            if(data.code == 1)
+            {
+                layer.alert(data.info,
+                    {end : function(){
+						location.reload();
+                    }});
+            }
+            else if(data.code == 2)
+            {
+                layer.alert(data.info,
+                    {end : function(){
+                        location.href = "{:U('Home/User/login')}";
+                    }});
+            }
+            else
+            {
+                layer.alert(data.info);
+            }
+
+
+        });
+	});
+
+	//删除地址
+    $(".conal").click(function(){
+
+
+
+        var address_id = $(this).parents("li").find("input").val();
+
+
+        $.post("/Home/Address/addr_del",{address_id:address_id},function (data) {
+
+            if(data.code == 1)
+            {
+                layer.alert(data.info,
+                    {end : function(){
+                        location.reload();
+                    }});
+            }
+            else if(data.code == 2)
+            {
+                layer.alert(data.info,
+                    {end : function(){
+                        location.href = "{:U('Home/User/login')}";
+                    }});
+            }
+            else
+            {
+                layer.alert(data.info);
+            }
+
+
+        });
+    });
+</script>

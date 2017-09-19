@@ -1,0 +1,322 @@
+{__NOLAYOUT__}
+<include file="Common/meta"/>
+<include file="Common/header"/>
+<include file="Common/menu"/>
+<title>网站配置</title>
+</head>
+<style>
+
+    
+    
+
+
+</style>
+<body>
+<section class="Hui-article-box">
+    <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页
+        <span class="c-gray en">&gt;</span>
+        网站配置
+        <span class="c-gray en">&gt;</span>
+        网站配置 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a> </nav>
+    <div class="Hui-article config">
+        <article class="cl pd-20">
+            <div class="text-c"> 
+				
+            </div>
+            <div class="cl pd-5 bg-1 bk-gray mt-20">
+               
+            </div>
+            <form  class="form form-horizontal" id="form-admin-add" action="{:U('Admin/Config/showlist')}">
+            <table class="table table-border table-bordered table-bg">
+                <thead>
+                <tr>
+                    <th scope="col" colspan="9">配置</th>
+                </tr>
+                <tr class="text-c">
+
+                    <th width="80">名称</th>
+                    <th width="200">配置内容</th>
+                    <th width="120px">操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr class="text-c">
+                        <td><label>公司名称</label></td>
+                        <td colspan=2><input type="text" class="company_name inp" value="{$data.company_name}" name="company_name"></td>
+                    </tr>
+
+                    <tr class="text-c">
+                        <td><label>电话</label></td>
+                        <td colspan=2><input type="text" class="phone inp" value="{$data.phone}" name="phone"></td>
+                    </tr>
+
+                    <tr class="text-c">
+                        <td><label>传真</label></td>
+                        <td colspan=2><input type="text" class="fax inp" value="{$data.fax}" name="fax"></td>
+                    </tr>
+
+                    <tr class="text-c">
+                        <td><label>邮箱</label></td>
+                        <td colspan=2><input type="text" class="email inp" value="{$data.email}" name="email"></td>
+                    </tr>
+
+                    <tr class="text-c">
+                        <td><label>公司地址</label></td>
+                        <td colspan=2><input type="text" class="address inp" value="{$data.address}" name="address"></td>
+                    </tr>
+
+                    <tr class="text-c">
+                        <td><label>公司网址</label></td>
+                        <td colspan=2><input type="text" class="url inp" value="{$data.url}" name="url"></td>
+                    </tr>
+
+                    <tr class="text-c">
+                        <td><label>二维码</label></td>
+                        <td class="picture">
+
+                            <img  src="{$data.code}" alt="二维码" width="162px" height="162px">
+                        </td>
+                        <td ><a href="javascript:;" class="file">
+                            <input id="code" name="code" type="file" >
+                        </a>
+                        </td>
+                        <input type="hidden" class="code" name="code" value="{$data.code}">
+                    </tr>
+
+                    <tr class="text-c">
+
+                        <td>轮播图1</td>
+						<td class="picture">
+
+                            <img class="pict"  src="{$data.banner1}" alt="第一张轮播图">
+                        </td>
+                        <td ><a href="javascript:;" class="file">
+                            <input id="banner1" name="banner1" type="file" >
+                           </a>
+                        </td>
+                        <input type="hidden" class="banner_a" name="banner_a" value="{$data.banner1}">
+                    </tr>
+                    <tr class="text-c">
+
+                        <td>轮播图2</td>
+                        <td class="picture" >
+
+                            <img class="pict" src="{$data.banner2}" alt="第二张轮播图">
+                        </td>
+                        <td ><a href="javascript:;" class="file">
+                            <input id="banner2" name="banner2" type="file" >
+                        </a>
+                        </td>
+                        <input type="hidden" class="banner_b" name="banner_b" value="{$data.banner2}">
+                    </tr>
+                    <tr class="text-c">
+
+                        <td>轮播图3</td>
+                        <td class="picture" >
+
+                            <img class="pict" src="{$data.banner3}" alt="第三张轮播图">
+                        </td>
+                        <td ><a href="javascript:;" class="file">
+                            <input id="banner3" name="banner3" type="file" >
+                        </a>
+                        </td>
+                        <input type="hidden" class="banner_c" name="banner_c" value="{$data.banner3}">
+                    </tr>
+                    <tr class="text-c">
+
+                        <td>品牌介绍图</td>
+                        <td class="picture" >
+
+                            <img class="pict" src="{$data.banner4}" alt="品牌介绍图">
+                        </td>
+                        <td ><a href="javascript:;" class="file">
+                            <input id="banner4" name="banner4" type="file" >
+                        </a>
+                        </td>
+                        <input type="hidden" class="banner_d" name="banner_d" value="{$data.banner4}">
+                    </tr>
+                    <tr class="text-c">
+                        <td><label>版权所有</label></td>
+                        <td colspan=2><input type="text" class="copyright inp" value="{$data.copyright}" name="copyright"></td>
+                    </tr>
+                </tbody>
+
+
+            </table>
+                <input type="hidden" id="config_id" value="{$data.id}">
+                <input type="button" id="config_submit" value="保存">
+                <!--<input type="submit" name="submit" value="Submit" />-->
+        </form>
+
+        </article>
+
+
+
+        <div class="pages">{$page}</div>
+    </div>
+</section>
+
+<include file="Common/footer"/>
+
+<!--请在下方写此页面业务相关的脚本-->
+
+<script type="text/javascript" src="__PUBLIC__/Admin/lib/My97DatePicker/4.8/WdatePicker.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Admin/lib/datatables/1.10.0/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Admin/lib/laypage/1.2/laypage.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Admin/uploadify/jquery.uploadify.min.js"></script>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/uploadify/uploadify.css">
+<script type="text/javascript">
+
+    $(function () {
+
+      function init1() {
+          $('#banner1').uploadify({
+
+              'swf'         :  '__PUBLIC__/Admin/uploadify/uploadify.swf',
+              'uploader'    : "{:U('Config/uploader')}",
+              'fileObjNam' : 'banner1',
+              'multi': false,
+              'fileTypeExts': '*.gif; *.jpg; *.jpeg; *.png',
+              'fileSizeLimit': "5MB",
+              'onUploadSuccess' : function(file,data,response){
+
+//            var data = eval('('+data+')');
+                  var data = JSON.parse(data);
+//                  var html = '<input type="hidden" class="banner_a" name="banner_a" value="'+data.info+'">';
+                  var img  = '<img class="pict" src="'+data.info+'">';
+                  $('.banner_a').val(data.info);
+                  $('#banner1').parents("tr").find(".picture").html(img);
+              }
+
+          });
+      }
+        function init2() {
+
+                $('#banner2').uploadify({
+
+                    'swf'         :  '__PUBLIC__/Admin/uploadify/uploadify.swf',
+                    'uploader'    : "{:U('Config/uploader')}",
+                    'fileObjNam' : 'banner2',
+                    'multi': false,
+                    'fileTypeExts': '*.gif; *.jpg; *.jpeg; *.png',
+                    'fileSizeLimit': "5MB",
+                    'onUploadSuccess' : function(file,data,response){
+
+//            var data = eval('('+data+')');
+                        var data = JSON.parse(data);
+//                        var html = '<input type="hidden" class="banner_b" name="banner_b" value="'+data.info+'">';
+                        var img  = '<img class="pict" src="'+data.info+'">';
+                        $('.banner_b').val(data.info);
+                        $('#banner2').parents("tr").find(".picture").html(img);
+                    }
+
+                });
+        }
+
+        function init3() {
+
+                $('#banner3').uploadify({
+
+                    'swf'         :  '__PUBLIC__/Admin/uploadify/uploadify.swf',
+                    'uploader'    : "{:U('Config/uploader')}",
+                    'fileObjNam' : 'banner2',
+                    'multi': false,
+                    'fileTypeExts': '*.gif; *.jpg; *.jpeg; *.png',
+                    'fileSizeLimit': "5MB",
+                    'onUploadSuccess' : function(file,data,response){
+
+//            var data = eval('('+data+')');
+                        var data = JSON.parse(data);
+//                        var html = '<input type="hidden" class="banner_c" name="banner_c" value="'+data.info+'">';
+                        var img  = '<img class="pict" src="'+data.info+'">';
+                        $('.banner_c').val(data.info);
+                        $('#banner3').parents("tr").find(".picture").html(img);
+                    }
+
+                });
+        }
+        function init4() {
+
+            $('#banner4').uploadify({
+
+                'swf'         :  '__PUBLIC__/Admin/uploadify/uploadify.swf',
+                'uploader'    : "{:U('Config/uploader')}",
+                'fileObjNam' : 'banner4',
+                'multi': false,
+                'fileTypeExts': '*.gif; *.jpg; *.jpeg; *.png',
+                'fileSizeLimit': "5MB",
+                'onUploadSuccess' : function(file,data,response){
+
+//            var data = eval('('+data+')');
+                    var data = JSON.parse(data);
+//                    var html = '<input type="hidden" class="banner_d" name="banner_d" value="'+data.info+'">';
+                    var img  = '<img class="pict" src="'+data.info+'">';
+//                    $('#banner4').parents('tr').append(html);
+                    $('.banner_d').val(data.info);
+                    $('#banner4').parents("tr").find(".picture").html(img);
+                }
+
+            });
+        }
+        function init5() {
+
+            $('#code').uploadify({
+
+                'swf'         :  '__PUBLIC__/Admin/uploadify/uploadify.swf',
+                'uploader'    : "{:U('Config/uploader')}",
+                'fileObjNam' : 'code',
+                'multi': false,
+                'fileTypeExts': '*.gif; *.jpg; *.jpeg; *.png',
+                'fileSizeLimit': "3MB",
+                'onUploadSuccess' : function(file,data,response){
+
+//            var data = eval('('+data+')');
+                    var data = JSON.parse(data);
+//                    var html = '<input type="hidden" class="banner_d" name="banner_d" value="'+data.info+'">';
+                    var img  = '<img width="162px" height="162px" src="'+data.info+'">';
+//                    $('#banner4').parents('tr').append(html);
+                    $('.code').val(data.info);
+                    $('#code').parents("tr").find(".picture").html(img);
+                }
+
+            });
+        }
+        init1();
+        init2();
+        init3();
+        init4();
+        init5();
+
+
+//
+
+
+       $('#config_submit').click(function () {
+           var  banner1 = $('.banner_a').val();
+           var  banner2 = $('.banner_b').val();
+           var  banner3 = $('.banner_c').val();
+           var  banner4 = $('.banner_d').val();
+           var  phone   = $('.phone').val();
+           var  fax     = $('.fax').val();
+           var  email   = $('.email').val();
+           var  address = $('.address').val();
+           var  code    = $('.code').val();
+           var  url     = $('.url').val();
+           var  id      = $('#config_id').val();
+           var  company_name= $('.company_name').val();
+           var  copyright   = $('.copyright').val();
+           $.post("{:U('Admin/Config/showlist')}",
+               {id:id,banner1:banner1,banner2:banner2,banner3:banner3,banner4:banner4,copyright:copyright,company_name:company_name,phone:phone,fax:fax,email:email,address:address,code:code,url:url},
+               function(data){
+                   layer.alert(data.info);
+           });
+       });
+
+    });
+
+
+</script>
+
+<!--/请在上方写此页面业务相关的脚本-->
+</body>
+</html>

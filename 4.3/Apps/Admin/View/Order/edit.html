@@ -1,0 +1,80 @@
+{__NOLAYOUT__}
+<include file="Common/meta"/>
+<title>编辑订单-订单管理</title>
+</head>
+<body>
+<article class="cl pd-20">
+	 <form  action="" class="form form-horizontal" id="form-admin-add" >
+	
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>订单号：</label>
+			<div class="formControls col-xs-9 col-sm-4">
+				<input type="text" class="input-text" value="{$detail.order_number}" placeholder="订单号" id="number" style="width: 250px;" readonly="readonly">
+				<input type = "hidden" id="order_id" value = "{$detail.order_id}">
+			</div>
+		</div>
+
+		 <div class="row cl">
+			 <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>订单号：</label>
+			 <div class="formControls col-xs-8 col-sm-4">
+				<select name="state" id="state">
+					<option value="0" <eq name="detail.state" value="0">selected</eq>>--待付款--</option>
+					<option value="1" <eq name="detail.state" value="1">selected</eq>>--已付款--</option>
+					<option value="2" <eq name="detail.state" value="2">selected</eq>>--发货成功--</option>
+					<option value="3" <eq name="detail.state" value="3">selected</eq>>--交易成功--</option>
+					<option value="4" <eq name="detail.state" value="4">selected</eq>>--申请退货--</option>
+					<option value="5" <eq name="detail.state" value="5">selected</eq>>--已退货未退款 --</option>
+					<option value="6" <eq name="detail.state" value="6">selected</eq>>--退款成功--</option>
+				</select>
+			 </div>
+		 </div>
+		
+
+
+
+		<div class="row cl">
+			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
+				<input class="btn btn-primary radius" type="button" value="&nbsp;&nbsp;提交&nbsp;&nbsp;" id="sub">
+			</div>
+		</div>
+	</form>
+</article>
+
+<include file="Common/footer"/>
+
+<!--请在下方写此页面业务相关的脚本-->
+<script type="text/javascript" src="__PUBLIC__/Admin/lib/jquery.validation/1.14.0/jquery.validate.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Admin/lib/jquery.validation/1.14.0/validate-methods.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Admin/lib/jquery.validation/1.14.0/messages_zh.js"></script>
+
+<script>
+
+	$('#sub').click(function(){
+
+		var order_id = $('#order_id').val();
+		var state    = $('#state').val();
+
+		$.post("{:U('Admin/Order/edit')}",{order_id:order_id,state:state},function(msg){
+			if(msg.code == 1)
+			{
+				layer.alert(msg.info,{end : function(){
+					var index = parent.layer.getFrameIndex(window.name);
+					parent.$('.btn-refresh').click();
+					parent.layer.close(index);
+				}});
+				
+			}
+			else
+			{
+				layer.alert(msg.info);
+			}
+		  
+		});
+
+	});
+
+</script>
+<!--/请在上方写此页面业务相关的脚本-->
+</body>
+
+</html>

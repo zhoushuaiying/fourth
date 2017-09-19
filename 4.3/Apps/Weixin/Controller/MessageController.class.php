@@ -82,23 +82,66 @@ class MessageController extends CommonController{
 	public function _switchMsg($keyword)
 	{
 		if(!empty( $keyword ))
-        {
-      		
-			if($keyword == '1')
-			{
-				$contentStr = '微信';
-			}
-			else if($keyword == '2')
-			{
-				$contentStr = '小程序';		
-			}	
-			else
-			{
-        		$contentStr = "Welcome to wechat world!";
-			}
+        {	
+
+        	$arr_msg = explode('/',$keyword);
         	
-        }else{
-        		$contentStr = "Input something...";
+      		if(count($arr_msg) > 1)
+      		{
+      			$new_msg = '';
+      			if($arr_msg[0] == '天气')
+      			{
+      				$city = $arr_msg[1];
+////////////////////////////////
+		      		$city_url = "http://wthrcdn.etouch.cn/weather_mini";
+					$a = getRequest($city_url,array('city' => $city));
+				
+					if($a['status'] == 1000)
+					{
+						$data = $a['data'];
+						$city_name = $data['city'];
+						$ganmao    = $data['ganmao'];
+						$wendu     = $data['wendu'];
+
+						$new_msg .= '城市:'.$city_name."\n";
+						$new_msg .= '感冒指数:'.$ganmao."\n";
+						$new_msg .= '温度:'.$wendu."\n";
+
+						$contentStr = $new_msg;
+
+					}
+					else 
+					{
+						$contentStr = '无效的城市名称';
+					}
+
+      			} 
+      			else
+      			{
+						$contentStr = '不知道你在说什么！';
+      			}	
+      		}
+      		else
+      		{
+      			if($keyword == '1')
+				{
+					$contentStr = '微信';
+				}
+				else if($keyword == '2')
+				{
+					$contentStr = '小程序';		
+				}	
+				else
+				{
+	        		$contentStr = "Welcome to wechat world!";
+				}
+      		}	
+			
+        	
+        }
+        else
+        {
+        		$contentStr = "不知道你在说什么！";
         }
 
         $this -> _response($contentStr);

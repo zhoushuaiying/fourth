@@ -1,0 +1,294 @@
+{__NOLAYOUT__}
+<include file="Common/meta"/>
+<title>添加产品-产品管理</title>
+</head>
+<style>
+	.goods_color
+	{
+		border: solid 1px #ddd;
+		font-size: 14px;
+		height: 23px;
+		line-height:31px;
+		padding: 4px;
+		margin: 2px 0;
+	}
+</style>
+<body>
+<article class="cl pd-20">
+	 <form  class="form form-horizontal" id="form-admin-add" >
+	
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>商品名称：</label>
+			<div class="formControls col-xs-8 col-sm-4">
+				<input type="text" class="input-text" value="" placeholder="商品名称" id="goods_name" >
+			</div>
+		</div>
+		
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>商品货号：</label>
+			<div class="formControls col-xs-8 col-sm-4">
+				<input type="text" class="input-text" value="" placeholder="商品货号" id="goods_number" >
+			</div>
+		</div>
+		
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>商品简介：</label>
+			<div class="formControls col-xs-8 col-sm-4">
+				<textarea class="textarea" placeholder="商品简介" id="goods_introduct"></textarea>
+				<!-- <input type="text" class="input-text" value="" placeholder="商品简介" id="goods_introduct" > -->
+			</div>
+		</div>
+		
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>商品分类：</label>
+			<div class="formControls col-xs-8 col-sm-4">
+				<select id = "goods_category">
+						<volist name="category" id="val">
+							<option value="{$val.category_id}">{$val.category_name}</option>
+						</volist>
+				</select>
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>市场价格：</label>
+			<div class="formControls col-xs-8 col-sm-4">
+				<input type="text" class="input-text" value="" placeholder="市场价格" id="goods_market" >
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>销售价格：</label>
+			<div class="formControls col-xs-8 col-sm-4">
+				<input type="text" class="input-text" value="" placeholder="销售价格" id="goods_price" >
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>商品库存：</label>
+			<div class="formControls col-xs-8 col-sm-4">
+				<input type="text" class="input-text" value="" placeholder="商品库存" id="goods_num" >
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>添加主图：</label>
+			<div class="formControls col-xs-8 col-sm-4">
+				<input type="file"  multiple name="pic[]" id="ufile" >
+			</div>
+		</div>
+
+		 <!--<div class="row cl">-->
+			 <!--<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>添加颜色：</label>-->
+			 <!--<div  class="formControls col-xs-8 col-sm-4">-->
+				 <!--<div>-->
+					 <!--<input type="text"   class="goods_color"  placeholder="颜色">-->
+					 <!--<i class="Hui-iconfont add" style="vertical-align: middle;color: #2d6dcc;cursor: pointer;" title="添加">&#xe600;</i>-->
+				 <!--</div>-->
+
+			 <!--</div>-->
+		 <!--</div>-->
+		 <!--<div class="row cl product-color">-->
+			 <!--<label class="form-label col-xs-4 col-sm-2">产品颜色：</label>-->
+			 <!--<div class="formControls col-xs-8 col-sm-9">-->
+				 <!--<input type="text" name="" id="" placeholder="输入颜色" value="" class="input-text" style=" width:25%">-->
+				 <!--<a href="javascript:;" onclick="add(this)">-->
+					 <!--<i class="Hui-iconfont Hui-iconfont-add" ></i>-->
+				 <!--</a>-->
+
+			 <!--</div>-->
+			 <!--&lt;!&ndash;<div class="formControls col-xs-8 col-sm-9 con"></div>&ndash;&gt;-->
+		 <!--</div>-->
+
+		 <div class="row cl product-color">
+			 <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>产品颜色：</label>
+			 <div class="formControls col-xs-8 col-sm-4">
+				 <input type="text" name="" id="" placeholder="输入颜色" value="" class="input-text colors" style=" width:92%">
+				 <a href="javascript:;" onclick="add(this)">
+					 <i class="Hui-iconfont Hui-iconfont-add" ></i>
+				 </a>
+			 </div>
+		 </div>
+		 <div class="con"></div>
+
+
+
+		 <div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>商品详情：</label>
+			<div class="formControls col-xs-8 col-sm-4">
+				<script id="editor"  type="text/plain" style="width:500px;height:300px;"></script>
+			</div>
+		</div>
+
+		<div class="row cl">
+			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
+				<input class="btn btn-primary radius" type="button" value="&nbsp;&nbsp;提交&nbsp;&nbsp;" id="su">
+			</div>
+		</div>
+
+	</form>
+</article>
+
+<include file="Common/footer"/>
+
+<!--请在下方写此页面业务相关的脚本-->
+<script type="text/javascript" src="__PUBLIC__/Admin/lib/jquery.validation/1.14.0/jquery.validate.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Admin/lib/jquery.validation/1.14.0/validate-methods.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Admin/lib/jquery.validation/1.14.0/messages_zh.js"></script>
+
+<script>
+	
+	var ufile = document.getElementById("ufile");
+	var su   = document.getElementById("su");
+	su.onclick = function(event){
+					var fd = new FormData();
+					<!-- var data = "[{'name':'name'}]"; -->
+					<!-- var datas = eval('('+ data +')'); -->
+					
+					var goods_name = $("#goods_name").val();
+					var goods_introduct = $("#goods_introduct").val();
+					var goods_number = $("#goods_number").val();
+					var goods_category = $("#goods_category").val();
+					var goods_market = $("#goods_market").val();
+					var goods_price = $("#goods_price").val();
+					var goods_num = $("#goods_num").val();
+					var goods_content = ue.getContent();
+
+					var colors = [];
+					$(".colors").each(function () {
+						if($(this).val() != '')
+						{
+							colors.push($(this).val());
+						}
+					});
+
+					if(goods_name == '' || goods_name == undefined || goods_name == null)
+					{
+						layer.alert('产品名称不能为空!');
+						return false;
+					}else if(goods_introduct == '' || goods_introduct == undefined || goods_introduct == null)
+					{
+						layer.alert('产品介绍不能为空!');
+						return false;
+					}else if(goods_number == '' || goods_number == undefined || goods_number == null)
+					{
+						layer.alert('产品编号不能为空!');
+						return false;
+					}else if(goods_market == '' || goods_market == undefined || goods_market == null)
+					{
+						layer.alert('市场价格不能为空!');
+						return false;
+					}else if(goods_price == '' || goods_price == undefined || goods_price == null)
+					{
+						layer.alert('销售价格不能为空!');
+						return false;
+					}else if(goods_num == '' || goods_num == undefined || goods_num == null)
+					{
+						layer.alert('商品库存不能为空!');
+						return false;
+					}else if(goods_content == '' || goods_content == undefined || goods_content == null)
+					{
+						layer.alert('商品详情不能为空!');
+						return false;
+					}
+                    else if(colors == '' || colors == undefined || colors == null)
+                    {
+                        layer.alert('颜色不能为空!');
+                        return false;
+                    }
+					else
+					{
+						fd.append("goods_name",goods_name);
+						fd.append("goods_introduct",goods_introduct);
+						fd.append("goods_number",goods_number);
+						fd.append("goods_category",goods_category);
+						fd.append("goods_market",goods_market);
+						fd.append("goods_price",goods_price);
+						fd.append("goods_num",goods_num);
+						fd.append("goods_content",goods_content);
+						fd.append("goods_colors",colors);
+						for(var i = 0;i < ufile.files.length; i++)
+						{
+							fd.append('ufiles[]',ufile.files[i]);
+							<!-- data = {'ufiles':ufile.files[i]};	 -->
+							<!-- datas.push(data);  -->
+						}
+						<!-- console.log(datas); -->
+						<!-- return; -->
+						
+						$.ajax({
+								type : "post",
+								url  : "{:U('Admin/Product/append')}",
+								async: true,
+								data :fd,
+								contentType : false,
+								processData : false,
+								success : function(msg)
+										  {
+											if(msg.code == 1)
+											{
+												layer.alert(msg.info,{end : function(){
+													var index = parent.layer.getFrameIndex(window.name);
+													parent.$('.btn-refresh').click();
+													parent.layer.close(index);
+												}});
+												
+											}
+											else
+											{
+												layer.alert(msg.info);
+											}
+										  }
+							});
+						return false;
+					}
+	}
+</script>
+
+<script>
+//	$('.add').click(function () {
+//
+//	    var html = ' <div><input type="text"   class="goods_color"  style="margin-right: 4px;" placeholder="颜色"><i class="Hui-iconfont del" style="vertical-align: middle;color: #2d6dcc;cursor: pointer;" title="删除">&#xe6a1;</i></div>';
+//    	$(this).parent("div").append(html);
+//        $('.del').click(function () {
+//            $(this).parent("div").remove();
+//        });
+//	});
+//
+//	$('#sub').click(function () {
+//	    var colors = [];
+//		$("div .goods_color").each(function () {
+//			if($(this).val() != '')
+//			{
+//			 colors.push($(this).val());
+//			}
+//        });
+//
+//		console.log(colors);
+//    });
+
+
+</script>
+
+<script>
+		function add(obj)
+		{
+			o = $(obj).parents('.product-color').clone();
+			o.find('label').html('');
+			o.find('input').val('');
+			o.find('a').html('<i class="Hui-iconfont Hui-iconfont-jianhao"></i>').attr('onclick','del(this)');
+			$('.con').before(o);
+		}
+
+		function del(obj){
+			$(obj).parents('.product-color').remove();
+		}
+
+</script>
+ <!-- 百度编辑器应用代码 -->
+ <script type="text/javascript" charset="utf-8" src="__PUBLIC__/Admin/ueditor/ueditor.config.js"></script>
+ <script type="text/javascript" charset="utf-8" src="__PUBLIC__/Admin/ueditor/ueditor.all.min.js"> </script>
+ <script type="text/javascript" charset="utf-8" src="__PUBLIC__/Admin/ueditor/lang/zh-cn/zh-cn.js"></script>
+ <script type="text/javascript">
+     var ue = UE.getEditor('editor');
+ </script> 
+<!--/请在上方写此页面业务相关的脚本-->
+</body>
+
+</html>

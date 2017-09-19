@@ -1,0 +1,163 @@
+<title>产品中心</title>
+<!--contain-->
+<div class="pro_list">
+	<div class="container">
+		<div class="pic">
+			<a href="pro_details.html"><img src="__PUBLIC__/Home/images/ad/5-pro_list.jpg" alt="5-pro_list.jpg" /></a>
+		</div>
+		<!--title-->
+		<div class="title">
+			<h3><span>产品中心</span></h3>
+			<h4>PRODUCT  CENTER</h4>
+			<p>
+				当前位置 : <a href="index.html">首页</a>>产品中心
+				<!--<span>阅读量：66666</span>-->
+			</p>
+		</div>
+		<!--title-end-->
+		<!--center-->
+		<div class="center">
+			<ul class="pro-navbar row">
+			  <foreach name="list" item="li">
+				  <li class="<eq name='li.category_id' value='$category'>default</eq> col-sm-3 col-xs-6">
+					  <a href="/Home/Product/pro_list/p/1/cate/{$li.category_id}">{$li.category_name}</a>
+				  </li>
+			  </foreach>
+
+				<!--<li class="default col-sm-3 col-xs-6"><a>新品上市</a></li>-->
+				<!--<li class="col-sm-3 col-xs-6"><a>MP4系列</a></li>-->
+				<!--<li class="col-sm-3 col-xs-6"><a>MP3系列</a></li>-->
+				<!--<li class="col-sm-3 col-xs-6"><a>促销系列</a></li>-->
+			</ul>
+			<!--tab-->
+			<div class="tab default">
+				<ul class="row">
+
+					<foreach name="data.list" item="val">
+					<li class="col-sm-3 col-xs-6">
+						<input type="hidden" class="goods_id" value="{$val.goods_id}">
+
+						<div class="pro">
+							<div class="pic">
+								<a href="/Home/Product/pro_details/goods_id/{$val.goods_id}"><img src="{$val.goods_thumb}" alt="{$val.goods_thumb}" /></a>
+							</div>
+							<div class="text">
+								<p>
+									<a href="/Home/Product/pro_details/goods_id/{$val.goods_id}">{$val.goods_name}</a>
+									<br/>
+									<span>¥ {$val.goods_price}</span>
+								</p>
+
+								<a class="cart" ><img src="__PUBLIC__/Home/images/ico/5-pro_list-shopcar.png" alt="5-pro_list-shopcar.png"/> 加入购物车</a>
+
+							</div>
+						</div>
+
+					</li>
+					</foreach>
+				</ul>
+
+			</div>
+
+		
+			<!--tab-end-->
+
+			<ul class="page">
+				<notempty name="data.list">
+					{$data.page}
+				</notempty>
+
+			</ul>
+		</div>
+		<!--center-end-->
+	</div>
+</div>
+<!--contain-end-->
+
+
+<script>
+
+    $(".cart").click(function(){
+
+
+        var goods_id  = $(this).parents(".tab .row li").find(".goods_id").val();
+        var goods_num = 1 ;
+//		console.log(goods_id);
+
+
+
+
+        $.post("{:U('Home/Product/cart_add')}",{goods_id:goods_id,goods_num:goods_num},function(data){
+            if(data.code == 1)
+            {
+                layer.alert(data.info,
+                    {end : function(){
+//                        location.href = "{:U('Home/Cart/shop_cart')}";
+                    }});
+            }
+            else if(data.code == 2)
+            {
+                layer.alert(data.info,
+                    {end : function(){
+                        location.href = "{:U('Home/User/login')}";
+                    }});
+            }
+            else
+            {
+                layer.alert(data.info);
+            }
+
+        });
+
+    });
+
+
+
+</script>
+
+
+
+<script type="text/javascript">
+    /*	$('.page').on('click','a',function(){
+        var href=$(this).attr('href');
+        $.ajax({
+            type:'GET',
+            url:href,
+            dataType:'json',
+            success:function(data){
+                var page=data.page;
+                $('.page').html(page);
+                var list=data.list;
+                console.log(list.length);
+                var pro='';
+
+                for(var i=0;i<list.length;i++){
+                    pro +='<li class="col-sm-3 col-xs-6">';
+                    pro +='	<div class="pro">';
+                    pro +='	<div class="pic">';
+                    pro +='<a href="/Home/Product/pro_details/goods_id/'+list[i].goods_id+'">';
+                    pro +='<img src="'+list[i].goods_thumb+'" alt="'+list[i].goods_thumb+'" /></a></div>';
+
+                    pro +='<div class="text"><p><a href="/Home/Product/pro_details/goods_id/'+list[i].goods_id+'">'+list[i].goods_name+'</a> ';
+                    pro +='<span>¥'+list[i].goods_price +'</span></p>';
+                    pro +='<a class="cart" href="shop_cart.html">';
+                    pro +='<img src="__PUBLIC__/Home/images/ico/5-pro_list-shopcar.png" alt="5-pro_list-shopcar.png"/>';
+                    pro +='加入购物车</a></div></div></li>';
+
+                }
+
+
+                $('.tab .row').html(pro);
+            }});
+            return false;
+        });
+
+
+
+
+*/
+</script>
+
+
+
+		

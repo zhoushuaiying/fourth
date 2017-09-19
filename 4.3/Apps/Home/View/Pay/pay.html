@@ -1,0 +1,89 @@
+<title>支付</title>
+<!--contain-->
+<div class="complete cart ">
+    <div class="container pay">
+        <ul class="car-nav row">
+            <li class="col-xs-4">购物车</li>
+            <li class="col-xs-4">确认订单</li>
+            <li class="col-xs-4">完成订单</li>
+        </ul>
+        <form>
+
+
+
+            <p class="money" >支付金额：<span>{$info['all_money']}</span></p>
+            <input type="hidden" class = "order_number" value="{$info['order_number']}">
+            <input type="button" value="确认" class = "sub" >
+
+        </form>
+
+        <ul class="middle row">
+            <li class="col-sm-3 col-xs-6">
+                <img src="__PUBLIC__/Home/images/ico/12-you.png" alt="12-you.png">
+                <span>79元包邮订单满79元包邮</span>
+            </li>
+            <li class="col-sm-3 col-xs-6">
+                <img src="__PUBLIC__/Home/images/ico/12-2.png" alt="12-2.png"/>
+                <span>正品保证100%的正品</span>
+
+            </li>
+            <li class="col-sm-3 col-xs-6">
+                <img src="__PUBLIC__/Home/images/ico/12-3.png" alt="12-3.png"/>
+                <span>七天退货售后保障</span>
+
+            </li>
+            <li class="col-sm-3 col-xs-6">
+                <img src="__PUBLIC__/Home/images/ico/12-4.png" alt="12-4.png"/>
+                <span>3年保修享受3年维修服务</span>
+
+            </li>
+        </ul>
+        <div class="carry">
+            <h2 class="title"><img src="__PUBLIC__/Home/images/ico/11-confirm-title.jpg" alt="10-cart-title.jpg" />继续购物</h2>
+            <ul class="row">
+              <foreach name="recommend" item="val">
+                <li class="col-xs-4">
+                    <a href="/Home/Product/pro_details/goods_id/{$val.goods_id}"><img src="{$val.goods_thumb}" alt="12-pro-1.jpg" width="324px" height="253px"/></a>
+                </li>
+              </foreach>
+            </ul>
+        </div>
+    </div>
+
+</div>
+<!--contain-end-->
+
+
+
+
+
+
+<script>
+    $(".sub").click(function () {
+        var money = $('.money span').html();
+        var order_number= $('.order_number').val();
+        $.post("{:U('Home/Pay/pay')}",{money:money,order_number:order_number},function(data){
+            if(data.code == 1)
+            {
+                layer.alert(data.info,{end : function () {
+                    location.href = "{:U('Home/Order/complete_order')}";
+                }});
+            }
+            else if(data.code == 2)
+            {
+                layer.alert(data.info,{end : function () {
+                    location.href = "Home/User/login";
+                }});
+            }
+            else
+            {
+                layer.alert(data.info);
+            }
+
+            console.log(data);
+        });
+
+
+    });
+
+</script>

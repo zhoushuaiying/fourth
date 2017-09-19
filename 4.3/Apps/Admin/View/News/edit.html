@@ -1,0 +1,146 @@
+{__NOLAYOUT__}
+<include file="Common/meta"/>
+<title>添加新闻</title>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/uploadify/uploadify.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/static/h-ui/css/H-ui.min.css	">
+</head>
+<body>
+<article class="cl pd-20 append" >
+	 <form  class="form form-horizontal" id="form-admin-add" >
+	
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>新闻标题</label>
+			<div class="formControls col-xs-8 col-sm-4">
+				<input type="text" class="input-text"  placeholder="新闻标题" id="title" value="{$data.title}" >
+			</div>
+		</div>
+
+		 <div class="row cl">
+			 <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>新闻主图</label>
+			 <div class="formControls col-xs-8 col-sm-4">
+				 <input id="pic" name="pic" type="file" >
+				 <input type="hidden" class="pic_name" value="{$data.pic}">
+				 <div class="img">
+					 <img class="pict" src="{$data.pic}" alt="图片"  >
+				 </div>
+			 </div>
+		 </div>
+
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>新闻内容</label>
+			<div class="formControls col-xs-8 col-sm-4">
+				<script id="editor"  type="text/plain" style="width:650px;height:300px;">
+					{$data.content}
+				</script>
+			</div>
+		</div>
+
+
+
+
+		<div class="row cl">
+			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
+				<input type="hidden" value="{$data.news_id}" id="news_id">
+				<input class="btn btn-primary radius" type="button" value="&nbsp;&nbsp;提交&nbsp;&nbsp;" id="sub">
+			</div>
+		</div>
+	</form>
+</article>
+
+<include file="Common/footer"/>
+
+<!--请在下方写此页面业务相关的脚本-->
+<script type="text/javascript" src="__PUBLIC__/Admin/lib/jquery.validation/1.14.0/jquery.validate.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Admin/lib/jquery.validation/1.14.0/validate-methods.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Admin/lib/jquery.validation/1.14.0/messages_zh.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Admin/uploadify/jquery.uploadify.min.js"></script>
+
+<script type="text/javascript">
+
+	$('#sub').click(function(){
+
+		var title   = $('#title').val();
+		var pic     = $('.pic_name').val();
+		var content = ue.getContent();
+		var news_id = $('#news_id').val();
+		if(title == '' || title == null || title == undefined)
+		{
+		    layer.msg('标题不能为空',{icon:0});
+		    return false;
+		}
+        else if(pic == '' || pic == null || pic == undefined)
+        {
+            layer.msg('图片不能为空',{icon:0});
+            return false;
+        }
+        else if(content == '' || content == null || content == undefined)
+        {
+            layer.msg('内容不能为空',{icon:0});
+            return false;
+        }
+		$.post("{:U('Admin/News/edit')}",
+				{title:title,content:content,pic:pic,news_id:news_id},
+				function(data)
+				{
+
+					if(data.code == 1)
+					{
+						layer.alert(data.info,{end:function(){
+							var index = parent.layer.getFrameIndex(window.name);
+		                    parent.$('.btn-refresh').click();
+		                    parent.layer.close(index);
+							}});
+					}
+					else
+					{
+						layer.alert(data.info);
+					}
+
+				});
+	});
+
+
+</script>
+
+<script>
+	$(function () {
+        function init1() {
+            $('#pic').uploadify({
+
+                'swf'         :  '__PUBLIC__/Admin/uploadify/uploadify.swf',
+                'uploader'    : "{:U('News/uploader')}",
+                'fileObjNam' : 'pic',
+                'multi': false,
+                'fileTypeExts': '*.gif; *.jpg; *.jpeg; *.png',
+                'fileSizeLimit': "5MB",
+                'onUploadSuccess' : function(file,data,response){
+
+//            var data = eval('('+data+')');
+                    var data = JSON.parse(data);
+//                    console.log(data);
+//                  var html = '<input type="hidden" class="banner_a" name="banner_a" value="'+data.info+'">';
+                    var img  = '<img class="pict" src="'+data.info+'">';
+                    $('.pic_name').val(data.info);
+                   $('.img').html(img);
+                }
+
+            });
+        }
+
+        init1();
+    });
+
+
+</script>
+	
+ <!-- 百度编辑器应用代码 -->
+ <script type="text/javascript" charset="utf-8" src="__PUBLIC__/Admin/ueditor/ueditor.config.js"></script>
+ <script type="text/javascript" charset="utf-8" src="__PUBLIC__/Admin/ueditor/ueditor.all.min.js"> </script>
+ <script type="text/javascript" charset="utf-8" src="__PUBLIC__/Admin/ueditor/lang/zh-cn/zh-cn.js"></script>
+ <script type="text/javascript">
+     var ue = UE.getEditor('editor');
+ </script> 
+<!--/请在上方写此页面业务相关的脚本-->
+</body>
+
+</html>

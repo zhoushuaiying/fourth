@@ -1,0 +1,190 @@
+{__NOLAYOUT__}
+<include file="Common/meta" />
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<meta name="keywords" content="百度地图,百度地图API，百度地图自定义工具，百度地图所见即所得工具" />
+<meta name="description" content="百度地图API自定义地图，帮助用户在可视化操作下生成百度地图" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>联系我们</title>
+<!--<link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>-->
+<!--<link rel="stylesheet" type="text/css" href="css/common.css"/>-->
+<!--<link rel="stylesheet" type="text/css" href="css/style.css"/>-->
+<!--<link rel="stylesheet" type="text/css" href="css/media.css"/>-->
+<!--<script type="text/javascript" src="js/jquery-1.11.0.js"></script>-->
+<!--<script type="text/javascript" src="js/bootstrap.js"></script>-->
+<!--<script type="text/javascript" src="js/js.js" ></script>-->
+<script type="text/javascript" src="__PUBLIC__/Home/js/baidu.js"></script>
+<!--引用百度地图API-->
+<style type="text/css">
+	html,body{margin:0;padding:0;}
+	.iw_poi_title {color:#CC5522;font-size:14px;font-weight:bold;overflow:hidden;padding-right:13px;white-space:nowrap}
+	.iw_poi_content {font:12px arial,sans-serif;overflow:visible;padding-top:4px;white-space:-moz-pre-wrap;word-wrap:break-word}
+	.anchorBL{ display:none; }
+</style>
+<script type="text/javascript" src="http://api.map.baidu.com/api?key=&v=1.1&services=true"></script>
+</head>
+<body>
+
+<include file="Common/header" />
+
+<!--contain-->
+<div class="contact_us">
+	<div class="container">
+		<!--title-->
+		<div class="title">
+			<h3><span>联系我们</span></h3>
+			<h4>CONTACT  US</h4>
+			<p>
+				当前位置 : <a href="{:U('Home/Index/index')}">首页</a>>联系我们
+				<span></span>
+			</p>
+
+		</div>
+		<!--title-end-->
+		<!--map-->
+		<div id="dituContent">
+
+		</div>
+		<!--map-end-->
+		<div class="row">
+			<div class="col-sm-6">
+				<p>公司：{$config.company_name}</p>
+				<p>电话：{$config.phone} <span></span><i>传真：{$config.fax}</i></p>
+				<p>邮箱：{$config.email}</p>
+				<p>地址：{$config.address}</p>
+				<p>网址：{$config.url}</p>
+				<div class="pic">
+					<img src="{$config.code}" alt="7-weixin.png" style="cursor: pointer"/>
+					<p>扫一扫</p>
+				</div>
+			</div>
+			<div class="col-sm-6">
+				<form action="" method="">
+					<p>
+						<label>用户：</label>
+						<input type="text" name="username" id="username" />
+					</p>
+					<p>
+						<label>邮箱：</label>
+						<input type="text" id="email" />
+					</p>
+					<p>
+						<label>手机号码：</label>
+						<input type="text" id="mobile" />
+					</p>
+					<p>
+						<label>留言框：</label>
+						<textarea id="leaving"></textarea>
+					</p>
+					<p>验证：<input type="text" id="yanzheng">
+						<b>
+							<img  id="verify" src="__CONTROLLER__/verify" alt="7-yanzheng.jpg"/>
+							<small id="change">看不清，换一张</small>
+						</b>
+					</p>
+					<p>
+						<input type="button" name="submit" id="submit" value="提交" />
+						<input type="reset" name="reset" id="reset" value="重置" />
+					</p>
+
+
+			</div>
+		</div>
+	</div>
+</div>
+<!--contain-end-->
+
+<include file="Common/footer" />
+
+<script>
+    $("#change").click(function () {
+        $("#verify").attr("src",'__CONTROLLER__/verify');
+    });
+	//手机号码
+    $("#txt_tell").blur(function(){
+         if (!$("#mobile").val().match(/^1([23578])\d{9}$/)) {
+            layer.msg('手机号码格式不正确');
+        }
+    });
+
+
+    //邮箱
+    $("#email").blur(function(){
+
+        if (!$("#email").val().match(/\w[-\w.+]*@([A-Za-z0-9][-A-Za-z0-9]+\.)+[A-Za-z]{2,14}/)) {
+            layer.msg('邮箱格式不正确');
+        }
+    })
+
+	$("#submit").click(function () {
+
+	    var username = $('#username').val();
+	    var email    = $('#email').val();
+	    var mobile   = $('#mobile').val();
+		var leaving  = $('#leaving').val();
+		var code = $('#yanzheng').val();
+		if(username == '' || username == null || username == undefined)
+		{
+		    layer.alert('用户名不能为空!');
+		    return false;
+		}
+		else if(leaving == '' || leaving == null || leaving == undefined)
+		{
+		    layer.alert('留言不能为空!');
+		    return false;
+		}
+		else if(yanzheng == '' || yanzheng == null || yanzheng == undefined)
+        {
+            layer.alert('验证码不能为空!');
+            return false;
+        }
+
+		var con = 0;
+		if(email == '' || email == null || email == undefined)
+		{
+		    con++;
+		}
+        if(mobile == '' || mobile == null || mobile == undefined)
+        {
+            con++;
+        }
+        if(con == 2)
+		{
+            layer.alert('至少留下一个联系方式!');
+            return false;
+		}
+
+        if ($("#mobile").val()!=null && !$("#mobile").val().match(/^1([23578])\d{9}$/)) {
+            layer.msg('手机号码格式不正确');
+            return false;
+        }
+        if ($("#email") != null && !$("#email").val().match(/\w[-\w.+]*@([A-Za-z0-9][-A-Za-z0-9]+\.)+[A-Za-z]{2,14}/)) {
+            layer.msg('邮箱格式不正确');
+            return false;
+        }
+
+
+		$.post("{:U('Home/Contact/contact_us')}",
+			{username:username,email:email,mobile:mobile,leaving:leaving,code:code},
+			function (data) {
+				if(data.code == 1)
+				{
+					layer.alert(data.info,{end:function(){
+					location.reload();
+					}});	
+				}
+				else
+				{
+					layer.alert(data.info);
+				}	
+
+
+				
+        });
+
+    });
+
+</script>

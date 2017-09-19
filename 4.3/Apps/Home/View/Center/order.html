@@ -1,0 +1,55 @@
+
+<title>我的订单</title>
+<!--contain-->
+<div class="order user">
+	<div class="container">
+		<include file = "Common/menu"/>
+		<!--myorder-details-->
+		<div class="myorder">
+			<ul class="order-nav">
+				<li>商品</li>
+				<li>单价</li>
+				<li>数量</li>
+				<!--<li>商品操作</li>-->
+				<li>实付款</li>
+				<li>交易状态</li>
+				<li>交易操作</li>
+			</ul>
+			<ul class="pro">
+			  <foreach name="orders" item="val">
+				<li>
+					<div class="pro-pic">
+						<a href="/Home/Product/pro_details/goods_id/{$val.goods_id}"><img src="{$val.goods_thumb}" alt="10-pro.jpg" width="101" height="110" /></a>
+					</div>
+					<div class="div1">
+						<ul>
+							<li><a href="/Home/Product/pro_details/goods_id/{$val.goods_id}">{$val.goods_name}</a></li>
+							<li><span>单价：</span>￥：{$val.goods_price}</li>
+						</ul>
+					</div>
+					<div class="div2">
+						<ul>
+							<li>{$val.goods_num}</li>
+							<!--<li>申请售后</li>-->
+						</ul>
+					</div>
+					<div class="div3">
+						<ul>
+							<li><span>总价：</span>￥{$val.all_price}</li>
+							<li><p>交易成功</p>
+								<p><a href="/Home/Center/order_details/id/{$val.order_number}">订单详情</a></p>
+							</li>
+							<li>
+								<!--<p><a href="javascript:;">评价</a></p>-->
+								<p><a href="/Home/Product/pro_details/goods_id/{$val.goods_id}">再次购买</a></p>
+							</li>
+						</ul>
+					</div>
+				</li>
+			  </foreach>
+			</ul>
+		</div>
+		<!--myorder-details-end-->
+	</div>
+</div>
+<!--contain-end-->

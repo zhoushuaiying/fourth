@@ -13,6 +13,8 @@ class CommonController extends Controller {
 	public static $menu;
 	public static $api;
 	public static $user;
+	public static $oauth;
+	public static $jssdk;
 	//获取access_token
     public function getToken()
     {

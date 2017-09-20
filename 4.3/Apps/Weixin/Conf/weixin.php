@@ -16,7 +16,7 @@ return array(
 				array(
 					'name' => '一级菜单',
 					'sub_button' => array(
-						array('type'=>'view','name'=>'百度','url'=>'http://www.baidu.com'),
+						array('type'=>'view','name'=>'用户中心','url'=>'http://qxu1146440161.my3w.com/Weixin/Index/getUserinfo'),
 						array('type'=>'view','name'=>'163','url'=>'http://www.163.com'),
 						array('type'=>'view','name'=>'我','url'=>'http://qxu1146440161.my3w.com'),
 

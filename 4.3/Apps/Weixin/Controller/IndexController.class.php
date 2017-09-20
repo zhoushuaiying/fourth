@@ -3,6 +3,16 @@ namespace Weixin\Controller;
 use Think\Controller;
 class IndexController extends CommonController {
   
+	public function _initialize()
+	{
+		$this -> message = A("Message");
+	   	$this -> event   = A("Event");
+	   	$this -> menu    = A("Menu"); 
+	   	$this -> api     = A("Api");
+   		$this -> user     = A("User");
+   		$this -> oauth   = A("Oauth");
+   		$this -> jssdk   = A("Jssdk");
+	}
 
   public function index(){
        
@@ -14,11 +24,7 @@ class IndexController extends CommonController {
 
 
 	   
-	   	$this -> message = A("Message");
-	   	$this -> event   = A("Event");
-	   	$this -> menu    = A("Menu"); 
-	   	$this -> api     = A("Api");
-   		$this -> user     = A("User");
+
 	   // $access_token = $this -> getToken();
 	   // var_dump($access_token);
 	   // $ip_list = $this -> getServerIp();
@@ -83,6 +89,40 @@ class IndexController extends CommonController {
   
     }
 	
+   //获取用户中心
+    public function getUserinfo()
+    {
+    	
+    	// $curr_url = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+		
+		$userinfo = $this -> oauth -> wxLogin();
+		header("Content-type: text/html; charset=utf-8"); 
+		echo "<a style='font-size:60px;color:red' href='".U('product')."'>产品中心</a>";	
+
+    }
+
+    //产品中心页面
+    public function product()
+    {
+    	$userinfo = $this -> oauth -> wxLogin();
+    	if(!$userinfo)
+    	{
+    		exit('授权失败');
+    	}
+        $data          = [];
+
+        $timestamp = time();
+        $nonceStr  = $this -> jssdk -> nonceStr(); 
+        $signature = $this -> jssdk -> signature($nonceStr,$timestamp);
+        $data['appid'] = C('APPID');
+        $data['timestamp'] =  $timestamp;
+        $data['nonceStr']  =  $nonceStr;
+        $data['signature'] =  $signature;
+
+        $this -> assign('data',$data);
+    	$this -> display();
+    }
+
     //获取微信服务器ip地址列表
     public function getServerIp()
     {

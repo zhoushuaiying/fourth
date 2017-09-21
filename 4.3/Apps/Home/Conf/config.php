@@ -34,6 +34,6 @@ return array(
     'URL_MODEL'             =>   2,
 //	'SHOW_PAGE_TRACE'       =>  true,
 //    全局配置方式
-    'LAYOUT_ON'             =>  true,
-    'LAYOUT_NAME'           =>  'Common/base',
+    // 'LAYOUT_ON'             =>  true,
+    // 'LAYOUT_NAME'           =>  'Common/base',
 );

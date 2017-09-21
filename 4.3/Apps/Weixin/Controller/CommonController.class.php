@@ -51,4 +51,29 @@ class CommonController extends Controller {
 
 		return $arr_xml;
 	}
+
+
+	//生成带场景值的微信二维码图片
+	public function createTicket(){
+		$access_token = $this->getToken();
+		$api = "https://api.weixin.qq.com/cgi-bin/qrcode/create?access_token=".$access_token;
+
+		$scene_id = I('scene_id','123');	//取得要生成的场景值
+		//{"action_name": "QR_LIMIT_SCENE", "action_info": {"scene": {"scene_id": 123}}}
+		$arr_post = array(
+			'action_name'=>'QR_LIMIT_SCENE',
+			'action_info'=>array('scene'=>array('scene_id'=>$scene_id))
+			);
+		$str_post = json_encode($arr_post);
+		$arr_return = postRequest($api,$str_post);
+		$ticket = $arr_return['ticket'];
+		$get_url = "https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=".urlencode($ticket);
+		
+		// header("content-type:image/jpeg");
+		// header('Content-type:image.jpeg'); 
+		// echo file_get_contents($get_url);
+		// $result = getRequest($get_url);
+		// echo $result;
+		echo "<img src='".$get_url."'>";
+	}
 }

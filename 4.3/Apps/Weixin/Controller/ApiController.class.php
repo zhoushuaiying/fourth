@@ -28,7 +28,23 @@ class ApiController extends CommonController {
 			$contentStr = '无效的城市名称';
 		}
 
-		$this -> message-> _response($contentStr);
+		$this -> message ->  _response($contentStr."\n\n回复 tq/城市名 可以查询其它城市");
+		$this -> message ->  _response();
 
+	}
+
+
+	public function searchMenu($keyword="白菜")
+	{
+		$menu_url = "https://way.jd.com/jisuapi/search";
+		$arr = array('keyword' => $keyword,
+				     'num'    => 10,
+				     'appkey' => "911b61c975768fe4d8a7a4c6ec566958"
+					);
+		$res = getRequest($menu_url,$arr);
+		$res = json_decode($res);
+		$contentStr = $res;
+
+		$this -> message -> _response($contentStr);
 	}
 }

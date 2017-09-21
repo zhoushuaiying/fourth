@@ -1,0 +1,769 @@
+<html class="js cssanimations am-touch"><head><script src="http://static.winxuancdn.com/cms/??assets/js/wxwebapp2.0/jquery.min.js,assets/js/wxwebapp2.0/amazeui.min.js,assets/js/library/seajs/2.2.1/sea.js,assets/js/wxwebapp2.0/seajs.config.js?1505285554036"></script>
+
+	
+		<meta http-equiv="content-type" content="text/html;charset=utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+		<title>
+			分类搜索结果
+		</title>
+		<script src="http://static.winxuancdn.com/cms/??assets/js/wxwebapp2.0/jquery.min.js,assets/js/wxwebapp2.0/amazeui.min.js,assets/js/library/seajs/2.2.1/sea.js,assets/js/wxwebapp2.0/seajs.config.js,assets/js/wxwebapp2.0/lazy.js?1505285554036">
+		</script>
+		<link href="http://static.winxuancdn.com/cms/??assets/styles/wxwebapp2.0/app.css,assets/layout/grid-m100.css,assets/styles/wxwebapp2.0/mods/wa-searchbar.css,assets/styles/wxwebapp2.0/mods/wa-selector.css,assets/styles/wxwebapp2.0/mods/wa-goodsshow.css,assets/styles/wxwebapp2.0/mods/ot-iscroll.css,assets/styles/wxwebapp2.0/mods/wa-pagegotop.css?1505285554036" rel="stylesheet">
+	</head>
+	<body>
+		<div id="page">
+			<div class="layout grid-m100 J_Layout" data-gridid="1">
+				<div class="col-main">
+					<div class="main-wrap J_Region" data-colname="main-wrap" data-support="100">
+						<!-- 主搜索条 -->
+						<div class="module wa-searchbar shadow wa-searchbar-2">
+							<div class="search-box">
+								<a class="back" href="javascript:history.go(-1)"> 
+									<span class="iconfont">
+										
+									</span> 
+								</a>
+								<div class="bar">
+									<span class="iconfont J_searchButton">
+										
+									</span>
+									<input type="text" placeholder="" class="J_inputBox J_searchInput" value="家庭教育">
+									<a class="del iconfont J_clearButton" href="javascript:;" style="">
+									</a>
+								</div>
+								<a class="right" href="http://m.winxuan.com/shoppingcart">
+									<span class="iconfont"></span>
+								</a>
+							</div>
+						</div>
+						<script type="text/javascript">
+								seajs.use(['toolkit', 'search'], function(Toolkit, Search) {
+	    new Toolkit;
+	    var s = new Search();
+	    s.render()
+	})
+						</script>
+						<!-- 主搜索条 end -->
+						<!-- 筛选排序条 -->
+						<div class="module wa-selector">
+							<div class="selector-box J_toolbar">
+								<div class="item select-1">
+								
+									<button class="btn J_sort">
+								全部分类
+									</button>
+									<div class="pop J_sortPop">
+										<div class="menu">
+										
+										
+										
+												<a class="active" href="?code=1&amp;size=18&amp;keyword=%E5%AE%B6%E5%BA%AD%E6%95%99%E8%82%B2&amp;type=11001&amp;noEBook=yes" title="图书" name="categoryHref"> 
+														图书
+													<span class="iconfont">
+													</span> 
+												</a>
+											
+										
+										</div>
+										<div class="childType" style="position:absolute;left:36%;right:0;top:0;bottom:0;background-color:#fff;height:11rem;overflow-y: scroll;margin-right: -20px;padding-right: 20px;">
+											<a href="?code=1.1720&amp;size=18&amp;keyword=%E5%AE%B6%E5%BA%AD%E6%95%99%E8%82%B2&amp;type=11001&amp;noEBook=yes" style="font-size: .41rem;border-top: .018rem solid #e7e7e7;color:#666;text-decoration: none;display:block;padding-left: 15px;">
+													文学
+											</a>
+											<a href="?code=1.3245&amp;size=18&amp;keyword=%E5%AE%B6%E5%BA%AD%E6%95%99%E8%82%B2&amp;type=11001&amp;noEBook=yes" style="font-size: .41rem;border-top: .018rem solid #e7e7e7;color:#666;text-decoration: none;display:block;padding-left: 15px;">
+													经济
+											</a>
+											<a href="?code=1.3085&amp;size=18&amp;keyword=%E5%AE%B6%E5%BA%AD%E6%95%99%E8%82%B2&amp;type=11001&amp;noEBook=yes" style="font-size: .41rem;border-top: .018rem solid #e7e7e7;color:#666;text-decoration: none;display:block;padding-left: 15px;">
+													管理
+											</a>
+											<a href="?code=1.1088&amp;size=18&amp;keyword=%E5%AE%B6%E5%BA%AD%E6%95%99%E8%82%B2&amp;type=11001&amp;noEBook=yes" style="font-size: .41rem;border-top: .018rem solid #e7e7e7;color:#666;text-decoration: none;display:block;padding-left: 15px;">
+													少儿
+											</a>
+											<a href="?code=1.959&amp;size=18&amp;keyword=%E5%AE%B6%E5%BA%AD%E6%95%99%E8%82%B2&amp;type=11001&amp;noEBook=yes" style="font-size: .41rem;border-top: .018rem solid #e7e7e7;color:#666;text-decoration: none;display:block;padding-left: 15px;">
+													家庭与育儿
+											</a>
+											<a href="?code=1.2414&amp;size=18&amp;keyword=%E5%AE%B6%E5%BA%AD%E6%95%99%E8%82%B2&amp;type=11001&amp;noEBook=yes" style="font-size: .41rem;border-top: .018rem solid #e7e7e7;color:#666;text-decoration: none;display:block;padding-left: 15px;">
+													社会科学
+											</a>
+											<a href="?code=1.1333&amp;size=18&amp;keyword=%E5%AE%B6%E5%BA%AD%E6%95%99%E8%82%B2&amp;type=11001&amp;noEBook=yes" style="font-size: .41rem;border-top: .018rem solid #e7e7e7;color:#666;text-decoration: none;display:block;padding-left: 15px;">
+													心理学
+											</a>
+											<a href="?code=1.232&amp;size=18&amp;keyword=%E5%AE%B6%E5%BA%AD%E6%95%99%E8%82%B2&amp;type=11001&amp;noEBook=yes" style="font-size: .41rem;border-top: .018rem solid #e7e7e7;color:#666;text-decoration: none;display:block;padding-left: 15px;">
+													青春与动漫绘本
+											</a>
+											<a href="?code=1.505&amp;size=18&amp;keyword=%E5%AE%B6%E5%BA%AD%E6%95%99%E8%82%B2&amp;type=11001&amp;noEBook=yes" style="font-size: .41rem;border-top: .018rem solid #e7e7e7;color:#666;text-decoration: none;display:block;padding-left: 15px;">
+													历史
+											</a>
+											<a href="?code=1.853&amp;size=18&amp;keyword=%E5%AE%B6%E5%BA%AD%E6%95%99%E8%82%B2&amp;type=11001&amp;noEBook=yes" style="font-size: .41rem;border-top: .018rem solid #e7e7e7;color:#666;text-decoration: none;display:block;padding-left: 15px;">
+													婚恋与两性
+											</a>
+											<a href="?code=1.559&amp;size=18&amp;keyword=%E5%AE%B6%E5%BA%AD%E6%95%99%E8%82%B2&amp;type=11001&amp;noEBook=yes" style="font-size: .41rem;border-top: .018rem solid #e7e7e7;color:#666;text-decoration: none;display:block;padding-left: 15px;">
+													哲学
+											</a>
+											<a href="?code=1.2101&amp;size=18&amp;keyword=%E5%AE%B6%E5%BA%AD%E6%95%99%E8%82%B2&amp;type=11001&amp;noEBook=yes" style="font-size: .41rem;border-top: .018rem solid #e7e7e7;color:#666;text-decoration: none;display:block;padding-left: 15px;">
+													法律
+											</a>
+											<a href="?code=1.1603&amp;size=18&amp;keyword=%E5%AE%B6%E5%BA%AD%E6%95%99%E8%82%B2&amp;type=11001&amp;noEBook=yes" style="font-size: .41rem;border-top: .018rem solid #e7e7e7;color:#666;text-decoration: none;display:block;padding-left: 15px;">
+													教育
+											</a>
+											<a href="?code=1.123&amp;size=18&amp;keyword=%E5%AE%B6%E5%BA%AD%E6%95%99%E8%82%B2&amp;type=11001&amp;noEBook=yes" style="font-size: .41rem;border-top: .018rem solid #e7e7e7;color:#666;text-decoration: none;display:block;padding-left: 15px;">
+													健身与保健
+											</a>
+											<a href="?code=1.315&amp;size=18&amp;keyword=%E5%AE%B6%E5%BA%AD%E6%95%99%E8%82%B2&amp;type=11001&amp;noEBook=yes" style="font-size: .41rem;border-top: .018rem solid #e7e7e7;color:#666;text-decoration: none;display:block;padding-left: 15px;">
+													医学
+											</a>
+											<a href="?code=1.8401&amp;size=18&amp;keyword=%E5%AE%B6%E5%BA%AD%E6%95%99%E8%82%B2&amp;type=11001&amp;noEBook=yes" style="font-size: .41rem;border-top: .018rem solid #e7e7e7;color:#666;text-decoration: none;display:block;padding-left: 15px;">
+													家庭教育
+											</a>
+											<a href="?code=1.1413&amp;size=18&amp;keyword=%E5%AE%B6%E5%BA%AD%E6%95%99%E8%82%B2&amp;type=11001&amp;noEBook=yes" style="font-size: .41rem;border-top: .018rem solid #e7e7e7;color:#666;text-decoration: none;display:block;padding-left: 15px;">
+													教材教辅与参考书
+											</a>
+											<a href="?code=1.8317&amp;size=18&amp;keyword=%E5%AE%B6%E5%BA%AD%E6%95%99%E8%82%B2&amp;type=11001&amp;noEBook=yes" style="font-size: .41rem;border-top: .018rem solid #e7e7e7;color:#666;text-decoration: none;display:block;padding-left: 15px;">
+													社会科学
+											</a>
+											<a href="?code=1.2459&amp;size=18&amp;keyword=%E5%AE%B6%E5%BA%AD%E6%95%99%E8%82%B2&amp;type=11001&amp;noEBook=yes" style="font-size: .41rem;border-top: .018rem solid #e7e7e7;color:#666;text-decoration: none;display:block;padding-left: 15px;">
+													科学与自然
+											</a>
+										</div>
+									</div>
+								</div>
+								<div class="item select-1">
+									<button class="btn mid" data-widget="price" data-sorttype="" data-sort="pricemonth">
+										价格
+										<div class="price">
+											<span class="iconfont">
+											</span>
+											<span class="iconfont">
+											</span>
+										</div>
+									</button>
+								</div>
+								<div class="item select-1">
+									<button class="btn" data-widget="sort" data-sorttype="7" data-sort="salemonth">
+										销量
+									</button>
+								</div>
+								<div class="item select-1 select-side">
+									<button class="btn J_filter">
+										筛选
+										<span class="iconfont">
+										</span>
+									</button>
+									<div class="pop J_filterPop">
+										<ul style="height: 569px;">
+											<li>
+												<a href="#">
+													<i>
+														价格
+													</i>
+												</a>
+												<input type="text" class="i-1 J_minPrice" data-type="price" data-filter="minprice">
+												<s>
+													-
+												</s>
+												<input type="text" class="i-1 J_maxPrice" data-type="price" data-filter="maxprice">
+												&nbsp;&nbsp;元
+											</li>
+											<li>
+												<a href="#">
+													<i>
+														折扣
+													</i>
+												</a>
+												<button class="btn-2 b-1 iconfont" data-widget="filter" data-ctype="minsub">
+													
+												</button>
+												<input type="number" class="i-2 J_minDisc" data-type="disc" data-filter="minDiscount">
+												<button class="btn-2 b-2 iconfont" data-widget="filter" data-ctype="minadd">
+													
+												</button>
+												<s>
+													-
+												</s>
+												<button class="btn-2 b-1 iconfont" data-widget="filter" data-ctype="maxsub">
+													
+												</button>
+												<input type="number" class="i-2 J_maxDisc" data-type="disc" data-filter="maxDiscount">
+												<button class="btn-2 b-2 iconfont" data-widget="filter" data-ctype="maxadd">
+													
+												</button>
+												&nbsp;&nbsp;折
+											</li>
+											<li data-widget="filter" data-ctype="hasstock">
+												<a href="#" class="check-btn iconfont J_hasstock">
+												</a>
+												仅显示有货商品
+											</li>
+											<div class="active-btn">
+												<a class="a-2" href="javascript:;" data-widget="filter" data-ctype="reset">重置</a>
+												<a class="a-1" href="javascript:;" data-widget="filter" data-ctype="confirm">确定</a>
+											</div>
+										</ul>
+									</div>
+								</div>
+								<a class="btn-show active J_view" href="javascript:;">
+									<span class="iconfont">
+									</span>
+								</a>
+							</div>
+						</div>
+						<div class="shade-lay J_mask hide">
+						</div>
+						<script type="text/javascript">
+								seajs.use('searchlists', function(SearchLists) {new SearchLists;});
+						</script>
+						<!--#if-->
+						<!-- 筛选排序条 end -->
+						<!-- 商品展示-自选列数样式 -->
+						<a id="">
+						</a>
+						<div class="module wa-goodsshow wx-webapp2-goodsshow-a_d62n8hn3e shadow" style="overflow: hidden;" id="J_booklist">
+							<div class="goodsshow-box J_booklist" id="scroller" style="transition-property: transform; transform-origin: 0px 0px 0px; transform: translate(0px, 0px) translateZ(0px);">
+								<div id="pullDown">
+									<span class="pullDownIcon">
+									</span>
+									<span class="pullDownLabel">
+									</span>
+								</div>
+								<ul class="list list-1 cf p-list">
+									<li>
+										<div class="item item-0">
+											<a href="/product/1201571005" title="小萌家庭教育绘本(第1辑)(全2册) ">
+												<div class="img">
+													<img src="http://img1.winxuancdn.com/5873/1201555873_11_1.jpg?1505338135609 " alt="小萌家庭教育绘本(第1辑)(全2册) ">
+												</div>
+												<h3 class="name">
+													小萌家庭教育绘本(第1辑)(全2册) 
+												</h3>
+												<div class="author">
+													(德)达柯玛尔？盖斯勒//(澳)杰妮？桑德斯 著作 康萍萍//包芬芬 译者 
+												</div>
+												<div class="price">
+													<span class="price-n">
+														￥33
+													</span>
+													<span class="price-o">
+														￥66
+													</span>
+												</div>
+											</a>
+											<span class="addCart J_addCart" data-id="1201571005">
+												<i class="iconfont"></i>
+											</span>
+										</div>
+									</li>
+									<li>
+										<div class="item item-0">
+											<a href="/product/1201519516" title="走出家庭教育的误区(全新修订版) ">
+												<div class="img">
+													<img src="http://img1.winxuancdn.com/7109/1201507109_11_1.jpg?1503888144234 " alt="走出家庭教育的误区(全新修订版) ">
+												</div>
+												<h3 class="name">
+													走出家庭教育的误区(全新修订版) 
+												</h3>
+												<div class="author">
+													(美)黄全愈 著 著作 
+												</div>
+												<div class="price">
+													<span class="price-n">
+														￥20
+													</span>
+													<span class="price-o">
+														￥32
+													</span>
+												</div>
+											</a>
+											<span class="addCart J_addCart" data-id="1201519516">
+												<i class="iconfont"></i>
+											</span>
+										</div>
+									</li>
+									<li>
+										<div class="item item-0">
+											<a href="/product/1201563050" title="制度排斥.家庭资本与随迁子女教育 ">
+												<div class="img">
+													<img src="http://img0.winxuancdn.com/8852/1201548852_11_1.jpg?1503523658278 " alt="制度排斥.家庭资本与随迁子女教育 ">
+												</div>
+												<h3 class="name">
+													制度排斥.家庭资本与随迁子女教育 
+												</h3>
+												<div class="author">
+													谢永飞 著作 无 译者 
+												</div>
+												<div class="price">
+													<span class="price-n">
+														￥45
+													</span>
+													<span class="price-o">
+														￥69
+													</span>
+												</div>
+											</a>
+											<span class="addCart J_addCart" data-id="1201563050">
+												<i class="iconfont"></i>
+											</span>
+										</div>
+									</li>
+									<li>
+										<div class="item item-0">
+											<a href="/product/1201546916" title="对孩子的一生负责:名校长与您谈家庭教育 ">
+												<div class="img">
+													<img src="http://img1.winxuancdn.com/4153/1201534153_11_1.png?1500882783627 " alt="对孩子的一生负责:名校长与您谈家庭教育 ">
+												</div>
+												<h3 class="name">
+													对孩子的一生负责:名校长与您谈家庭教育 
+												</h3>
+												<div class="author">
+													詹文龄 著作 
+												</div>
+												<div class="price">
+													<span class="price-n">
+														￥25
+													</span>
+													<span class="price-o">
+														￥42
+													</span>
+												</div>
+											</a>
+											<span class="addCart J_addCart" data-id="1201546916">
+												<i class="iconfont"></i>
+											</span>
+										</div>
+									</li>
+									<li>
+										<div class="item item-0">
+											<a href="/product/1201570792" title="家庭教育学/何俊华 ">
+												<div class="img">
+													<img src="http://img0.winxuancdn.com/5660/1201555660_11_1.jpg?1505287262647 " alt="家庭教育学/何俊华 ">
+												</div>
+												<h3 class="name">
+													家庭教育学/何俊华 
+												</h3>
+												<div class="author">
+													编者:何俊华//马东平 著作 
+												</div>
+												<div class="price">
+													<span class="price-n">
+														￥32
+													</span>
+													<span class="price-o">
+														￥39
+													</span>
+												</div>
+											</a>
+											<span class="addCart J_addCart" data-id="1201570792">
+												<i class="iconfont"></i>
+											</span>
+										</div>
+									</li>
+									<li>
+										<div class="item item-0">
+											<a href="/product/1201555780" title="当代发展与教育心理学在家庭教育中的应用/陈璟 ">
+												<div class="img">
+													<img src="http://img2.winxuancdn.com/2482/1201542482_11_1.jpg?1502894649886 " alt="当代发展与教育心理学在家庭教育中的应用/陈璟 ">
+												</div>
+												<h3 class="name">
+													当代发展与教育心理学在家庭教育中的应用/陈璟 
+												</h3>
+												<div class="author">
+													陈？ 著作 
+												</div>
+												<div class="price">
+													<span class="price-n">
+														￥76
+													</span>
+													<span class="price-o">
+														￥98
+													</span>
+												</div>
+											</a>
+											<span class="addCart J_addCart" data-id="1201555780">
+												<i class="iconfont"></i>
+											</span>
+										</div>
+									</li>
+									<li>
+										<div class="item item-0">
+											<a href="/product/1201495924" title="1岁孩子 1岁父母 ">
+												<div class="img">
+													<img src="http://img2.winxuancdn.com/3810/1201483810_11_1.jpg?1498120984479 " alt="1岁孩子 1岁父母 ">
+												</div>
+												<h3 class="name">
+													1岁孩子 1岁父母 
+												</h3>
+												<div class="author">
+													北京师范大学家庭教育课题组 著 著作 
+												</div>
+												<div class="price">
+													<span class="price-n">
+														￥24
+													</span>
+													<span class="price-o">
+														￥35
+													</span>
+												</div>
+											</a>
+											<span class="addCart J_addCart" data-id="1201495924">
+												<i class="iconfont"></i>
+											</span>
+										</div>
+									</li>
+									<li>
+										<div class="item item-0">
+											<a href="/product/1201562039" title="致父亲/大师经典传世的家庭教育范本 ">
+												<div class="img">
+													<img src="http://img3.winxuancdn.com/7839/1201547839_11_1.jpg?1505424017694 " alt="致父亲/大师经典传世的家庭教育范本 ">
+												</div>
+												<h3 class="name">
+													致父亲/大师经典传世的家庭教育范本 
+												</h3>
+												<div class="author">
+													(奥地利)弗兰茨？卡夫卡 著作 叶廷芳//黎奇 译者 
+												</div>
+												<div class="price">
+													<span class="price-n">
+														￥16
+													</span>
+													<span class="price-o">
+														￥25
+													</span>
+												</div>
+											</a>
+											<span class="addCart J_addCart" data-id="1201562039">
+												<i class="iconfont"></i>
+											</span>
+										</div>
+									</li>
+									<li>
+										<div class="item item-0">
+											<a href="/product/1201535020" title="爱的艺术:60位校长谈家庭教育 ">
+												<div class="img">
+													<img src="http://img1.winxuancdn.com/2377/1201522377_11_1.jpg?1505276391927 " alt="爱的艺术:60位校长谈家庭教育 ">
+												</div>
+												<h3 class="name">
+													爱的艺术:60位校长谈家庭教育 
+												</h3>
+												<div class="author">
+													上海教育报刊总社上海教育杂志社 编 
+												</div>
+												<div class="price">
+													<span class="price-n">
+														￥35
+													</span>
+													<span class="price-o">
+														￥49
+													</span>
+												</div>
+											</a>
+											<span class="addCart J_addCart" data-id="1201535020">
+												<i class="iconfont"></i>
+											</span>
+										</div>
+									</li>
+									<li>
+										<div class="item item-0">
+											<a href="/product/1201482929" title="真正的蒙氏教育在家庭(50个经典沟通游戏造就孩子合作力) ">
+												<div class="img">
+													<img src="http://img1.winxuancdn.com/0969/1201470969_11_1.jpg?1495160752118 " alt="真正的蒙氏教育在家庭(50个经典沟通游戏造就孩子合作力) ">
+												</div>
+												<h3 class="name">
+													真正的蒙氏教育在家庭(50个经典沟通游戏造就孩子合作力) 
+												</h3>
+												<div class="author">
+													(美)白玛琳(Marlene Barron),(马来)骆思洁(Jesmine Lok) 著；邓峰 译 
+												</div>
+												<div class="price">
+													<span class="price-n">
+														￥30
+													</span>
+													<span class="price-o">
+														￥48
+													</span>
+												</div>
+											</a>
+											<span class="addCart J_addCart" data-id="1201482929">
+												<i class="iconfont"></i>
+											</span>
+										</div>
+									</li>
+									<li>
+										<div class="item item-0">
+											<a href="/product/1201521632" title="把华德福带回家:华德福的家庭教育 ">
+												<div class="img">
+													<img src="http://img3.winxuancdn.com/9175/1201509175_11_1.jpg?1502353370574 " alt="把华德福带回家:华德福的家庭教育 ">
+												</div>
+												<h3 class="name">
+													把华德福带回家:华德福的家庭教育 
+												</h3>
+												<div class="author">
+													黄晓星 著 
+												</div>
+												<div class="price">
+													<span class="price-n">
+														￥21
+													</span>
+													<span class="price-o">
+														￥40
+													</span>
+												</div>
+											</a>
+											<span class="addCart J_addCart" data-id="1201521632">
+												<i class="iconfont"></i>
+											</span>
+										</div>
+									</li>
+									<li>
+										<div class="item item-0">
+											<a href="/product/1201495921" title="3岁孩子 3岁父母 ">
+												<div class="img">
+													<img src="http://img3.winxuancdn.com/3807/1201483807_11_1.jpg?1498120979348 " alt="3岁孩子 3岁父母 ">
+												</div>
+												<h3 class="name">
+													3岁孩子 3岁父母 
+												</h3>
+												<div class="author">
+													北京师范大学家庭教育课题组 著 著作 
+												</div>
+												<div class="price">
+													<span class="price-n">
+														￥24
+													</span>
+													<span class="price-o">
+														￥35
+													</span>
+												</div>
+											</a>
+											<span class="addCart J_addCart" data-id="1201495921">
+												<i class="iconfont"></i>
+											</span>
+										</div>
+									</li>
+									<li>
+										<div class="item item-0">
+											<a href="/product/1201495927" title="0岁孩子 0岁父母 ">
+												<div class="img">
+													<img src="http://img2.winxuancdn.com/3814/1201483814_11_1.jpg?1498120984512 " alt="0岁孩子 0岁父母 ">
+												</div>
+												<h3 class="name">
+													0岁孩子 0岁父母 
+												</h3>
+												<div class="author">
+													北京师范大学家庭教育课题组 著 著作 
+												</div>
+												<div class="price">
+													<span class="price-n">
+														￥24
+													</span>
+													<span class="price-o">
+														￥35
+													</span>
+												</div>
+											</a>
+											<span class="addCart J_addCart" data-id="1201495927">
+												<i class="iconfont"></i>
+											</span>
+										</div>
+									</li>
+									<li>
+										<div class="item item-0">
+											<a href="/product/1201482945" title="真正的蒙氏教育在家庭(50个经典数学游戏造就孩子思维力) ">
+												<div class="img">
+													<img src="http://img0.winxuancdn.com/0984/1201470984_11_1.jpg?1495160326171 " alt="真正的蒙氏教育在家庭(50个经典数学游戏造就孩子思维力) ">
+												</div>
+												<h3 class="name">
+													真正的蒙氏教育在家庭(50个经典数学游戏造就孩子思维力) 
+												</h3>
+												<div class="author">
+													(美)白玛琳(Marlene Barron,Ph.D.),(马来)骆思洁(Jesmine Lok) 著;邓峰 译 著作 
+												</div>
+												<div class="price">
+													<span class="price-n">
+														￥30
+													</span>
+													<span class="price-o">
+														￥48
+													</span>
+												</div>
+											</a>
+											<span class="addCart J_addCart" data-id="1201482945">
+												<i class="iconfont"></i>
+											</span>
+										</div>
+									</li>
+									<li>
+										<div class="item item-0">
+											<a href="/product/1201495930" title="4岁孩子 4岁父母 ">
+												<div class="img">
+													<img src="http://img1.winxuancdn.com/3817/1201483817_11_1.jpg?1498120986212 " alt="4岁孩子 4岁父母 ">
+												</div>
+												<h3 class="name">
+													4岁孩子 4岁父母 
+												</h3>
+												<div class="author">
+													北京师范大学家庭教育课题组 著 著作 
+												</div>
+												<div class="price">
+													<span class="price-n">
+														￥24
+													</span>
+													<span class="price-o">
+														￥35
+													</span>
+												</div>
+											</a>
+											<span class="addCart J_addCart" data-id="1201495930">
+												<i class="iconfont"></i>
+											</span>
+										</div>
+									</li>
+									<li>
+										<div class="item item-0">
+											<a href="/product/1201482877" title="真正的蒙氏教育在家庭：蒙台梭利家庭教育解决方案 全美官方版 (全美官方版) ">
+												<div class="img">
+													<img src="http://img1.winxuancdn.com/0917/1201470917_11_1.jpg?1495160862051 " alt="真正的蒙氏教育在家庭：蒙台梭利家庭教育解决方案 全美官方版 (全美官方版) ">
+												</div>
+												<h3 class="name">
+													真正的蒙氏教育在家庭：蒙台梭利家庭教育解决方案 全美官方版 (全美官方版) 
+												</h3>
+												<div class="author">
+													(美)白玛琳((Marlene Barron),(马来)骆思洁(Jesmine Lok) 著;邓峰 译 著作 
+												</div>
+												<div class="price">
+													<span class="price-n">
+														￥115
+													</span>
+													<span class="price-o">
+														￥192
+													</span>
+												</div>
+											</a>
+											<span class="addCart J_addCart" data-id="1201482877">
+												<i class="iconfont"></i>
+											</span>
+										</div>
+									</li>
+									<li>
+										<div class="item item-0">
+											<a href="/product/1201524400" title="蒙台梭利家庭教育解决方案全美官方版套装 ">
+												<div class="img">
+													<img src="http://img2.winxuancdn.com/1854/1201511854_11_1.jpg?1497758149026 " alt="蒙台梭利家庭教育解决方案全美官方版套装 ">
+												</div>
+												<h3 class="name">
+													蒙台梭利家庭教育解决方案全美官方版套装 
+												</h3>
+												<div class="author">
+													(美)白玛琳(Marlene Barron,Ph.D.),(马来)骆思洁(Jesmine Lok) 著；邓峰 译 等 
+												</div>
+												<div class="price">
+													<span class="price-n">
+														￥148
+													</span>
+													<span class="price-o">
+														￥192
+													</span>
+												</div>
+											</a>
+											<span class="addCart J_addCart" data-id="1201524400">
+												<i class="iconfont"></i>
+											</span>
+										</div>
+									</li>
+									<li>
+										<div class="item item-0">
+											<a href="/product/1201482928" title="真正的蒙氏教育在家庭:50个经典语言游戏造就孩子表达力 ">
+												<div class="img">
+													<img src="http://img3.winxuancdn.com/0967/1201470967_11_1.jpg?1495160688134 " alt="真正的蒙氏教育在家庭:50个经典语言游戏造就孩子表达力 ">
+												</div>
+												<h3 class="name">
+													真正的蒙氏教育在家庭:50个经典语言游戏造就孩子表达力 
+												</h3>
+												<div class="author">
+													(美)白玛琳(Marlene Barron,Ph.D.),(马来)骆思洁(Jesmine Lok) 著；邓峰 译 
+												</div>
+												<div class="price">
+													<span class="price-n">
+														￥30
+													</span>
+													<span class="price-o">
+														￥48
+													</span>
+												</div>
+											</a>
+											<span class="addCart J_addCart" data-id="1201482928">
+												<i class="iconfont"></i>
+											</span>
+										</div>
+									</li>
+									<!--#list-->
+								</ul>
+								<div id="pullUp">
+									<div class="loader">
+										<span>
+										</span>
+										<span>
+										</span>
+										<span>
+										</span>
+										<span>
+										</span>
+									</div>
+									<span class="pullUpLabel">
+										<b class="iconfont">
+											
+										</b>
+										加载更多...
+									</span>
+								</div>
+							</div>
+						<div class="myScrollbarV" style="pointer-events: none; transition-property: opacity; overflow: hidden; opacity: 1;"><div style="pointer-events: none; transition-property: transform; transition-timing-function: cubic-bezier(0.33, 0.66, 0.66, 1); transform: translate(0px, 0px) translateZ(0px); height: 142px;"></div></div></div>
+						<!--#if   这里50改成{(data.searchResult.page.pageCount)!}-->
+						<script type="text/javascript">seajs.use('pullload', function(Pullload){	Pullload.init(14);});</script>
+						<!--#if-->
+						<!--#if-->
+						<!-- 商品展示-1行2列-样式1 end -->
+						<!-- 分页和回到底部 -->
+						
+						<!-- 模态窗口(提示) -->
+						<div class="wa-modal" id="doc" tabindex="-1">
+							<div class="modal-cont">
+								<div class="icontip"><i class="iconfont"></i><b>添加成功</b></div>
+							</div>
+						</div>
+						<!-- 模态窗口(提示) end -->
+						<!-- 模态窗口(加载) -->
+						<div class="wa-modal-loading" id="loading" tabindex="-1">
+							<div class="modal-cont">
+								<div class="loading"></div>
+							</div>
+						</div>
+						<!-- 模态窗口(加载) end -->
+						
+						<div class="module wa-pagegotop">
+							<div class="pagegotop-box J_pagebox">
+								<span class="page">
+									<s class="J_current">
+										1
+									</s>
+									/
+									<s class="J_total">
+										14
+									</s>
+								</span>
+								<a href="javascript:;" class="iconfont J_totop">
+									
+								</a>
+							</div>
+						</div>
+						<script type="text/javascript">
+								seajs.use('toolkit', function(Toolkit) {
+	    var t = new Toolkit();
+	    t.toTop('.J_totop', '.J_booklist');
+	});
+						</script>
+						<!--#if-->
+						<!-- 分页和回到底部 end -->
+					</div>
+				</div>
+			</div>
+		</div>
+	
+</body></html>

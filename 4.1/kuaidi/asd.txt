@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="description" content="一站式的快递查询平台，方便快捷。支持国内外近百家快递、物流公司。" />
+<meta name="keywords" content="快递查询,物流查询,快递单号查询" />
+<title>快递100 - 提供一站式快递查询服务</title>
+<link rel="stylesheet" href="https://cdn.kuaidi100.com/css/frame/app/app.css?version=201611092023" />
+</head>
+<body>
+<div>
+  <div id="divbgs">
+    <div class="divcontentbg">
+      <div class="c_round_gray">
+        <div class="searchborder-new" id="searchborder" style="width:506px;">
+          <div id="divsearch">
+            <ul class="code-list" id="hasvalide" style="display:none;line-height:">
+              <li>请您输入验证码：</li>
+              <li class="co2">
+                <input name="valicode"  id="valicode" type="text" class="input2"  maxlength="10" style="vertical-align:top" />
+              </li>
+              <li class="co1" id="liimagediv"><a href="#" onclick="return false;" style="display:block"><img src="https://cdn.kuaidi100.com/images/clear.gif" name="valiimages" id="valiimages" title="点击获取新验证码" onclick="refreshcode()" /></a></li>
+              <li><a href="#" class="f12"  onclick="refreshcode();return false;">看不清，换一张</a></li>
+              <li><a href="#" class="searchbutton" style="margin:0 0 0 10px;" onclick="getResult();return false;" onfocus="this.blur();" id="lika">查询</a></li>
+            </ul>
+          </div>
+          <div class="clear"></div>
+        </div>
+      </div>
+      <div>
+        <div id="waitdiv" class="wait"><img src="https://cdn.kuaidi100.com/images/ajax-loader.gif" width="16" height="16" alt="快递查询" align="absmiddle" /> <font id="waitinfo">正在查询......</font></div>
+        <div class="round_gray_new" id="errordiv" style="display:none;clear:both;"> <b class="xtop"><b class="xb1a"></b><b class="xb2a"></b><b class="xb3a"></b><b class="xb4a"></b></b>
+          <div class="xboxcontent_a">
+            <p style="line-height:25px;margin:0px;padding:0px;"><font id="errorMessage">您输入的验证码错误，请重新输入！</font></p>
+          </div>
+          <b class="xbottom"><b class="xb4a"></b><b class="xb3a"></b><b class="xb2a"></b><b class="xb1a"></b></b> </div>
+        <div class="round_gray_new" id="notfind" style="display:none;"> <b class="xtop"><b class="xb1a"></b><b class="xb2a"></b><b class="xb3a"></b><b class="xb4a"></b></b>
+          <div class="xboxcontent_a" id="round_gray1">
+            <p id="notfindMessage">此单号无记录，请核对快递公司名称和运单号码是否正确！</p>
+            <dl class="list" >
+              <dt><strong>操作建议：</strong></dt>
+              <dd>·如果您的快递还没有从商家或快递公司处发货，或刚发货不久，请隔一段时间再查</dd>
+              <dd>·联系我们的客服人员，在“联系我们”、“售后服务”或“在线咨询”等有联系方式</dd>
+              <dd>·联系快递员或快递网点<a href="http://blog.kuaidi100.com/?p=47" target="_blank">联系方法&gt;&gt;</a></dd>
+              <dd>·还没解决问题？<a href="#" onclick="feedback();return false;">我要报错&gt;&gt;</a></dd>
+              <dd id="sendsmsinfo" style="display:none">刚发出的快递如查询不到，可自动短信提醒<a href="javascript:gotomessage();" class="dx-button" ></a></dd>
+            </dl>
+          </div>
+          <b class="xbottom"><b class="xb4a"></b><b class="xb3a"></b><b class="xb2a"></b><b class="xb1a"></b></b> </div>
+        <div class="kd-result-new" id="showcontext" style="display:none;" >
+          <table width="514" border="0" cellspacing="0" cellpadding="0" id="showtablecontext">
+            <tr>
+              <td width="27%" class="bluebg" onclick="sortToggle()" style="cursor:pointer"><span class="b-btn"><b class="b-up b-up-active" id="b-up"></b><b class="b-down" id="b-down"></b></span>时间</td>
+              <td width="73%" class="bluebg">地点和跟踪进度</td>
+            </tr>
+          </table>
+        </div>
+        <div class="divpaging fr" id="fenye"></div>
+      </div>
+      <div id="adBottom" class="kd-bottom" style="text-align:center"><a href="https://www.kuaidi100.com/mobile/android.shtml?from=api" target="_blank"><img src="//ubmcmm.baidustatic.com/media/v1/0f0005yYIdGho3c_fPudd0.jpg" title="" alt="" border="0" height="60" width="468"></a></div>
+    </div>
+  </div>
+</div>
+<script src="https://cdn.kuaidi100.com/js/share/company.js?version=201611092023"></script> 
+<script src="https://cdn.kuaidi100.com/js/page/frame/htmlapi.js?version=201611092023"></script> 
+<script >var com="zhongtong";var nu="454141206962";init();</script> 
+<script src="https://cdn.kuaidi100.com/js/share/count.js?version=201611092023"></script>
+</body>
+</html>

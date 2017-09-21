@@ -1,0 +1,510 @@
+<html class="am-touch js cssanimations"><head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <title>结算页</title>
+
+    <script src="http://static.winxuancdn.com/cms/??assets/js/wxwebapp2.0/jquery.min.js,assets/js/wxwebapp2.0/amazeui.min.js,assets/js/library/seajs/2.2.1/sea.js,assets/js/wxwebapp2.0/seajs.config.js?1505285554036"></script>
+
+    <link href="http://static.winxuancdn.com/cms/??assets/styles/wxwebapp2.0/app.css,assets/layout/grid-m100.css,assets/styles/wxwebapp2.0/form.css,assets/styles/wxwebapp2.0/mods/wa-goodsshow.css,assets/styles/wxwebapp2.0/mods/wa-head-secondary.css,assets/styles/wxwebapp2.0/mods/wa-head-detail.css,assets/styles/wxwebapp2.0/mods/wa-trade.css,assets/styles/wxwebapp2.0/mods/wa-gift.css,assets/styles/wxwebapp2.0/mods/wa-single-giftCard.css,assets/styles/wxwebapp2.0/mods/ot-iscroll.css?1505285554036" rel="stylesheet">
+
+</head>
+
+<body>
+<div id="page">
+    <div class="layout grid-m100 J_Layout" data-gridid="1">
+        <div class="col-main">
+            <div class="main-wrap J_Region" data-colname="main-wrap" data-support="100">
+                <!-- 结算页头部-->
+                <div class="module wa-head-secondary shadow J_balancehead">
+                    <div class="head-box">
+                        <a href="javascript:;" class="back J_back"><span class="iconfont"></span></a>
+                        <div class="cont J_listItemCont">
+                            <h2>确认订单</h2>
+                        </div>
+                        <a href="http://m.winxuan.com/address" class="edit J_manageAddr hide"><span>管理</span></a>
+                    </div>
+                </div>
+                <!-- 结算页头部 end -->
+
+                <!-- 新建收货地址顶部条 -->
+                <div class="module wa-head-detail shadow-2 J_addressAddhead hide">
+                    <div class="head-box">
+                        <a href="javascript:;" class="back J_addressAddback"><span class="iconfont"></span></a>
+                        <div class="cont">
+                            <h2>新建收货地址</h2>
+                        </div>
+                        <div class="more" data-am-dropdown="">
+                            <a class="am-dropdown-toggle" data-am-dropdown-toggle=""><span class="iconfont"></span></a>
+                            <ul class="am-dropdown-content">
+                                <i class="arrow"></i>
+                                <li>
+                                    <a href="http://m.winxuan.com"><s class="iconfont"></s>首页</a>
+                                </li>
+                                <li>
+                                    <a href="http://m.winxuan.com/cms/class_s"><s class="iconfont"></s>分类搜索</a>
+                                </li>
+                                <li>
+                                    <a href="http://m.winxuan.com/usercenter"><s class="iconfont"></s>我的文轩</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="wa-head-height"></div>
+                <!-- 新建收货地址顶部条 end -->
+
+                <!-- 结算页主体 -->
+                <div class="module wa-trade J_Balance">
+                    <div class="trade-box J_balanceMain">
+                        <!-- 收货地址 -->
+                        <div class="select-box shadow-2 addr">
+                            <a href="javascript:;">
+                                <div class="cont">
+                                    <!-- 空地址 -->
+                                        <span class="null J_emptyAddress">请新建收货地址以确保商品顺利到达</span>
+                                    <!--  空地址 end -->
+
+                                    <!-- 有地址 -->
+                                    <!-- 有地址 end -->
+                                </div>
+                                <i class="gt iconfont"></i>
+                            </a>
+                        </div>
+                        <!-- 收货地址 end -->
+
+                        <!-- 支付配送发票 -->
+                        <div class="select-box-group shadow-2">
+                            <a class="item" href="javascript:;" data-widget="selectDistribute" data-id=""> <span>配送方式</span>
+                                <b><i class="iconfont"></i></b>
+                            </a>
+                            <a class="item" href="javascrip:;" data-widget="selectPayment">
+                                <span>支付方式</span> <b><i class="iconfont"></i></b>
+                            </a>
+                            <a class="item" href="javascript:;" data-widget="selectInvoice">
+                                <span>发票信息</span> <b>不需要发票<i class="iconfont"></i></b>
+                            </a>
+                        </div>
+                        <!-- 支付配送发票 end -->
+                        <!--礼品礼券-->
+                        <div class="select-box-group shadow-2 gift">
+                            <a class="item" href="javascrip:;" data-widget="selectPresent" data-num="0">
+                                <span>礼券</span>
+                                <b>
+                                    无可用<i class="iconfont"></i></b>
+                            </a>
+                            <a class="item" href="javascript:;" data-widget="selectPresentCard" data-num="0">
+                                <span>礼品卡/畅读卡</span>
+                                <b>
+                                    无可用<i class="iconfont"></i></b>
+                            </a>
+                            <a class="item" href="javascript:;">
+                                <div class="useMoney">
+                                    <span>暂存款</span>
+                                    <span class="use unableuse">可用余额</span>
+                                    <!--unableuse灰色背景，默认红色-->
+                                    <span class="money">￥0.00</span>
+                                </div>
+                                <b>
+                                    <strong class="switch-btn J_temporary disabled"><i></i></strong>
+                                    <!--active选中，默认不选中-->
+                                </b>
+                                <input type="hidden" name="temporary" value="true">
+                            </a>
+                        </div>
+                        <!--礼品礼券end-->
+
+                        <!-- 文轩现货 -->
+                        <div class="list-trade shadow-2">
+                            <h4>
+                                <b><i class="iconfont"></i>
+                                </b>
+                                <span>共<s>1</s>件商品</span>
+                            </h4>
+                            <ul class="wa-goodsshow J_productList">
+
+                                    <li>
+                                    <div class="item item-7">
+                                        <a href="http://m.winxuan.com/product/1201569804" title="">
+                                            <div class="img">
+                                                <img data-original="" alt="世界著名中学办学之道" src="http://img0.winxuancdn.com/4672/1201554672_11_1.jpg?1504645337521">
+                                            </div>
+                                            <h3 class="name">世界著名中学办学之道</h3>
+                                            <div class="price">
+															<span class="price-n">￥23.90
+                                            </span></div>
+                                            <div class="num">
+                                                <s>X</s>1
+                                            </div>
+                                        </a>
+                                    </div>
+                                    </li>
+                            </ul>
+
+                            <!-- 展开收起 -->
+                        </div>
+                        <!-- 文轩现货 end -->
+
+                        <!--商品合计-->
+                <!--商品合计 end-->
+
+                <!-- 提交框 -->
+                <div class="submit-box">
+                    <div class="cont">
+                        <div class="all-total">
+                            实付款：<b class="J_actualpay">￥0.00
+                   </b>
+                        </div>
+                        <button class="submit">提交订单</button>
+                    </div>
+                </div>
+                <div class="submit-box-height"></div>
+                <!-- 提交框 end -->
+
+            </div>
+        </div>
+        <!-- 结算页主体 end -->
+
+        <!-- 模态窗口(选择框-发票信息) -->
+        <div class="wa-modal-select J_modal wa-coupon wa-gitfCard" id="select1" tabindex="-1">
+            <div class="modal-cont hide J_invoice">
+                <div class="hd">
+                    <h4>发票信息</h4>
+                </div>
+                <div class="cont invoice">
+                    <div class="item" data-select="" data-id="0">
+                        <b>不需要发票</b> <label class="form-checkbox"> <input type="checkbox" checked="checked" data-id="0"> <i class="iconfont"></i>
+                    </label>
+                    </div>
+                    <div class="item" data-select="" data-id="3460">
+                        <b>需要发票(个人)</b> <label class="form-checkbox"> <input type="checkbox" data-id="3460"> <i class="iconfont"></i>
+                    </label>
+                    </div>
+                    
+                    <div class="item last J_invoiceName" data-select="" data-id="3461">
+                        <b>需要发票(企业)</b> <label class="form-checkbox"> <input type="checkbox" data-id="3461"> <i class="iconfont"></i>
+                    </label>
+                    </div>
+                    <div class="item last J_invoiceName" data-select="" data-id="3462">
+                        <b>需要发票(非企业性单位)</b> <label class="form-checkbox"> <input type="checkbox" data-id="3462"> <i class="iconfont"></i>
+                    </label>
+                    </div>
+                    <div class="item-input form-text" id="unit">
+                        <input class="text" disabled="disabled" type="text" placeholder="请填写发票抬头,如单位名称"> <span class="tip" style="display:none"><i class="iconfont"></i>必填</span>
+                    </div>
+                    <div class="item-input form-text" id="identify">
+                        <input class="text" disabled="disabled" type="text" placeholder="请填写纳税人识别号或社会统一信用代码"> <span class="tip" style="display:none"><i class="iconfont"></i>必填</span>
+                    </div>
+                    
+                </div>
+                <div class="btn-box am-modal-footer">
+                    <a href="javascript:;" class="ok" data-settle="setInvoice">确定</a>
+                </div>
+            </div>
+            <div class="modal-cont hide J_distribute">
+                <div class="hd">
+                    <h4>配送方式</h4>
+                </div>
+                <div class="cont invoice">
+                </div>
+                <div class="btn-box am-modal-footer">
+                    <a href="javascript:;" class="ok" data-settle="setDeliveryType">确定</a>
+                </div>
+            </div>
+            <div class="modal-cont hide J_payment">
+                <div class="hd">
+                    <h4>支付方式</h4>
+                </div>
+                <div class="cont invoice">
+                </div>
+                <div class="btn-box am-modal-footer">
+                    <a href="javascript:;" class="ok" data-settle="setPayment">确定</a>
+                </div>
+            </div>
+            <!--礼券-->
+            <div class="modal-cont J_gift">
+                <div class="hd">
+                    <h4>使用礼券</h4>
+                </div>
+                <div class="cont invoice">
+                    <div class="inputBox">
+                        <div class="import">
+                            <input type="text" placeholder="使用激活码激活">
+                            <p class="txt J_presentTip hide">
+                                <i class="iconfont"></i>
+                                <span>礼券激活码有误,请重新输入</span>
+                            </p>
+                        </div>
+                        <div class="sure">
+                            <a href="javascript:;" class="J_presentAddBtn">激活</a>
+                        </div>
+                    </div>
+                    <div class="am-tabs detail-tabs coupon_content" data-am-tabs="{noSwipe: 1}">
+                        <ul class="am-tabs-nav navList">
+                            <li class="am-active">
+                                <a href="#tab-1">可用礼券</a>
+                            </li>
+                            <li class="">
+                                <a href="#tab-2">不可用礼券</a>
+                            </li>
+                        </ul>
+                        <div class="am-tabs-bd content small">
+                            <div class="am-tab-panel am-fade am-active am-in" id="tab-1" style="height: 183.6px; overflow: hidden;">
+                                <div class="scroll-list" style="transition-property: transform; transform-origin: 0px 0px 0px; transition-timing-function: cubic-bezier(0.33, 0.66, 0.66, 1); transform: translate(0px, 0px) translateZ(0px);">
+                                    <div class="scroll-main">
+                                    	        	<div class="no_item"> 
+		           <p class="er">很遗憾</p> 
+		           <p class="without">您的账户暂无可用优惠劵</p> 
+		        </div> 
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="am-tab-panel am-fade" id="tab-2" style="height: 183.6px; overflow: hidden;">
+                                <div class="scroll-list2" style="transition-property: transform; transform-origin: 0px 0px 0px; transition-timing-function: cubic-bezier(0.33, 0.66, 0.66, 1); transform: translate(0px, 0px) translateZ(0px);">
+                                    <div class="scroll-main2">
+                                    	        	<div class="no_item"> 
+		           <p class="er">很遗憾</p> 
+		           <p class="without">您的账户暂无不可用优惠劵</p> 
+		        </div> 
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hint">
+                        温馨提示:每个订单仅限使用一张礼券。
+                    </div>
+
+                </div>
+                <div class="sub">
+                    <a href="javascript:;" class="ok" data-settle="setPresent">确定</a>
+                </div>
+            </div>
+            <!--礼券end-->
+            <!--礼品卡-->
+            <div class="modal-cont J_giftcard">
+                <div class="hd">
+                    <h4>使用礼品卡/畅读卡</h4>
+                </div>
+                <div class="cont invoice">
+                    <div class="gitfCard_head">
+                        <div class="import">
+                            <input type="text" class="im_left" placeholder="请输入卡号">
+                            <input type="text" class="im_right" placeholder="请输入密码">
+                        </div>
+                        <div class="sub">
+                            <a href="javascript:;" class="J_presentCardAddBtn">添加</a>
+                            <p class="prompt hide">
+                                <i class="iconfont"></i>
+                                <span></span>
+                            </p>
+                        </div>
+                    </div>
+                    <div id="presentcard" style="height: 183.6px; overflow: hidden;">
+                        <div class="gitfCard_content removePadding" style="transition-property: transform; transform-origin: 0px 0px 0px; transition-timing-function: cubic-bezier(0.33, 0.66, 0.66, 1); transform: translate(0px, 0px) translateZ(0px);">
+                            <div class="scroll-main">
+                            	        	<div class="no_item">
+		           <p class="er">很遗憾</p>
+		           <p class="without">您的账户暂无可用礼品卡 / 畅读卡</p>
+		        </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hint">
+                        温馨提示：支持多张卡片叠加使用；不支持畅读卡购买百货.
+                    </div>
+                </div>
+
+                <div class="subBtn">
+                    <a href="javascript:;" class="ok" data-settle="setPresentCard">确定</a>
+                </div>
+            </div>
+            <!--礼品卡end-->
+            <div class="modal-cont hide J_mobileVaild">
+                <div class="hd">
+                    <h4>输入短信验证</h4>
+                </div>
+                <div class="cont invoice J_box">
+                    <div class="hint">
+                        温馨提示：暂存款使用需输入短信验证码
+                    </div>
+                </div>
+                <div class="btn-box am-modal-footer">
+                    <a href="javascript:;" class="ok J_sureOk">确定</a>
+                </div>
+            </div>
+        </div>
+        <!-- 模态窗口(选择框-发票信息) end -->
+        <!-- 选择收货地址 -->
+        <div class="module wa-trade-addr J_addresslist hide">
+            <div class="addr-box">
+                <div class="addr-list">
+                </div>
+
+                <!-- 添加新地址 -->
+                <div class="trade-footbtn">
+                    <button class="ok" data-widget="addAddr">添加新地址</button>
+                </div>
+
+                <div class="trade-footbtn-height"></div>
+                <!-- 添加新地址 end -->
+            </div>
+        </div>
+        <!-- 选择收货地址 end -->
+
+        <!-- 编辑或新增地址 -->
+        <div class="module wa-trade wa-trade-addr wa-trade-form hide J_addressAdd">
+            <form method="POST" name="consignee-info" id="consignee">
+                <div class="trade-box addr-box">
+                    <!-- 基本信息 -->
+                    <div class="select-box-group select-box-group-form shadow-2">
+                        <a class="item" href="javascript:;"> <span>收 货 人：</span> <s><input class="text input" type="text" data-type="name" name="consignee" data-valid="false"></s>
+                        </a>
+                        <a class="item" href="javascript:;"> <span>手 机：</span> <s><input class="text input" type="number" data-type="tel" name="mobile" data-valid="false"></s>
+                        </a>
+                        <a class="item" href="javascript:;"> <span>邮 箱：</span> <s><input class="text input" type="email" data-type="email" name="email" data-valid="false"></s>
+                        </a>
+                    </div>
+                    <!-- 基本信息 end -->
+
+                    <!-- 地址信息 -->
+                    <div class="select-box-group select-box-group-form shadow-2">
+                        <div class="item"><span>国 家：</span> <s><select class="select" arealevel="country" name="country.id">
+                        <option value="23" selected="selected">中国</option><option value="625">阿尔及利亚</option><option value="626">阿根廷</option><option value="627">阿联酋</option><option value="628">埃及</option><option value="629">爱尔兰</option><option value="630">奥地利</option><option value="631">澳大利亚</option><option value="632">巴基斯坦</option><option value="633">巴拿马</option><option value="634">巴西</option><option value="635">白俄罗斯</option><option value="636">保加利亚</option><option value="637">比利时</option><option value="638">波多黎各</option><option value="639">波兰</option><option value="640">玻利维亚</option><option value="641">丹麦</option><option value="642">德国</option><option value="643">俄罗斯</option><option value="644">法国</option><option value="645">菲律宾</option><option value="646">芬兰</option><option value="647">古巴</option><option value="648">关岛</option><option value="649">韩国</option><option value="650">荷兰</option><option value="651">加拿大</option><option value="652">柬埔寨</option><option value="653">捷克</option><option value="654">喀麦隆</option><option value="655">科威特</option><option value="656">老挝</option><option value="657">黎巴嫩</option><option value="658">列支敦士登</option><option value="659">卢森堡</option><option value="660">卢旺达</option><option value="661">罗马尼亚</option><option value="662">马尔代夫</option><option value="663">马来西亚</option><option value="664">美国</option><option value="665">蒙古</option><option value="666">孟加拉</option><option value="667">秘鲁</option><option value="668">墨西哥</option><option value="669">南非</option><option value="670">南斯拉夫</option><option value="671">尼日利亚</option><option value="672">挪威</option><option value="673">葡萄牙</option><option value="674">其他国家或地区</option><option value="675">日本</option><option value="676">瑞典</option><option value="677">瑞士</option><option value="678">塞浦路斯</option><option value="679">沙特阿拉伯</option><option value="680">斯里兰卡</option><option value="681">泰国</option><option value="682">坦桑尼亚</option><option value="683">土耳其</option><option value="684">委内瑞拉</option><option value="685">文莱</option><option value="686">乌克兰</option><option value="687">乌拉圭</option><option value="688">西班牙</option><option value="689">希腊</option><option value="690">新加坡</option><option value="691">New Zealand</option><option value="692">匈牙利</option><option value="693">牙买加</option><option value="694">意大利</option><option value="695">印度</option><option value="696">印度尼西亚</option><option value="697">英国</option><option value="698">越南</option><option value="699">智利</option></select></s> <b><i class="iconfont"></i></b>
+                        </div>
+                        <div class="item"><span>省 份：</span> <s><select arealevel="province" name="province.id" class="select">
+                            <option selected="selected" value="-1">请选择省份</option>
+                        <option value="150">安徽省</option><option value="151">澳门</option><option value="152">北京市</option><option value="153">福建省</option><option value="154">甘肃省</option><option value="155">广东省</option><option value="156">广西壮族自治区</option><option value="157">贵州省</option><option value="158">海南省</option><option value="159">河北省</option><option value="160">河南省</option><option value="161">黑龙江省</option><option value="162">湖北省</option><option value="163">湖南省</option><option value="164">吉林省</option><option value="165">江苏省</option><option value="166">江西省</option><option value="167">辽宁省</option><option value="168">内蒙古自治区</option><option value="169">宁夏回族自治区</option><option value="170">青海省</option><option value="171">山东省</option><option value="172">山西省</option><option value="173">陕西省</option><option value="174">上海市</option><option value="175" selected="selected">四川省</option><option value="176">台湾</option><option value="177">天津市</option><option value="178">西藏自治区</option><option value="179">香港</option><option value="180">新疆维吾尔自治区</option><option value="181">云南省</option><option value="182">浙江省</option><option value="183">重庆市</option></select></s> <b><i class="iconfont"></i></b>
+                        </div>
+                        <div class="item"><span>城 市：</span> <s><select arealevel="city" name="city.id" class="select">
+                            <option selected="selected" value="-1">请选择城市</option>
+                        <option value="474">德阳市</option><option value="475">绵阳市</option><option value="476">泸州市</option><option value="477">南充市</option><option value="479">广元市</option><option value="480">乐山市</option><option value="482">凉山彝族自治州</option><option value="483">自贡市</option><option value="854">眉山市</option><option value="1115">遂宁市</option><option value="1116">内江市</option><option value="1117">宜宾市</option><option value="1118">攀枝花市</option><option value="1119">广安市</option><option value="1120">雅安市</option><option value="1121">巴中市</option><option value="1122">资阳市</option><option value="1123">达州市</option><option value="1124">阿坝藏族羌族自治州</option><option value="1125">甘孜藏族自治州</option><option value="1507" selected="selected">成都市</option></select></s> <b><i class="iconfont"></i></b>
+                        </div>
+                        <div class="item"><span>区 县：</span> <s><select arealevel="district" name="district.id" class="select">
+                            <option selected="selected" value="-1">请选择区县</option>
+                        <option value="1508">锦江区</option><option value="1509">青羊区</option><option value="1510" selected="selected">金牛区</option><option value="1511">武侯区</option><option value="1512">成华区</option><option value="1514">龙泉驿区</option><option value="1515">青白江区</option><option value="1516">新都区</option><option value="1517">都江堰市</option><option value="1518">彭州市</option><option value="1519">邛崃</option><option value="1520">崇州市</option><option value="1521">双流县</option><option value="1522">郫县</option><option value="1523">新津县</option><option value="1524">金堂县</option><option value="1525">大邑县</option><option value="1526">蒲江</option><option value="1527">温江区</option></select></s> <b><i class="iconfont"></i></b>
+                        </div>
+                        <div class="item"><span>乡 镇：</span> <s><select arealevel="town" name="town.id" class="select">
+                            <option selected="selected" value="-1">请选择乡镇</option>
+                        <option value="77434">西安路街道</option><option value="77435">西华街道</option><option value="77436">人民北路街道</option><option value="77437">荷花池街道</option><option value="77438">驷马桥街道</option><option value="77439">茶店子街道</option><option value="77440">抚琴街道</option><option value="77441">九里堤街道</option><option value="77442">五块石街道</option><option value="77443">黄忠街道</option><option value="77444">营门口街道</option><option value="77445">金泉街道</option><option value="77446">沙河源街道</option><option value="77447">天回镇街道</option><option value="77448">凤凰山街道</option><option value="90738">金牛区</option></select></s> <b><i class="iconfont"></i></b>
+                        </div>
+                        <div class="item" style="height: auto;">
+                            <span>详细地址：</span> <s><textarea class="textarea input" data-type="address" data-valid="false" name="address"></textarea></s>
+                        </div>
+                        <div class="item hide"><span>邮 编：</span> <s>
+                            <input class="text input" type="hidden" value="888888" name="zipCode"></s>
+                        </div>
+                    </div>
+                    <!-- 地址信息 end -->
+
+                    <!-- 设为默认 -->
+                    <div class="select-box-group select-box-group-form shadow-2">
+                        <a class="item J_setDefaultBtn active" href="javascript:;">
+                            <span>设为默认：</span> <s class="s"></s> <b><strong class="switch-btn"><i></i></strong></b> <input type="hidden" name="usual" value="true">
+                        </a>
+                    </div>
+                    <!-- 设为默认 end -->
+
+                    <!-- 保存删除框 -->
+                    <div class="trade-footbtn">
+                        <button class="cancel J_addressAddCancel">取消</button>
+                        <button class="ok J_addressAddOk">保存</button>
+                    </div>
+                    <div class="trade-footbtn-height"></div>
+                    <!-- 保存删除框 end -->
+
+                </div>
+            </form>
+        </div>
+        <!-- 编辑或新增地址 end -->
+
+        <!-- 模态窗口(加载) -->
+        <div class="wa-modal-loading" id="loading" tabindex="-1" style="display: none;">
+            <div class="modal-cont">
+                <div class="loading"></div>
+            </div>
+        </div>
+        <!-- 模态窗口(加载) end -->
+
+        <!-- 消息弹窗 -->
+        <div class="wa-modal" id="message" tabindex="-1">
+            <div class="modal-cont">
+                <div class="icontip">
+                    <i class="iconfont"></i><b class="J_validatemsg"></b>
+                </div>
+            </div>
+        </div>
+        <!-- 消息弹窗 end-->
+
+        <script type="text/javascript">
+
+            seajs.use(['balance', 'wxpull', 'wallet'], function (Balance, Wxpull, Wallet) {
+                var vo = {
+                    orderVo: {"channelId":8092,"deliveryoption":3436,"from":"cart","invoiceTitle":"","invoiceType":3460,"needInvoice":false,"payPassword":"","presentId":0,"productList":"1201569804*1","serializePara":"","shopId":1,"useAccount":false,"usePresent":false,"usePresentCard":false,"useStoreCard":false},
+                    confusingMobile: ""
+                };
+                var balance = new Balance(vo);
+                var nt = vo.orderVo.orderAmount;
+                var present = new Wxpull('tab-1', {
+                            requestUrl: {
+                                load: 'http://m.winxuan.com/customer/present/settlement/list?active=true&orderAmount=' + nt
+                            },
+                            page: 1,
+                            fillContent: '#tab-1 .scroll-main',
+                            pagesize: 15,
+                            item: '.item',
+                            container: '.content'
+                        }),
+                        present2 = new Wxpull('tab-2', {
+                            requestUrl: {
+                                load: 'http://m.winxuan.com/customer/present/settlement/list?active=false&orderAmount=' + nt
+                            },
+                            page: 1,
+                            fillContent: '#tab-2 .scroll-main2',
+                            pagesize: 15,
+                            item: '.item',
+                            container: '.content'
+                        }),
+                        presentcard = new Wxpull('presentcard', {
+                            requestUrl: {
+                                load: 'http://m.winxuan.com/customer/presentcard/settlement/list'
+                            },
+                            page: 1,
+                            fillContent: '#presentcard .scroll-main',
+                            pagesize: 15,
+                            item: '.item',
+                            container: '.content'
+                        }),
+                        wallet = new Wallet({
+                            context: '.wa-coupon',
+                            present: '.J_gift .import input',
+                            presentAddBtn: '.J_presentAddBtn',
+                            presentWrapper: '#tab-1 .scroll-main',
+                            presentdisWrapper: '#tab-2 .scroll-main2',
+                            afterAddPresent: function (d) {
+                                var i = Number(!d.flag);
+                                $('.navList li').eq(i).children('a').trigger('click');
+                            },
+                            totalPay: nt,
+                            presentTip: '.J_presentTip',
+                            presentRefference: present,
+                            presentdisRefference: present2,
+                            presentCard: '.gitfCard_head .im_left',
+                            presentPwd: '.gitfCard_head .im_right',
+                            presentCardAddBtn: '.J_presentCardAddBtn',
+                            presentCardTip: '.gitfCard_head .prompt',
+                            presentCardRefference: presentcard,
+                            presentCardWrapper: '.J_giftcard .scroll-main'
+                        });
+            });
+        </script>
+    </div>
+</div>
+</div>
+</div>
+<div id="para" style="display:none"></div>
+<script src="http://hm.baidu.com/hm.js?012b44bbfe8655062a76be1a83ad45e2"></script>
+
+</body></html>

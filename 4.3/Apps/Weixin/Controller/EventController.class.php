@@ -20,7 +20,8 @@ class EventController extends CommonController {
 				}
 				else
 				{
-					$contentStr = "欢迎关注我!";
+					$contentStr = "欢迎关注我!\n";
+					$contentStr .= "回复 tq/城市名 可查询天气";
 				}	
 				$this -> message -> _response($contentStr);
 				break;
@@ -45,6 +46,14 @@ class EventController extends CommonController {
 				{
 					$userinfo = $this -> user -> get_userinfo();
 					$this -> message -> _response($userinfo);
+				}
+				elseif($event_key == 'cai')
+				{
+					$this -> api -> searchMenu();
+
+				}
+				elseif ($event_key == 'code') {
+						$this -> createTicket();
 				}	
 
 				break;	

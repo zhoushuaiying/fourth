@@ -89,7 +89,7 @@ class MessageController extends CommonController{
       		if(count($arr_msg) > 1)
       		{
       			$new_msg = '';
-      			if($arr_msg[0] == '天气')
+      			if($arr_msg[0] == 'tq')
       			{
       				$city = $arr_msg[1];
 ////////////////////////////////

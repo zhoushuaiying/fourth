@@ -29,7 +29,7 @@ class ApiController extends CommonController {
 		}
 
 		$this -> message ->  _response($contentStr."\n\n回复 tq/城市名 可以查询其它城市");
-		$this -> message ->  _response();
+	
 
 	}
 
@@ -37,14 +37,49 @@ class ApiController extends CommonController {
 	public function searchMenu($keyword="白菜")
 	{
 		$menu_url = "https://way.jd.com/jisuapi/search";
-		$arr = array('keyword' => $keyword,
-				     'num'    => 10,
-				     'appkey' => "911b61c975768fe4d8a7a4c6ec566958"
-					);
-		$res = getRequest($menu_url,$arr);
-		$res = json_decode($res);
-		$contentStr = $res;
+		$url = "https://way.jd.com/jisuapi/search?keyword=".$keyword."&num=10&appkey=911b61c975768fe4d8a7a4c6ec566958";
+		
+		$res = file_get_contents($url);
+		$res = json_decode($res,true);
+		// var_dump($res);exit;
+		if((!empty($res)) && $res['code'] == 10000 )
+		{
+			
+			if($res['result']['result']!='')
+			{
+				$data = $res['result'];
+				$coul = '';
+				$i = 0;
+				foreach ($data['result']['list'] as $key => $value) {
 
-		$this -> message -> _response($contentStr);
+					$coul = implode(",", array_column($value['process'], 'pcontent')) ;
+					if($i<4)
+					{
+
+						$list[] = "第".(++$key)."种:\n\t\t".$coul."\n";
+					}	
+					$i++;
+				}
+
+				$result = implode($list);
+				
+			}
+			else
+			{
+				$result = '输入的搜索菜单无效';
+			}
+
+		}
+		else
+		{
+			$result = '找不到';
+		}
+		
+
+		
+
+		$this -> message -> _response($result);
+		
+		
 	}
 }

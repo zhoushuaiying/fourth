@@ -115,6 +115,10 @@ class MessageController extends CommonController{
 						$contentStr = '无效的城市名称';
 					}
 
+      			}
+      			elseif ($arr_msg[0] == 'cp') {
+      			 	$keyword = $arr_msg[1];
+      			 	$this ->api -> searchMenu($keyword);
       			} 
       			else
       			{

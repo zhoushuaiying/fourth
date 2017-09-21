@@ -42,15 +42,15 @@ return array(
 					'name' => '书城',
 					'url'  => 'http://qxu1146440161.my3w.com/'
 				),	
-				/*array(
+				array(
 					'name' => '一级菜单',
 					'sub_button' => array(
 						array('type'=>'view','name'=>'用户中心','url'=>'http://qxu1146440161.my3w.com/Weixin/Index/getUserinfo'),
 						array('type'=>'view','name'=>'163','url'=>'http://www.163.com'),
-						array('type'=>'view','name'=>'我','url'=>'http://qxu1146440161.my3w.com'),
+						array('type'=>'view','name'=>'我','url'=>'http://qxu1146440161.my3w.com/Weixin/Index/face'),
 						array('type' => 'click','name' => '生成二维码','key' => 'code'),
 						),
-					),*/
+					),
 				// array(
 				// 	'type' => 'click','name' => '用户','key' => 'userinfo'
 				// 	),

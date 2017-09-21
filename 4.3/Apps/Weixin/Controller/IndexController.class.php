@@ -9,7 +9,7 @@ class IndexController extends CommonController {
 	   	$this -> event   = A("Event");
 	   	$this -> menu    = A("Menu"); 
 	   	$this -> api     = A("Api");
-   		$this -> user     = A("User");
+   		$this -> user    = A("User");
    		$this -> oauth   = A("Oauth");
    		$this -> jssdk   = A("Jssdk");
 	}
@@ -22,7 +22,8 @@ class IndexController extends CommonController {
 		$this -> _access();
 	   } 
 
-
+	   // $this -> api -> searchMenu();
+	   // exit;
 	   
 
 	   // $access_token = $this -> getToken();
@@ -101,6 +102,59 @@ class IndexController extends CommonController {
 
     }
 
+public function upload(){
+	if(IS_POST){
+		$upload = new \Think\Upload();// 实例化上传类
+		$upload->maxSize  =   3145728 ;// 设置附件上传大小
+		$upload->exts   =   array('jpg', 'gif', 'png', 'jpeg');// 设置附件上传类型
+		$upload->rootPath =   './Uploads/'; // 设置附件上传根目录
+		$upload->savePath =   ''; // 设置附件上传（子）目录
+		// 上传文件 
+		$info  =  $upload->upload();
+		if(!$info) {// 上传错误提示错误信息
+		  $this->error($upload->getError());
+		}
+		else{// 上传成功 获取上传文件信息
+		//插入到数据库中
+		}
+		}
+		}public function upload(){
+		if(IS_POST){
+			$upload = new \Think\Upload();// 实例化上传类
+			$upload->maxSize  =   3145728 ;// 设置附件上传大小
+			$upload->exts   =   array('jpg', 'gif', 'png', 'jpeg');// 设置附件上传类型
+			$upload->rootPath =   './Uploads/'; // 设置附件上传根目录
+			$upload->savePath =   ''; // 设置附件上传（子）目录
+			// 上传文件 
+			$info  =  $upload->upload();
+			if(!$info) {// 上传错误提示错误信息
+			  $this->error($upload->getError());
+			}else{// 上传成功 获取上传文件信息
+			//插入到数据库中
+	}
+	}
+}
+
+    public function face()
+    {
+    	$userinfo = $this -> oauth -> wxLogin();
+    	if(!$userinfo)
+    	{
+    		exit('授权失败');
+    	}
+        $data          = [];
+
+        $timestamp = time();
+        $nonceStr  = $this -> jssdk -> nonceStr(); 
+        $signature = $this -> jssdk -> signature($nonceStr,$timestamp);
+        $data['appid'] = C('APPID');
+        $data['timestamp'] =  $timestamp;
+        $data['nonceStr']  =  $nonceStr;
+        $data['signature'] =  $signature;
+
+        $this -> assign('data',$data);
+    	$this -> display();
+    }
     //产品中心页面
     public function product()
     {

@@ -22,14 +22,25 @@
 		line-height: 100px;
 		font-size: 60px;
 	}
+	#img1{
+		display: block;
+		margin: 40px auto;
+	}
 
 </style>
 
 <body>
 	<div class="button" id="choose">选择</div>
+	
+	<div class="but">
+		 <div class="button" id="next">开始识别</div>
+	</div>	
+  
+   <!-- <div class="button" id="n">识别</div> -->
+    <input type="hidden" id="serverId" >
+	
 	<img id="img1" src="">
-	<div class="button" id="next">下一步</div>
-	<img id="img2" src="">
+	
 
 	<script>
 		wx.config({
@@ -45,110 +56,68 @@
 
 	   /* */
 
-$("#choose").on('click',function(){
-
-	wx.chooseImage({
-  count: 1, // 默认9
-  sizeType: ['original'],
-  sourceType: ['album', 'camera'],
-  success: function (res) {
-  	 var tempFilePaths = res.tempFilePaths;
-    var localId= res.localIds[0];
-    // $("#img1").attr("src", localId);
-    $('#localId').text(localId);
-    //选择图片成功，上传到微信服务器
-    wx.uploadImage({
-
-	/*
-	url: 'https://xxxxxxxx/index.php?g=user&m=center&a=upload', //仅为示例，非真实的接口地址
-         filePath: imglist[0],
-         name: 'files',
-         formData: {
-          'wtid': res.data
-         },
-         header: app.globalData.header,
-
-*/
-        url: 'https://zhousy.5awo.com/Weixin/Index/upload', //仅为示例，非真实的接口地址
-         filePath: tempFilePaths,
-         name: 'files',
-
-      // localId: localId, // 需要上传的图片的本地ID，由chooseImage接口获得
-      isShowProgressTips: 1, // 默认为1，显示进度提示
-      success: function (res) {
-        var serverId = res.serverId; // 返回图片的服务器端ID
-        $('#serverId').text(serverId);
-         $("#img1").attr("src", localId);
-      }
-    });
-  }
-});
-
-});
-
-	 //    $("#choose").on('click',function(){
-	 //    var imageid='';	
-		// wx.chooseImage({
-		//     count: 1, // 默认9
-		//     sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
-		//     sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
-		//     success: function (res) {
-		//         var localIds = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
-		// 		 $("#img1").attr("src", localIds);
-				
-		       	
-  //   				}
-		// 	});
-	 //    });
-
-  //     $("#next").on('click',function(){
-      	
-  //     	var e = $("#img1").attr("src");
-
- 	// 	wx.uploadImage({
-  //               localId: e, // 需要上传的图片的本地ID，由chooseImage接口获得
-  //               isShowProgressTips: 1, // 默认为1，显示进度提示
-  //               success: function (res) {
-  //                   mediaId = res.serverId; // 返回图片的服务器端ID
-  //                   // if (rh.tostr(mediaId)) {
-  //                       $("#img2").attr("src", localIds);
-  //                   // }
-
-  //               },
-  //               fail: function (error) {
-  //                   picPath = '';
-  //                   localIds = '';
-  //                   alert(Json.stringify(error));
-
-  //               }
-
-  //           });
-
-  //     });
-	   
+    
 
 
-	    function wxuploadImage(e) {
-           alert(ass);
-            wx.uploadImage({
-                localId: e, // 需要上传的图片的本地ID，由chooseImage接口获得
-                isShowProgressTips: 1, // 默认为1，显示进度提示
+
+	    $("#choose").on('click',function(){
+	 
+    		  wx.chooseImage({
+    		    count: 1, // 默认9
+    		    sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+    		    sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+    		    success: function (res) {
+    		        var localIds = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
+    				 $("#img1").attr("src", localIds);
+    
+        			}
+    			});
+	    });
+
+      $("#next").on("click",function(){
+          var localIds=$("#img1").attr("src");
+          wx.uploadImage({
+               localId: localIds, // 需要上传的图片的本地ID，由chooseImage接口获得
+               isShowProgressTips: 1, // 默认为1，显示进度提示
                 success: function (res) {
-                    mediaId = res.serverId; // 返回图片的服务器端ID
-                    if (rh.tostr(mediaId)) {
-                        $("#img2").attr("src", localIds);
-                    }
+                 var serverId = res.serverId; // 返回图片的服务器端ID
+                $("#serverId").val(serverId);
+               
+             check_img();
 
-                },
-                fail: function (error) {
-                    picPath = '';
-                    localIds = '';
-                    alert(Json.stringify(error));
 
-                }
+               }
+        });
 
-            });
-        }
+
+      });
+
+   	function check_img()
+   	{
+   		var serverId = $("#serverId").val();
+        $.post("http://qxu1146440161.my3w.com/Weixin/Index/get_upload",{serverId:serverId},function(msg){
+          
+          if(msg.code == 1)
+          {
+          	$("#img1").attr("src", msg.info);
+          	
+          }
+          else
+          {
+          	alert(msg.info); 
+          }
+
+		},'json');
+   	}	
+
+
+      
+
+
+      
+
+
+	    
 
 	   
 
@@ -160,5 +129,6 @@ $("#choose").on('click',function(){
 	});
 
 	</script>
+  
 </body>
 </html>

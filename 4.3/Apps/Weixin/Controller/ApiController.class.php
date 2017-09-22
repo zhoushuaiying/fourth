@@ -2,7 +2,7 @@
 namespace Weixin\Controller;
 use Think\Controller;
 class ApiController extends CommonController {
-
+	//查询天气
 	public function searchWeather($city)
 	{
 
@@ -33,7 +33,7 @@ class ApiController extends CommonController {
 
 	}
 
-
+	//查询菜谱
 	public function searchMenu($keyword="白菜")
 	{
 		$menu_url = "https://way.jd.com/jisuapi/search";
@@ -75,11 +75,90 @@ class ApiController extends CommonController {
 			$result = '找不到';
 		}
 		
-
-		
-
 		$this -> message -> _response($result);
 		
 		
 	}
+
+	//人脸检测
+	public function  check_face($img_url="http://zhousy.5awo.com/Public/Weixin/image/20170922143449888.jpg")
+	{
+		$api_url1 = "https://way.jd.com/hnadata/faceDetect?Timestamp=".date('Y-m-d H:i:s')."&imageUrl=".$img_url."&appkey=911b61c975768fe4d8a7a4c6ec566958";
+		$api_url = "https://way.jd.com/hnadata/faceDetect";
+		$param = [
+			'Timestamp' => date('Y-m-d H:i:s'),
+			'imageUrl' => $img_url,
+			'appkey'   => '911b61c975768fe4d8a7a4c6ec566958',
+		];
+		// $res = file_get_contents($api_url);
+		$res = getRequest($api_url,$param);
+		// $res = json_decode($res,true);
+		$data = ['code' => 0,'info' => ''];
+		if((!empty($res)) && $res['code'] == 10000 )
+		{
+			$list = $res['result']['msgResponse']['data']['faces'];
+			if($list!='')
+			{
+				$data['code'] = 1;
+				$data['info'] = $list[0]['face_rectangle'];
+
+			}
+			else
+			{
+				$data['info'] = '图片无效';
+
+			}
+		}
+		else
+		{
+			$data['info'] = '图片无效';
+
+		}
+		// var_dump($data);		
+		return $data;
+	}
+
+	//聊天机器人
+	public function tuling($key='天气')
+	{
+		$api = "https://way.jd.com/turing/turing";
+		$param = [
+			'info'   => $key,
+			'loc'    => '广州市',
+			'userid' => 222, 
+			'appkey' => "911b61c975768fe4d8a7a4c6ec566958",
+		];
+
+		$res = getRequest($api,$param);
+		// $data = ['code' => 0,'info' => ''];
+		file_put_contents("tuling.txt", json_encode($res));
+
+		if((!empty($res)) && $res['code'] == 10000 )
+		{
+			$data = $res['result'];
+			if(!empty($data))
+			{
+				if($data['code'] == 100000)
+				{
+					$info =$data['text'];
+				}
+				else
+				{
+					$info  = $data['text'];
+					$info .= "\n";
+					$info .= $data['url']; 
+				}
+
+
+			}	
+		}
+		else
+		{
+			$info = '我真的不知道你说什么';
+		}
+
+		return $info;
+
+	}
+	 
 }

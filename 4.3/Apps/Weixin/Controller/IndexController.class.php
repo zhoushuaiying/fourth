@@ -16,7 +16,7 @@ class IndexController extends CommonController {
 
   public function index(){
        
-	   
+
 	   if(I('echostr'))
 	   {   
 		$this -> _access();
@@ -36,13 +36,13 @@ class IndexController extends CommonController {
 	   $xml = file_get_contents("php://input");
 	   save_Xml($xml);
 
-/*$xml = "<xml><ToUserName><![CDATA[gh_d68ab2d21145]]></ToUserName>
-<FromUserName><![CDATA[oCaFv09j72zQvPn6HUFXiiW7fSAc]]></FromUserName>
-<CreateTime>1505812996</CreateTime>
-<MsgType><![CDATA[event]]></MsgType>
-<Event><![CDATA[CLICK]]></Event>
-<EventKey><![CDATA[userinfo]]></EventKey>
-</xml>";*/
+// $xml = "<xml><ToUserName><![CDATA[gh_d68ab2d21145]]></ToUserName>
+// <FromUserName><![CDATA[oCaFv09j72zQvPn6HUFXiiW7fSAc]]></FromUserName>
+// <CreateTime>1505980266</CreateTime>
+// <MsgType><![CDATA[text]]></MsgType>
+// <Content><![CDATA[1]]></Content>
+// <MsgId>6468135991331503422</MsgId>
+// </xml>";
 		if($xml == '')
 		{
 			exit;
@@ -102,38 +102,55 @@ class IndexController extends CommonController {
 
     }
 
-public function upload(){
-	if(IS_POST){
-		$upload = new \Think\Upload();// 实例化上传类
-		$upload->maxSize  =   3145728 ;// 设置附件上传大小
-		$upload->exts   =   array('jpg', 'gif', 'png', 'jpeg');// 设置附件上传类型
-		$upload->rootPath =   './Uploads/'; // 设置附件上传根目录
-		$upload->savePath =   ''; // 设置附件上传（子）目录
-		// 上传文件 
-		$info  =  $upload->upload();
-		if(!$info) {// 上传错误提示错误信息
-		  $this->error($upload->getError());
+	public function get_upload()
+	{
+
+		$serverId = I("serverId");
+		$access_token = $this -> getToken();
+		$accessToken = $access_token;
+
+		$media_id = $serverId;
+		$path = './Public/Weixin/image/';
+        if(!file_exists($path))
+        {
+            mkdir($path,0777,true);
+            $path=rtrim($path,'/').'/';
+        }
+		$targetName = $path.date('YmdHis').mt_rand(0,999).'.jpg';
+
+
+		$accessToken = $access_token;
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
+        $fp = fopen($targetName,'wb');
+        curl_setopt($ch,CURLOPT_URL,"http://file.api.weixin.qq.com/cgi-bin/media/get?access_token={$accessToken}&media_id={$serverId}");
+        curl_setopt($ch,CURLOPT_FILE,$fp);
+        curl_setopt($ch,CURLOPT_HEADER,0);
+        curl_exec($ch);
+        curl_close($ch);
+        fclose($fp);
+
+		$img_url = "http://zhousy.5awo.com".ltrim($targetName,'.');
+		$res = $this -> api ->  check_face($img_url);
+		$data = ['code' => 0, 'info' => ''];
+		if($res['code'] == 1)
+		{
+			$cutImage = cutImage($targetName,$res['info']);
+			$data['code'] = 1;
+			$data['info'] = "http://zhousy.5awo.com".ltrim($cutImage,'.');
+			$this -> ajaxReturn($data);
 		}
-		else{// 上传成功 获取上传文件信息
-		//插入到数据库中
+		else
+		{
+			$data['info'] = $res['info'];
+			$this -> ajaxReturn($data);
 		}
-		}
-		}public function upload(){
-		if(IS_POST){
-			$upload = new \Think\Upload();// 实例化上传类
-			$upload->maxSize  =   3145728 ;// 设置附件上传大小
-			$upload->exts   =   array('jpg', 'gif', 'png', 'jpeg');// 设置附件上传类型
-			$upload->rootPath =   './Uploads/'; // 设置附件上传根目录
-			$upload->savePath =   ''; // 设置附件上传（子）目录
-			// 上传文件 
-			$info  =  $upload->upload();
-			if(!$info) {// 上传错误提示错误信息
-			  $this->error($upload->getError());
-			}else{// 上传成功 获取上传文件信息
-			//插入到数据库中
+
+
+
 	}
-	}
-}
+
+	
 
     public function face()
     {
@@ -197,14 +214,7 @@ public function upload(){
     }
 
 
-	public function upload()
-	{
-		  if(I('echostr'))
-	   {   
-		$this -> _access();
-	   } 
-		$this -> display();
-	}
+	
 
 	//接入微信平台检验
 	private function _access()

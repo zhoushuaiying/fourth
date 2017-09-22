@@ -127,7 +127,7 @@ class MessageController extends CommonController{
       		}
       		else
       		{
-      			if($keyword == '1')
+      			/*if($keyword == '1')
 				{
 					$contentStr = '微信';
 				}
@@ -138,7 +138,9 @@ class MessageController extends CommonController{
 				else
 				{
 	        		$contentStr = "Welcome to wechat world!";
-				}
+				}*/
+
+				$contentStr = $this -> api -> tuling($keyword);
       		}	
 			
         	

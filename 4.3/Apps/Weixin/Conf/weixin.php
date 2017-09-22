@@ -17,15 +17,15 @@ return array(
 					'sub_button' => array(
 						array(
 						'type' => 'click',
-						'name' => '天气',
+						'name' => '天气查询',
 						'key'  => '海珠'
 							),
 
-						array(
-						'type' => 'click',
-						'name' => '快递',
-						'key'  => 'kuaidi'
-							),
+						// array(
+						// 'type' => 'click',
+						// 'name' => '快递',
+						// 'key'  => 'kuaidi'
+						// 	),
 					
 
 					array(
@@ -47,8 +47,8 @@ return array(
 					'sub_button' => array(
 						array('type'=>'view','name'=>'用户中心','url'=>'http://qxu1146440161.my3w.com/Weixin/Index/getUserinfo'),
 						array('type'=>'view','name'=>'163','url'=>'http://www.163.com'),
-						array('type'=>'view','name'=>'我','url'=>'http://qxu1146440161.my3w.com/Weixin/Index/face'),
-						array('type' => 'click','name' => '生成二维码','key' => 'code'),
+						array('type'=>'view','name'=>'人脸识别','url'=>'http://qxu1146440161.my3w.com/Weixin/Index/face'),
+						// array('type' => 'click','name' => '生成二维码','key' => 'code'),
 						),
 					),
 				// array(

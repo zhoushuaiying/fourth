@@ -51,6 +51,11 @@
         curl_setopt($ch,CURLOPT_URL,$str_apiurl);   //需要获取的 URL 地址
         curl_setopt($ch,CURLOPT_HEADER,0);          //启用时会将头文件的信息作为数据流输出, 此处禁止输出头信息
         curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);  //获取的信息以字符串返回，而不是直接输出
+
+        //规避证书验证
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE); // https请求 不验证证书和hosts
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE);
+
         curl_setopt($ch,CURLOPT_CONNECTTIMEOUT,30); //连接超时时间
         curl_setopt($ch,CURLOPT_HTTPHEADER,$this_header);  //头信息
         curl_setopt($ch, CURLOPT_ENCODING, 'gzip'); 
@@ -93,6 +98,10 @@
 
 
         $ch = curl_init();  //初始curl
+
+        
+
+        
         curl_setopt($ch,CURLOPT_URL,$str_apiurl);   //需要获取的 URL 地址
         curl_setopt($ch,CURLOPT_HEADER,0);          //启用时会将头文件的信息作为数据流输出, 此处禁止输出头信息
         curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);  //获取的信息以字符串返回，而不是直接输出
@@ -131,6 +140,25 @@
                     break;
             }
         }
+    }
+
+    function cutImage($path,$arr=array())
+    {
+
+        $image = new \Think\Image();
+        $image->open($path);
+        
+        
+        $savepath = './Public/Weixin/cut_image/';
+        if(!file_exists($savepath))
+        {
+            mkdir($savepath,0777,true);
+            $savepath=rtrim($savepath,'/').'/';
+        }
+        $saveName=$savepath.date('YmdHis').mt_rand(99,999).'.jpg';
+
+        $image->crop($arr['width'],$arr['height'],$arr['left'], $arr['top'])->save("$saveName");
+        return $saveName;
     }
 	
 	

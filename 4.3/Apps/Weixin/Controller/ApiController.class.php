@@ -160,5 +160,105 @@ class ApiController extends CommonController {
 		return $info;
 
 	}
+
+	//新闻频道查询
+	public function searchNews($keyword="头条")
+	{
+		$api = "https://way.jd.com/jisuapi/get?channel=".$keyword."&num=3&start=0&appkey=911b61c975768fe4d8a7a4c6ec566958";
+
+		$res = getRequest($api);
+
+		// file_put_contents("news.txt", $res);
+		// $info = ['code' => 0, 'info' => ''];
+		if($res['code'] = 10000)
+		{	
+			$data = $res['result']['result']['list'];
+			$list = array();
+			foreach ($data as $key => $value) {
+				$result['src']    = '来源:'.$value['src'];
+				$result['time']   = '时间:'.$value['time'];
+				// $result['img']    = '主图:'.$value['pic'];
+				$result['title']  = '标题:'.$value['title'];
+				// $content = str_replace('</p>',"</p>",$value['content']);
+				$content = $value['content'];
+				$result['content']= '内容:'."\n\t\t".strip_tags($content);
+				$list[] = implode("\n", $result);
+			}
+			
+			// $info['code'] = 1;
+ 			$info = $list; 
+		}
+		else
+		{	
+			$info = '查询失败';
+		}
+
+		if(is_array($info))
+		{
+
+			$this -> message -> _response($info[0]);
+			
+		}
+		else
+		{
+			$this -> message -> _response($info);
+			
+		}	
+		
+	}
+
+	//具体新闻查询
+	public function searchDetail($keyword="姚明")
+	{
+		$api = "https://way.jd.com/jisuapi/newSearch?keyword=".$keyword."&appkey=911b61c975768fe4d8a7a4c6ec566958";
+
+		$res = getRequest($api);
+
+		if($res['code'] = 10000)
+		{	
+			$result = $res['result'];
+			$info = '';
+			if($result['status'] == 0)
+			{
+				$data = $res['result']['result']['list'];
+				// var_dump($data[0]);exit;
+				$list = array();
+				foreach ($data as $key => $value) 
+				{
+					$resu['src']    = '来源:'.$value['src'];
+					$resu['time']   = '时间:'.$value['time'];
+					// $resu['img']    = '主图:'.$value['pic'];
+					$resu['title']  = '标题:'.$value['title'];
+					// $content = str_replace('</p>',"</p>",$value['content']);
+					$content = $value['content'];
+					$resu['content']= '内容:'."\n\t\t".strip_tags($content);
+					$list[] = implode("\n", $resu);
+				}
+				$info = $list;
+				
+			}
+			else
+			{
+				$info = $result['msg'];
+			}	
+		}
+		else
+		{
+			$info = '查询失败';
+		}
+
+		// var_dump($info[3]);
+		if(is_array($info))
+		{
+
+			$this -> message -> _response($info[3]);
+			
+		}
+		else
+		{
+			$this -> message -> _response($info);
+			
+		}	
+	}
 	 
 }

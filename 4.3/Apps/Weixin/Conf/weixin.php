@@ -9,10 +9,6 @@ return array(
 	'MENU_CONFIG'           =>  array(
 			'button' => array(
 				array(
-					// 'type' => 'click',
-					// 'name' => '查询',
-					// 'key'  => '海珠'
-
 					'name' => '查询',
 					'sub_button' => array(
 						array(
@@ -20,17 +16,9 @@ return array(
 						'name' => '天气查询',
 						'key'  => '海珠'
 							),
-
-						// array(
-						// 'type' => 'click',
-						// 'name' => '快递',
-						// 'key'  => 'kuaidi'
-						// 	),
-					
-
 					array(
 						'type' => 'click',
-						'name' => '菜谱',
+						'name' => '菜谱大全',
 						'key'  => 'cai'
 							),
 						),
@@ -43,10 +31,11 @@ return array(
 					'url'  => 'http://qxu1146440161.my3w.com/'
 				),	
 				array(
-					'name' => '一级菜单',
+					'name' => '菜单',
 					'sub_button' => array(
-						array('type'=>'view','name'=>'用户中心','url'=>'http://qxu1146440161.my3w.com/Weixin/Index/getUserinfo'),
-						array('type'=>'view','name'=>'163','url'=>'http://www.163.com'),
+						
+						array('type' => 'click','name' => '功能介绍',"key" => 'help' ),
+						
 						array('type'=>'view','name'=>'人脸识别','url'=>'http://qxu1146440161.my3w.com/Weixin/Index/face'),
 						// array('type' => 'click','name' => '生成二维码','key' => 'code'),
 						),

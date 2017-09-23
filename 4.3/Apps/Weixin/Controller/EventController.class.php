@@ -21,7 +21,7 @@ class EventController extends CommonController {
 				else
 				{
 					$contentStr = "欢迎关注我!\n";
-					$contentStr .= "回复 tq/城市名 可查询天气";
+					
 				}	
 				$this -> message -> _response($contentStr);
 				break;
@@ -53,18 +53,22 @@ class EventController extends CommonController {
 
 				}
 				elseif ($event_key == 'code') {
-						$this -> createTicket();
-				}	
-
+					$this -> createTicket();
+				}
+				elseif($event_key == 'help')
+					$contentStr = '';	
+					$contentStr .= '1、输入 tq/城市名 可以查询天气'."\n";
+					$contentStr .= '2、输入 cp/名字   可以查询菜谱'."\n";
+					$contentStr .= '3、输入 new/频道   可以查询新闻频道,有一下频道可供查询：头条,新闻,财经,体育,娱乐,军事教育,科技,NBA,股票,星座,女性,健康,育儿'."\n";
+					$contentStr .= '4、输入 news/名字  可以查询明星的具体新闻,例如 news/姚明'."\n";
+					$contentStr .= '4、可以随时和图灵机器人聊天';
+					$this -> message -> _response($contentStr);	
 				break;	
 			default:
 				$this -> message -> _response('错误信息');
 				break;
 		}
-		// if($event_type == "subscribe")
-		// {
-		// 	$contentStr = '欢迎关注我！';
-		// }
+	
 		
 
 	}

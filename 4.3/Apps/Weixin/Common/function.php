@@ -160,5 +160,6 @@
         $image->crop($arr['width'],$arr['height'],$arr['left'], $arr['top'])->save("$saveName");
         return $saveName;
     }
-	
+
+   
 	

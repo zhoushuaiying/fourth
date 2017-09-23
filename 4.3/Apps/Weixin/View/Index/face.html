@@ -26,6 +26,12 @@
 		display: block;
 		margin: 40px auto;
 	}
+	#img2{
+		display: block;
+		margin: 40px auto;
+	
+		
+	}
 
 </style>
 
@@ -39,7 +45,10 @@
    <!-- <div class="button" id="n">识别</div> -->
     <input type="hidden" id="serverId" >
 	
-	<img id="img1" src="">
+	<img id="img1" src="" >
+	<img id="img2" src="">
+
+
 	
 
 	<script>
@@ -69,7 +78,8 @@
     		    success: function (res) {
     		        var localIds = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
     				 $("#img1").attr("src", localIds);
-    
+    				
+    					
         			}
     			});
 	    });
@@ -99,8 +109,9 @@
           
           if(msg.code == 1)
           {
-          	$("#img1").attr("src", msg.info);
-          	
+          	$("#img2").attr("src", msg.info);
+            $("#img2").attr("width", '600px');
+    		$("#img2").attr("height", '600px');
           }
           else
           {

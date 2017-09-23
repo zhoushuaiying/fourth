@@ -119,7 +119,15 @@ class MessageController extends CommonController{
       			elseif ($arr_msg[0] == 'cp') {
       			 	$keyword = $arr_msg[1];
       			 	$this ->api -> searchMenu($keyword);
-      			} 
+      			}
+      			elseif ($arr_msg[0] == 'new') {
+      			 	$keyword = $arr_msg[1];
+      			 	$this -> api -> searchNews($keyword);
+      			}
+      			elseif ($arr_msg[0] == 'news') {
+      			 	$keyword = $arr_msg[1];
+      			 	$this -> api -> searchDetail($keyword);
+      			}  
       			else
       			{
 						$contentStr = '不知道你在说什么！';

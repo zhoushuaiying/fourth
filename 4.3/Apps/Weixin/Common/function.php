@@ -1,6 +1,6 @@
 <?php
 	
-	//保存微信服务器推送给我们服务器的数据
+	/*//保存微信服务器推送给我们服务器的数据
 	function save_Xml($xml)
 	{
 		
@@ -159,7 +159,7 @@
 
         $image->crop($arr['width'],$arr['height'],$arr['left'], $arr['top'])->save("$saveName");
         return $saveName;
-    }
+    }*/
 
    
 	

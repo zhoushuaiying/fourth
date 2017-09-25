@@ -36,4 +36,5 @@ return array(
 //    全局配置方式
     // 'LAYOUT_ON'             =>  true,
     // 'LAYOUT_NAME'           =>  'Common/base',
-);
+        'LOAD_EXT_CONFIG' => 'weixin',
+); 

@@ -1,0 +1,87 @@
+<html class="am-touch js cssanimations"><head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <title>我的账户</title>
+<script src="http://static.winxuancdn.com/cms/??assets/js/wxwebapp2.0/jquery.min.js,assets/js/wxwebapp2.0/amazeui.min.js,assets/js/library/seajs/2.2.1/sea.js,assets/js/wxwebapp2.0/seajs.config.js?1506072877898"></script>
+
+    <link href="http://static.winxuancdn.com/cms/??assets/styles/wxwebapp2.0/app.css,assets/layout/grid-m100.css,assets/styles/wxwebapp2.0/mods/wa-head-detail.css,assets/styles/wxwebapp2.0/mods/wa-usercenter.css?1506072877898" rel="stylesheet">
+</head>
+<body>
+<div id="page">
+    <div class="layout grid-m100 J_Layout" data-gridid="1">
+        <div class="col-main">
+            <div class="main-wrap J_Region" data-colname="main-wrap" data-support="100">
+                <!-- 用户中心-我的账户头部 -->
+                <div class="module wa-head-detail shadow-2">
+                    <div class="head-box"> <a href="javascript:history.go(-1);" class="back"><span class="iconfont"></span></a>
+                        <div class="cont">
+                            <h2>我的账户</h2>
+                        </div>
+                        <div class="more" data-am-dropdown="">
+<a class="am-dropdown-toggle" data-am-dropdown-toggle=""><span class="iconfont"></span></a> 
+         <ul class="am-dropdown-content"> 
+          <i class="arrow"></i> 
+          <li><a href="http://m.winxuan.com">
+            <s class="iconfont">
+             
+            </s>首页</a></li> 
+          <li><a href="http://m.winxuan.com/cms/class_s">
+            <s class="iconfont">
+             
+            </s>分类搜索</a></li> 
+          <li><a href="http://m.winxuan.com/usercenter">
+            <s class="iconfont">
+             
+            </s>我的文轩</a></li> 
+         </ul>                         </div>
+                    </div>
+                </div>
+                <div class="wa-head-height"></div>
+                <!-- 用户中心-我的账户头部 end -->
+                <!-- 客服反馈主体 -->
+                <div class="module wa-usercenter-account">
+                    <div class="account-box">
+                        <!-- 我的账户 -->
+                        <div class="select-box-group select-box-group-multi shadow-2">
+                            <a class="item" href="javascript:;">
+                                <span>用户名</span><s>wx_zlqigazwdi</s>
+                            </a>
+                            <a class="item" href="http://m.winxuan.com/usercenter/myaccount/personal">
+                                <span>个人信息</span>   <s></s> <b><i class="iconfont"></i></b>
+                            </a>
+                            <a class="item" href="http://m.winxuan.com/address">
+                                <span>我的收货地址</span> <s></s> <b><i class="iconfont"></i></b>
+                            </a>
+                            <a class="item" href="http://m.winxuan.com/account/security">
+                                <span>安全中心</span>   <s></s> <b><i class="iconfont"></i></b>
+                            </a>
+                            <a class="item" href="http://m.winxuan.com/wechat/isbind">
+                                <span>账号和绑定设置</span>   <s></s> <b><i class="iconfont"></i></b>
+                            </a>
+                        </div>
+                        <!-- 我的账户 end -->
+
+                        <div class="user-footbtn">
+                            <button class="ok1">退出当前账户</button>
+                        </div>
+                        <div class="user-footbtn-height"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    seajs.use("jquery", function($) {
+        $(".ok").click(function() {
+            location.href = "http://m.winxuan.com/logout";
+        });
+    });
+    $(".user-footbtn").click(function(){
+
+        location.href = "{:U('Home/Index/logout')}";    
+
+    });
+</script>
+
+</body></html>

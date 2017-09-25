@@ -8,7 +8,7 @@ return array(
     'DATA_CACHE_PREFIX'     =>  'weixin_',     // 缓存前缀
 	'MENU_CONFIG'           =>  array(
 			'button' => array(
-				array(
+				/*array(
 					'name' => '查询',
 					'sub_button' => array(
 						array(
@@ -36,14 +36,49 @@ return array(
 						
 						array('type' => 'click','name' => '功能介绍',"key" => 'help' ),
 						
-						array('type'=>'view','name'=>'人脸识别','url'=>'http://qxu1146440161.my3w.com/Weixin/Index/face'),
-						// array('type' => 'click','name' => '生成二维码','key' => 'code'),
+						// array('type'=>'view','name'=>'人脸识别','url'=>'http://qxu1146440161.my3w.com/Weixin/Index/face'),
+						array('type'=>'view','name'=>'人脸识别','url'=>'http://zshuai100.08tk.cn/Weixin/Index/face'),
+						
 						),
-					),
+					),*/
 				// array(
 				// 	'type' => 'click','name' => '用户','key' => 'userinfo'
 				// 	),
-				
+				array(
+					  'type' => 'view',
+					  'name' => '手机书店',
+					  'url' => 'http://qxu1146440161.my3w.com'),
+				array(
+					  'type' => 'view', 
+					  'name' => '家庭教育',
+					  'url' => 'http://qxu1146440161.my3w.com/Index/book_list'),
+				array(
+
+					'name' => '我的地盘',
+					'sub_button' => array(
+							array(
+								'type' => 'view',
+								'name' => '用户中心',
+								'url'  => 'http://qxu1146440161.my3w.com/Index/usercenter',
+								),	
+							array(
+								'type' => 'click',
+								'name' => '签到',
+								'key'  => 'sign' 
+									),	
+							array(
+								'type' => 'view',
+								'name' => '我的购物车',
+								'url'  => 'http://qxu1146440161.my3w.com/Index/cart',
+								),
+							array(
+							'type' => 'view',
+							'name' => '订单列表',
+							'url'  => 'http://qxu1146440161.my3w.com/Index/order',
+							),	
+						),	
+						
+					),
 
 		), 
 			),

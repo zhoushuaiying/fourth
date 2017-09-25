@@ -5,8 +5,23 @@ class IndexController extends Controller {
 	
 	public  $auth_code = array('12345','23456788');
 	
+	public function _initialize()
+	{	
+		$action = ACTION_NAME;
+		$arr = array('cart','usercenter','order','myaccount');
+		if(in_array($action,$arr))
+		{
+			$this -> checkLogin();	
+		}
+	}	
 
     public function index(){
+
+    	header("Content-Type:text/html;charset=utf-8");
+    	$product = M('product');
+    	$list = $product -> limit(3) -> select(); 
+    	
+    	$this -> assign('pro',$list);
         $this -> display();
     }
 	
@@ -31,6 +46,42 @@ class IndexController extends Controller {
 	{
 		$this -> display();
 	}
+	public function myaccount()
+	{
+		$this -> display();
+	}
+	public function WeixinLogin()
+	{
+		$oauth = A('Weixin/Oauth');
+		$userinfo = $oauth -> wxLogin();
+		$user_type = 'weixin';
+		session('login_type',$user_type);
+		$user = M('user');
+	}
+	public function logout()
+	{
+		session('userinfo',null);
+		$this -> redirect('Index/login');
+	}
+
+	private function checkLogin()
+	{	
+		$userinfo = session('userinfo');
+		if(!$userinfo)
+		{
+			$this -> redirect('Index/login');
+		}
+
+
+	}
+
+
+
+
+
+
+
+
 
 	public function getIndexData()
 	{

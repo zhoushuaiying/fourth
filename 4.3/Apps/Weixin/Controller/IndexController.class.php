@@ -16,7 +16,7 @@ class IndexController extends CommonController {
 
   public function index(){
        
-
+		
 	   if(I('echostr'))
 	   {   
 		$this -> _access();
@@ -40,7 +40,7 @@ class IndexController extends CommonController {
 // <FromUserName><![CDATA[oCaFv09j72zQvPn6HUFXiiW7fSAc]]></FromUserName>
 // <CreateTime>1505980266</CreateTime>
 // <MsgType><![CDATA[text]]></MsgType>
-// <Content><![CDATA[1]]></Content>
+// <Content><![CDATA[多迪]]></Content>
 // <MsgId>6468135991331503422</MsgId>
 // </xml>";
 		if($xml == '')
@@ -53,7 +53,7 @@ class IndexController extends CommonController {
 		$this->user_id   = $arr_xml['FromUserName'];
 		$this->msg_type  = $arr_xml['MsgType'];
 		$this->arr_xml   = $arr_xml;
-	
+	file_put_contents("ww.txt", $this->msg_type);
 		//获取事件类型
 		if($this->msg_type == "event")        //关注回复
 		{	
@@ -224,13 +224,18 @@ class IndexController extends CommonController {
 		$nonce      = I('nonce');
 		$echostr    = I('echostr');
 		$token      = C('TOKEN');
-		
+		$a = $singnature.'--'.$timestamp.'--'.$nonce.'--'.$echostr.'--'.$token;
+		file_put_contents("1.txt", $a);
 		$array = array($token,$timestamp,$nonce);
 		sort($array);
 		$str   = implode($array); 
 		$my_singnature = sha1($str);
+		$b = $my_singnature;
+		file_put_contents("2.txt", $singnature);
+		file_put_contents("4.txt", $my_singnature);
 		 if($singnature == $my_singnature)
 		 {
+		 	file_put_contents("3.txt", $_GET["echostr"]);
 			 echo $echostr;
 		 }
 		 else

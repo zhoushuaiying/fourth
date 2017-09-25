@@ -1,0 +1,81 @@
+<html class="am-touch js cssanimations"><head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <title>文轩登录</title>
+    
+<script src="http://static.winxuancdn.com/cms/??assets/js/wxwebapp2.0/jquery.min.js,assets/js/wxwebapp2.0/amazeui.min.js,assets/js/wxwebapp2.0/imagescompress.js,assets/js/library/seajs/2.2.1/sea.js,assets/js/wxwebapp2.0/seajs.config.js,assets/js/wxwebapp2.0/lazy.js?2017081417139"></script>
+    <link href="http://static.winxuancdn.com/cms/??assets/styles/wxwebapp2.0/app.css,assets/layout/grid-m100.css,assets/styles/wxwebapp2.0/form.css,assets/styles/wxwebapp2.0/mods/wa-head-secondary.css,assets/styles/wxwebapp2.0/mods/wa-loginregister.css?2017081417139" rel="stylesheet">
+</head>
+<body>
+
+<div id="page">
+    <div class="layout grid-m100 J_Layout" data-gridid="1">
+        <div class="col-main">
+            <div class="main-wrap J_Region" data-colname="main-wrap" data-support="100">
+                <!-- 登录顶部条 -->
+                <div class="module wa-head-secondary shadow">
+                    <div class="head-box">  <a href="javascript:history.go(-1);" class="back"><span class="iconfont"></span></a> 
+                        <div class="cont">
+                            <h2>文轩登录</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="wa-head-height"></div>
+                <!-- 登录顶部条 end -->
+                <!-- 登录主体 -->
+                <div class="module wa-loginregister">
+                    <div class="cont-box">
+                        <!-- 登录表单 -->
+                        <div class="select-box-group select-box-group-form">
+                            <div class="tip-title hide">账户名或密码不正确！</div>
+                            <a class="item" href="javascript:;"> <s><input class="text" id="username" value="" type="text" placeholder="用户名/邮箱/手机号"></s>
+                            </a>
+                            <a class="item" href="javascript:;"> <s><input class="text" id="password" value="" type="password" placeholder="请输入密码"></s><b><strong id="J_showPwd" class="switch-btn"><i></i><em class="iconfont"></em></strong></b> 
+                            </a>
+                            <div class="submit" style="padding-top: .66rem;">
+                                <button class="btn-big J_login">登录</button>
+                            </div>
+                        </div>
+                        <!-- 登录表单 end -->
+                        <div class="right-link">
+                        	<a class="reg" href="http://m.winxuan.com/signup">立即注册</a>
+                        	<a class="forget" href="http://m.winxuan.com/password/reset">忘记密码</a>
+                        </div>
+                        <!-- <div class="appealAccount" style="margin-top: .5rem;font-size: .37rem;line-height: .6rem;color: #999;padding: 0 .66rem;">
+                        	为保障账户安全和提供更好的用户体验，文轩网近期升级了账号体系；若您的账号登陆异常请尝试 <a href="http://m.winxuan.com/aftersales/user/consult" style="color: #FF0000;font-size:.4rem;">账号申诉&gt;&gt;</a>
+                        </div> -->
+                        <div class="other-login">
+                            <p>-----------------其他方式------------------</p>
+                            <div class="method">
+                                
+                                <a href="http://m.winxuan.com/oauth/weibo?state=" class="xl"></a>
+                                
+                                <a href="http://m.winxuan.com/oauth/qq?state=" class="qq"></a>
+
+                                 <a href="http://m.winxuan.com/oauth/qq?state=" class="qq"></a>
+                            </div>
+                        </div>
+                        <div class="service-tip">
+                            <div class="item">  <span class="iconfont"></span>     <b>100%正品保证</b> 
+                            </div>
+                            <div class="item">  <span class="iconfont"></span>     <b>7天无理由退换货</b> 
+                            </div>
+                            <div class="item">  <span class="iconfont"></span>     <b>多仓直发快速配送</b> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 登录主体 end -->
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+seajs.use(['login','jquery'], function(Login){
+    new Login();
+    $(".reg").attr("href","http://m.winxuan.com/signup"+location.search);
+});
+</script>
+
+
+</body></html>

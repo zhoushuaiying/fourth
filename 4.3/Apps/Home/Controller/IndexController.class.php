@@ -54,9 +54,28 @@ class IndexController extends Controller {
 	{
 		$oauth = A('Weixin/Oauth');
 		$userinfo = $oauth -> wxLogin();
-		$user_type = 'weixin';
+		
+		$user_type = '4';
+		$openid    = $userinfo['openid'];
 		session('login_type',$user_type);
+		//将用户信息写入
 		$user = M('user');
+		$where =  array('user_type' => $user_type,'other_openid'=> $openid );
+		// var_dump(json_encode($userinfo,JSON_UNESCAPED_UNICODE));exit;
+		$res = $user -> where($where) -> find();
+		if(!$res)
+		{
+			$data = [
+				'addtime' => time(),
+				'user_type' => $user_type,
+				'other_openid' => $openid,
+				// 'other_user' => serialize($userinfo)
+				'other_userinfo' => json_encode($userinfo,JSON_UNESCAPED_UNICODE),
+				];
+			// var_dump($data);exit;
+			$user -> add($data);
+		}
+		// $this -> redirect('usercenter');
 	}
 	public function logout()
 	{

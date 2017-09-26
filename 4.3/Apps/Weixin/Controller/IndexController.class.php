@@ -225,17 +225,16 @@ class IndexController extends CommonController {
 		$echostr    = I('echostr');
 		$token      = C('TOKEN');
 		$a = $singnature.'--'.$timestamp.'--'.$nonce.'--'.$echostr.'--'.$token;
-		file_put_contents("1.txt", $a);
+	
 		$array = array($token,$timestamp,$nonce);
 		sort($array);
 		$str   = implode($array); 
 		$my_singnature = sha1($str);
 		$b = $my_singnature;
-		file_put_contents("2.txt", $singnature);
-		file_put_contents("4.txt", $my_singnature);
+	
 		 if($singnature == $my_singnature)
 		 {
-		 	file_put_contents("3.txt", $_GET["echostr"]);
+		 	
 			 echo $echostr;
 		 }
 		 else

@@ -1,0 +1,19 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<ul>
+    {foreach from=$index_slide item=curr}
+	<li><a href="{$curr.item_link}"><img src="{$curr.item_url}" alt="banner"></a></li>
+	{/foreach}
+</ul>
+<!--小圆点-->
+<ol class="circle">
+{foreach from=$index_slide item=curr key=index}
+	{if $index eq 0}
+	<li class="on"></li>
+	}
+	{else}
+	<li></li>
+	{/if}
+
+	
+{/foreach}
+</ol>

@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>首页</title>
+	<link rel="stylesheet" href="./themes/mystyle/css/common.css"/>
+	<link rel="stylesheet" href="./themes/mystyle/css/homepage.css"/>
+	<script type="text/javascript" src="./themes/mystyle/js/jquery.js"></script>
+	<script type="text/javascript" src="./themes/mystyle/js/jquery.touchSwipe.min.js"></script>
+	<script type="text/javascript" src="./themes/mystyle/js/common.js"></script>
+</head>
+<body>
+	<!--头部-->
+	<header class="header">
+		<a href="javascript:void(0);"><img src="./themes/mystyle/images/icon1.png" alt="icon"><b>扫一扫</b></a>
+		<div>
+			<form action="#">
+				<label for="#">
+					<input type="text" placeholder="请输入商品名称" onclick="goSearch()">
+					<button></button>
+				</label>
+			</form>
+		</div>
+		<b><img src="./themes/mystyle/images/icon3.png" alt="icon"><span>导航</span></b>
+		<ul>
+			<li><a href="homepage.html">首页</a></li>
+			<li><a href="pro_list.html">商品列表</a></li>
+			<li><a href="pro_sort.html">商品分类</a></li>
+		</ul>
+	</header>
+	<!--头部 end-->
+	<!--中间内容部分-->
+	<article class="content">
+		<!--banner-->
+		<section class="banList">
+		<!-- #BeginLibraryItem "/library/index_ad.lbi" --><!-- #EndLibraryItem -->
+
+				
+			<!--小圆点 end-->
+		</section>
+		<!--banner end-->
+		<!--导航-->
+        <nav class="nav">
+            <ul>
+                <li>
+                    <a href="#">
+                    	<img src="./themes/mystyle/images/icon6.png" alt="icon">
+						<span>热卖单品</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                    	<img src="./themes/mystyle/images/icon7.png" alt="icon">
+						<span>最新商品</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                    	<img src="./themes/mystyle/images/icon8.png" alt="icon">
+						<span>优惠商品</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                    	<img src="./themes/mystyle/images/icon9.png" alt="icon">
+						<span>限时特卖</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="pro_sort.html">
+                    	<img src="./themes/mystyle/images/icon10.png" alt="icon">
+						<span>全部分类</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+		<!--内容-->
+		<!--商品-->
+		<!-- #BeginLibraryItem "/library/index_goods.lbi" --><!-- #EndLibraryItem -->
+		
+		<!--商品 end-->
+		<!--最新商品-->
+		<section class="news_goods clear">
+			<h2><img src="./themes/mystyle/images/icon12.png" alt="icon">最新商品<img src="./themes/mystyle/images/icon13.png" alt="icon"></h2>
+			<!-- {foreach from=$new_goods item=curr key=index} -->
+
+			<!-- {if $index eq 0} -->
+			<div class="left">
+					<ul>
+						<li>
+							<a href="pro_details.html"><img src="{$curr.thumb}" alt="img"></a>
+							<div>
+								<h3><a href="pro_details.html">H18前端功放</a></h3>
+								<h3><a href="pro_details.html">至尊发烧级限量版</a></h3>
+								<p><span>优</span><span>响</span><span>清</span></p>
+								<a href="javascript:void(0);" onclick="goLogin()">立即抢购</a>
+							</div>
+						</li>
+			<!-- {elseif $index lte 2} -->
+						<li>
+							<a href="pro_details.html"><img src="{$curr.thumb}" alt="img"></a>
+							<div>
+								<h3><a href="pro_details.html">H18前端功放</a></h3>
+								<h3><a href="pro_details.html">至尊发烧级限量版</a></h3>
+								<p><span>优</span><span>响</span><span>清</span></p>
+								<a href="javascript:void(0);" onclick="goLogin()">立即抢购</a>
+							</div>
+						</li>
+			<!-- {elseif $index eq 3} -->
+				
+						</ul>
+				</div>
+
+				<div class="right">
+					<ul>
+						<li>
+							<a href="pro_details.html"><img src="{$curr.thumb}" alt="img"></a>
+							<h3><a href="pro_details.html">P600前级放大器</a></h3>
+							<h3><a href="pro_details.html">让你体验前所未有的感觉</a></h3>
+							<a href="javascript:void(0);"><span>疯抢价：</span><em>￥</em><em>36</em><em>.00</em></a>
+							<a href="javascript:void(0);" onclick="goLogin()">立即抢购</a>
+						</li>
+			<!-- {elseif $index eq 4} -->
+						
+						<li>
+							<a href="pro_details.html"><img src="{$curr.thumb}" alt="img"></a>
+							<h3><a href="pro_details.html">P600前级放大器</a></h3>
+							<h3><a href="pro_details.html">让你体验前所未有的感觉</a></h3>
+							<a href="javascript:void(0);"><span>疯抢价：</span><em>￥</em><em>36</em><em>.00</em></a>
+							<a href="javascript:void(0);" onclick="goLogin()">立即抢购</a>
+						</li>
+					</ul>
+				</div>
+	
+				<!-- {/if}	 -->
+			<!-- {/foreach} -->
+		</section>
+		<!--最新商品 end-->
+		<!--热卖单品-->
+		<section class="hot_item clear">
+			<h2><img src="./themes/mystyle/images/icon12.png" alt="icon">热卖单品<img src="./themes/mystyle/images/icon13.png" alt="icon"></h2>
+			<!--左边-->
+			<div class="left">
+				<ul>
+					<li class="top clear">
+						<a href="pro_details.html"><img src="./themes/mystyle/images/img1.png" alt="img"></a>
+						<div>
+							<h3><a href="pro_details.html">蓝牙音乐播放器</a></h3>
+							<h3><a href="pro_details.html">音乐，不一样的享受</a></h3>
+							<p><a href="pro_details.html">蓝牙360环绕音乐</a></p>
+							<p><a href="pro_details.html">9折限时抢购</a></p>
+							<div>
+								<a href="javascript:void(0);"><em>￥</em><em>69</em><em>/</em><span onclick="goLogin()">抢购</span></a>
+							</div>
+						</div>
+					</li>
+					<li>
+						<a href="pro_details.html"><img src="./themes/mystyle/images/img9.png" alt="img"></a>
+						<h3><a href="pro_details.html">蓝牙音乐播放器</a></h3>
+						<h3><a href="pro_details.html">音乐，不一样的享受</a></h3>
+						<p><a href="pro_details.html">蓝牙360环绕音乐</a></p>
+						<p><a href="pro_details.html">9折限时抢购</a></p>
+						<div>
+							<a href="javascript:void(0);"><em>￥</em><em>69</em><em>/</em><span onclick="goLogin()">抢购</span></a>
+						</div>
+					</li>
+					<li>
+						<a href="pro_details.html"><img src="./themes/mystyle/images/img10.png" alt="img"></a>
+						<h3><a href="pro_details.html">蓝牙音乐播放器</a></h3>
+						<h3><a href="pro_details.html">音乐，不一样的享受</a></h3>
+						<p><a href="pro_details.html">蓝牙360环绕音乐</a></p>
+						<p><a href="pro_details.html">9折限时抢购</a></p>
+						<div>
+							<a href="javascript:void(0);"><em>￥</em><em>69</em><em>/</em><span onclick="goLogin()">抢购</span></a>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<!--右边-->
+			<div class="right">
+				<ul>
+					<li>
+						<a href="pro_details.html"><img src="./themes/mystyle/images/img8.png" alt="img"></a>
+						<h3><a href="pro_details.html">便携式蓝牙音乐播放器</a></h3>
+						<div>
+							<a href="javascript:void(0);"><em>￥</em><em>69</em><em>/</em><span onclick="goLogin()">抢购</span></a>
+						</div>
+					</li>
+					<li>
+						<a href="pro_details.html"><img src="./themes/mystyle/images/img11.png" alt="img"></a>
+						<h3><a href="pro_details.html">便携式蓝牙音乐播放器</a></h3>
+						<div>
+							<a href="javascript:void(0);"><em>￥</em><em>69</em><em>/</em><span onclick="goLogin()">抢购</span></a>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</section>
+		<!--热卖单品 end-->
+		<!--推荐商品-->
+		<section class="reco_goods clear">
+			<h2><img src="./themes/mystyle/images/icon12.png" alt="icon">推荐商品<img src="./themes/mystyle/images/icon13.png" alt="icon"></h2>
+			<ul>
+				<li>
+					<a href="pro_details.html"><img src="./themes/mystyle/images/img12.png" alt="img"></a>
+					<h6><a href="pro_details.html">M5 DAP 播放器</a></h6>
+					<h5><a href="pro_details.html">3”ISP高清分辨率显示屏</a></h5>
+					<h4><a href="pro_details.html"><em>出色音质</em> , <span>非凡品质</span></a></h4>
+					<p>EXCELLENT SOUND , EXTRAORDINARY </p>
+					<div>
+						<em><a href="javascript:void(0);" onclick="goLogin()">抢购</a></em>
+						<span><a href="javascript:void(0);">￥99</a></span>
+					</div>
+				</li>
+				<li>
+					<a href="pro_details.html"><img src="./themes/mystyle/images/img13.png" alt="img"></a>
+					<h6><a href="pro_details.html">M5 DAP 播放器</a></h6>
+					<h5><a href="pro_details.html">3”ISP高清分辨率显示屏</a></h5>
+					<h4><a href="pro_details.html"><em>出色音质</em> , <span>非凡品质</span></a></h4>
+					<p>EXCELLENT SOUND , EXTRAORDINARY </p>
+					<div>
+						<em><a href="javascript:void(0);" onclick="goLogin()">抢购</a></em>
+						<span><a href="javascript:void(0);">￥99</a></span>
+					</div>
+				</li>
+				<li>
+					<a href="pro_details.html"><img src="./themes/mystyle/images/img12.png" alt="img"></a>
+					<h6><a href="pro_details.html">M5 DAP 播放器</a></h6>
+					<h5><a href="pro_details.html">3”ISP高清分辨率显示屏</a></h5>
+					<h4><a href="pro_details.html"><em>出色音质</em> , <span>非凡品质</span></a></h4>
+					<p>EXCELLENT SOUND , EXTRAORDINARY </p>
+					<div>
+						<em><a href="javascript:void(0);" onclick="goLogin()">抢购</a></em>
+						<span><a href="javascript:void(0);">￥99</a></span>
+					</div>
+				</li>
+				<li>
+					<a href="pro_details.html"><img src="./themes/mystyle/images/img13.png" alt="img"></a>
+					<h6><a href="pro_details.html">M5 DAP 播放器</a></h6>
+					<h5><a href="pro_details.html">3”ISP高清分辨率显示屏</a></h5>
+					<h4><a href="pro_details.html"><em>出色音质</em> , <span>非凡品质</span></a></h4>
+					<p>EXCELLENT SOUND , EXTRAORDINARY </p>
+					<div>
+						<em><a href="javascript:void(0);" onclick="goLogin()">抢购</a></em>
+						<span><a href="javascript:void(0);">￥99</a></span>
+					</div>
+				</li>
+			</ul>
+		</section>
+		<!--推荐商品 end-->
+	</article>
+	<!--中间内容部分 end-->
+	<!--尾部-->
+	<footer class="footer">
+		<!--尾部导航-->
+		<section class="nav">
+				<ul>
+					<li>
+						<a href="homepage.html">
+							<img src="./themes/mystyle/images/icon14_1.png" alt="icon">
+							<span class="on">首页</span>
+						</a>
+					</li>
+					<li>
+						<a href="pro_sort.html">
+							<img src="./themes/mystyle/images/icon15.png" alt="icon">
+							<span>分类</span>
+						</a>
+					</li>
+					<li>
+						<a href="javascript:void(0);">
+							<img src="./themes/mystyle/images/icon16.png" alt="icon">
+							<span>关注</span>
+						</a>
+					</li>
+					<li>
+						<a href="shop_cart.html">
+							<img src="./themes/mystyle/images/icon17.png" alt="icon">
+							<span>购物车</span>
+						</a>
+					</li>
+					<li>
+						<a href="user.html">
+							<img src="./themes/mystyle/images/icon18.png" alt="icon">
+							<span>会员</span>
+						</a>
+					</li>
+				</ul>
+		</section>
+		<!--尾部导航 end-->
+	</footer>
+	<!--尾部 end-->
+	<script type="text/javascript" src="./themes/mystyle/js/goLogin.js"></script>
+</body>
+</html>

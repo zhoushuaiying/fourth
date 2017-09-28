@@ -1,1 +1,1 @@
-this  IS  head
+this  IS  head{$title}

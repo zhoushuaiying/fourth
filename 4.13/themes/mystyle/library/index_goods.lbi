@@ -1,0 +1,40 @@
+<section class="goods clear">
+			<ul>
+				<!--限时抢购-->
+				<li>
+					<h2><a href="pro_details.html">限时抢购</a></h2>
+					<a href="pro_details.html"><img src="./themes/mystyle/images/img1.png" alt="img"></a>
+					<h3><a href="pro_details.html">蓝牙音乐播放器</a></h3>
+					<h3><a href="pro_details.html">音乐，不一样的享受</a></h3>
+					<p><a href="pro_details.html">蓝牙360环绕音乐</a></p>
+					<p><a href="pro_details.html">9折限时抢购</a></p>
+					<div>
+						<a href="javascript:void(0);"><em>￥</em><em>69</em><em>/</em><span onclick="goLogin()">抢购</span></a>
+					</div>
+				</li>
+				<!--新品首发-->
+				<li>
+					<h2><a href="pro_details.html">新品首发</a></h2>
+					<a href="pro_details.html"><img src="./themes/mystyle/images/img2.png" alt="img"></a>
+				</li>
+				<!--天天特价-->
+				<li>
+					<h2><a href="pro_details.html">天天特价</a></h2>
+					<a href="pro_details.html"><img src="./themes/mystyle/images/img3.png" alt="img"></a>
+				</li>
+				<!--爆款产品-->
+				<li>
+					<h2><a href="pro_details.html">爆款产品</a></h2>
+					<a href="pro_details.html"><img src="./themes/mystyle/images/img4.png" alt="img"></a>
+					<div>
+						<h3><a href="pro_details.html">蓝牙音乐播放器</a></h3>
+						<h3><a href="pro_details.html">音乐，不一样的享受</a></h3>
+						<p><a href="pro_details.html">蓝牙360环绕音乐</a></p>
+						<p><a href="pro_details.html">9折限时抢购</a></p>
+						<div>
+							<a href="javascript:void(0);"><em>￥</em><em>69</em><em>/</em><span onclick="goLogin()">抢购</span></a>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</section>
